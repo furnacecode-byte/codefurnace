@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CodeFurnance | Portfolio</title>
+
+  <!-- GOOGLE FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+
+    /* =========================================
+       GLOBAL STYLES
+    ========================================== */
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+    }
+
+    body{
+      background:#f5f7fc;
+      color:#111827;
+      overflow-x:hidden;
+    }
+
+    a{
+      text-decoration:none;
+    }
+
+    img{
+      width:100%;
+      display:block;
+    }
+
+    .container{
+      width:100%;
+      max-width:1400px;
+      margin:auto;
+      padding:0 40px;
+    }
+
+    /* =========================================
+       NAVBAR
+    ========================================== */
+
+    .navbar{
+      width:100%;
+      height:90px;
+      background:#020817;
+      position:fixed;
+      top:0;
+      left:0;
+      z-index:1000;
+
+      display:flex;
+      align-items:center;
+    }
+
+    .nav-wrapper{
+      width:100%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:12px;
+
+      color:white;
+      font-size:30px;
+      font-weight:700;
+    }
+
+    .logo-circle{
+      width:32px;
+      height:32px;
+      border-radius:50%;
+      background:linear-gradient(135deg,#0d6efd,#7b3ff2);
+    }
+
+    .nav-links{
+      display:flex;
+      gap:40px;
+      list-style:none;
+    }
+
+    .nav-links a{
+      color:white;
+      font-size:17px;
+      font-weight:500;
+      transition:.3s;
+      position:relative;
+    }
+
+    .nav-links a:hover{
+      color:#0d6efd;
+    }
+
+    .nav-links a.active::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:-12px;
+      width:100%;
+      height:3px;
+      border-radius:10px;
+      background:#0d6efd;
+    }
+
+    .nav-right{
+      display:flex;
+      align-items:center;
+      gap:30px;
+    }
+
+    .start-btn{
+      background:#0d6efd;
+      color:white;
+      padding:16px 34px;
+      border-radius:12px;
+      font-weight:600;
+      transition:.3s;
+    }
+
+    .start-btn:hover{
+      background:#0047d6;
+    }
+
+    .menu-btn{
+      color:white;
+      font-size:34px;
+      cursor:pointer;
+      display:none;
+    }
+
+    /* =========================================
+       SIDEBAR
+    ========================================== */
+
+    .sidebar{
+      position:fixed;
+      top:0;
+      right:-100%;
+      width:300px;
+      height:100vh;
+      background:#081120;
+      z-index:2000;
+      transition:.4s;
+      padding:40px;
+    }
+
+    .sidebar.active{
+      right:0;
+    }
+
+    .close-btn{
+      color:white;
+      font-size:34px;
+      text-align:right;
+      margin-bottom:50px;
+      cursor:pointer;
+    }
+
+    .sidebar-links{
+      display:flex;
+      flex-direction:column;
+      gap:30px;
+    }
+
+    .sidebar-links a{
+      color:white;
+      font-size:20px;
+    }
+
+    /* =========================================
+       HERO SECTION
+    ========================================== */
+
+    .hero{
+      width:100%;
+      padding:180px 0 120px;
+
+      background:
+      linear-gradient(rgba(2,8,28,.94),rgba(2,8,28,.94)),
+      url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1400&auto=format&fit=crop');
+
+      background-size:cover;
+      background-position:center;
+
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      width:700px;
+      height:700px;
+      background:radial-gradient(circle,#0d6efd22 0%,transparent 70%);
+      right:-250px;
+      top:-150px;
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:2;
+    }
+
+    .hero-badge{
+      display:inline-block;
+      background:#17316d;
+      color:white;
+      padding:12px 26px;
+      border-radius:40px;
+      font-size:14px;
+      margin-bottom:30px;
+    }
+
+    .hero h1{
+      color:white;
+      font-size:44px;
+      line-height:1.2;
+      margin-bottom:25px;
+      font-weight:700;
+    }
+
+    .hero p{
+      color:#d7deed;
+      font-size:16px;
+      line-height:1.8;
+      max-width:900px;
+      margin:auto;
+    }
+
+    /* =========================================
+       FILTER BUTTONS
+    ========================================== */
+
+    .portfolio-filter{
+      padding:80px 0 40px;
+      text-align:center;
+    }
+
+    .filter-buttons{
+      display:flex;
+      justify-content:center;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .filter-btn{
+      padding:14px 28px;
+      border:none;
+      background:white;
+      border-radius:14px;
+      font-size:16px;
+      font-weight:600;
+      cursor:pointer;
+      transition:.3s;
+      box-shadow:0 4px 20px rgba(0,0,0,.05);
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover{
+      background:#0d6efd;
+      color:white;
+    }
+
+    /* =========================================
+       PORTFOLIO GRID
+    ========================================== */
+
+    .portfolio{
+      padding-bottom:120px;
+    }
+
+    .portfolio-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+      gap:35px;
+    }
+
+    .portfolio-card{
+      background:white;
+      border-radius:28px;
+      overflow:hidden;
+      box-shadow:0 10px 40px rgba(0,0,0,.05);
+      transition:.4s;
+    }
+
+    .portfolio-card:hover{
+      transform:translateY(-10px);
+      box-shadow:0 20px 60px rgba(0,0,0,.08);
+    }
+
+    .portfolio-image{
+      position:relative;
+      overflow:hidden;
+      height:280px;
+    }
+
+    .portfolio-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transition:.5s;
+    }
+
+    .portfolio-card:hover .portfolio-image img{
+      transform:scale(1.08);
+    }
+
+    .portfolio-tag{
+      position:absolute;
+      top:20px;
+      left:20px;
+
+      background:#0d6efd;
+      color:white;
+
+      padding:10px 18px;
+      border-radius:30px;
+      font-size:14px;
+      font-weight:600;
+    }
+
+    .portfolio-content{
+      padding:35px;
+    }
+
+    .portfolio-content h3{
+      font-size:32px;
+      margin-bottom:18px;
+      color:#111827;
+    }
+
+    .portfolio-content p{
+      color:#6b7280;
+      line-height:1.9;
+      font-size:17px;
+      margin-bottom:30px;
+    }
+
+    .portfolio-info{
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:15px;
+
+      margin-bottom:30px;
+    }
+
+    .info-item{
+      display:flex;
+      flex-direction:column;
+      gap:5px;
+    }
+
+    .info-title{
+      font-size:14px;
+      color:#9ca3af;
+    }
+
+    .info-value{
+      font-size:16px;
+      font-weight:600;
+      color:#111827;
+    }
+
+    .portfolio-buttons{
+      display:flex;
+      gap:15px;
+      flex-wrap:wrap;
+    }
+
+    .view-btn{
+      background:#0d6efd;
+      color:white;
+      padding:14px 26px;
+      border-radius:12px;
+      font-weight:600;
+      transition:.3s;
+    }
+
+    .view-btn:hover{
+      background:#0047d6;
+    }
+
+    .demo-btn{
+      border:1px solid #dbe2ea;
+      color:#111827;
+      padding:14px 26px;
+      border-radius:12px;
+      font-weight:600;
+      transition:.3s;
+    }
+
+    .demo-btn:hover{
+      background:#f3f4f6;
+    }
+
+    /* =========================================
+       STATS SECTION
+    ========================================== */
+
+    .stats{
+      padding-bottom:120px;
+    }
+
+    .stats-box{
+      background:#020817;
+      border-radius:30px;
+      padding:60px;
+
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:40px;
+    }
+
+    .stat{
+      display:flex;
+      align-items:center;
+      gap:20px;
+    }
+
+    .stat-icon{
+      width:80px;
+      height:80px;
+      border-radius:20px;
+
+      display:flex;
+      justify-content:center;
+      align-items:center;
+
+      font-size:32px;
+      color:white;
+    }
+
+    .blue{
+      background:#0d6efd;
+    }
+
+    .purple{
+      background:#7b3ff2;
+    }
+
+    .green{
+      background:#22c55e;
+    }
+
+    .orange{
+      background:#ff7a00;
+    }
+
+    .stat h2{
+      color:white;
+      font-size:42px;
+      margin-bottom:8px;
+    }
+
+    .stat p{
+      color:#d7deed;
+      font-size:18px;
+    }
+
+    /* =========================================
+       TESTIMONIALS
+    ========================================== */
+
+    .testimonials{
+      padding-bottom:120px;
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:70px;
+    }
+
+    .section-title h2{
+      font-size:40px;
+      margin-bottom:20px;
+      color:#111827;
+    }
+
+    .section-title p{
+      color:#6b7280;
+      font-size:16px;
+      max-width:800px;
+      margin:auto;
+      line-height:1.8;
+    }
+
+    .testimonial-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+      gap:30px;
+    }
+
+    .testimonial-card{
+      background:white;
+      border-radius:24px;
+      padding:40px;
+      box-shadow:0 10px 40px rgba(0,0,0,.05);
+    }
+
+    .stars{
+      color:#ffb300;
+      font-size:22px;
+      margin-bottom:25px;
+    }
+
+    .testimonial-card p{
+      color:#6b7280;
+      line-height:1.9;
+      font-size:17px;
+      margin-bottom:30px;
+    }
+
+    .client{
+      display:flex;
+      align-items:center;
+      gap:15px;
+    }
+
+    .client img{
+      width:70px;
+      height:70px;
+      border-radius:50%;
+      object-fit:cover;
+    }
+
+    .client h4{
+      font-size:20px;
+      margin-bottom:5px;
+    }
+
+    .client span{
+      color:#6b7280;
+      font-size:15px;
+    }
+
+    /* =========================================
+       CTA SECTION
+    ========================================== */
+
+    .cta{
+      padding-bottom:120px;
+    }
+
+    .cta-box{
+      background:
+      linear-gradient(rgba(2,8,28,.94),rgba(2,8,28,.94)),
+      url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1400&auto=format&fit=crop');
+
+      background-size:cover;
+      background-position:center;
+
+      border-radius:30px;
+      padding:70px;
+      text-align:center;
+    }
+
+    .cta-box h2{
+      color:white;
+      font-size:60px;
+      margin-bottom:20px;
+    }
+
+    .cta-box p{
+      color:#d7deed;
+      font-size:20px;
+      line-height:1.8;
+      max-width:900px;
+      margin:auto auto 40px;
+    }
+
+    .cta-buttons{
+      display:flex;
+      justify-content:center;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .primary-btn{
+      background:#0d6efd;
+      color:white;
+      padding:18px 40px;
+      border-radius:14px;
+      font-size:18px;
+      font-weight:600;
+    }
+
+    .secondary-btn{
+      border:1px solid rgba(255,255,255,.2);
+      color:white;
+      padding:18px 40px;
+      border-radius:14px;
+      font-size:18px;
+      font-weight:600;
+    }
+
+    /* =========================================
+       FOOTER
+    ========================================== */
+
+    footer{
+      background:#020817;
+      padding:80px 0 40px;
+      color:white;
+    }
+
+    .footer-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:50px;
+      margin-bottom:60px;
+    }
+
+    .footer-logo{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-size:30px;
+      font-weight:700;
+      margin-bottom:25px;
+    }
+
+    .footer-text{
+      color:#d7deed;
+      line-height:1.9;
+      font-size:17px;
+    }
+
+    .footer-title{
+      font-size:24px;
+      margin-bottom:25px;
+    }
+
+    .footer-links{
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+    }
+
+    .footer-links a{
+      color:#d7deed;
+      transition:.3s;
+    }
+
+    .footer-links a:hover{
+      color:#0d6efd;
+    }
+
+    .copyright{
+      border-top:1px solid rgba(255,255,255,.08);
+      padding-top:30px;
+      text-align:center;
+      color:#d7deed;
+    }
+
+    /* =========================================
+       RESPONSIVE
+    ========================================== */
+
+    @media(max-width:1100px){
+
+      .nav-links,
+      .start-btn{
+        display:none;
+      }
+
+      .menu-btn{
+        display:block;
+      }
+
+      .hero h1{
+        font-size:54px;
+      }
+
+    }
+
+    @media(max-width:700px){
+
+      .container{
+        padding:0 20px;
+      }
+
+      .hero h1{
+        font-size:42px;
+      }
+
+      .hero p{
+        font-size:18px;
+      }
+
+      .section-title h2{
+        font-size:38px;
+      }
+
+      .cta-box{
+        padding:40px 25px;
+      }
+
+      .cta-box h2{
+        font-size:38px;
+      }
+
+      .cta-box p{
+        font-size:18px;
+      }
+
+      .portfolio-grid{
+        grid-template-columns:1fr;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- SIDEBAR -->
+
+  <div class="sidebar" id="sidebar">
+
+    <div class="close-btn" id="closeBtn">
+      ✕
+    </div>
+
+    <div class="sidebar-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+  </div>
+
+  <!-- NAVBAR -->
+
+  <nav class="navbar">
+
+    <div class="container nav-wrapper">
+
+      <div class="logo">
+        <div class="logo-circle"></div>
+        CodeFurnance
+      </div>
+
+      <ul class="nav-links">
+
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="portfolio.html" class="active">Portfolio</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="contact.html">Contact</a></li>
+
+      </ul>
+
+      <div class="nav-right">
+
+        <a href="contact.html" class="start-btn">
+          Get Started
+        </a>
+
+        <div class="menu-btn" id="menuBtn">
+          ☰
+        </div>
+
+      </div>
+
+    </div>
+
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="container hero-content">
+
+      <div class="hero-badge">
+        OUR PORTFOLIO
+      </div>
+
+      <h1>
+        Our Recent Projects & Success Stories
+      </h1>
+
+      <p>
+        Explore our latest web development, mobile apps,
+        branding, SEO and digital transformation projects
+        built for businesses worldwide.
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- FILTER -->
+
+  <section class="portfolio-filter">
+
+    <div class="container">
+
+      <div class="filter-buttons">
+
+        <button class="filter-btn active">
+          All Projects
+        </button>
+
+        <button class="filter-btn">
+          Web Design
+        </button>
+
+        <button class="filter-btn">
+          Mobile Apps
+        </button>
+
+        <button class="filter-btn">
+          SEO
+        </button>
+
+        <button class="filter-btn">
+          Branding
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- PORTFOLIO -->
+
+  <section class="portfolio">
+
+    <div class="container">
+
+      <div class="portfolio-grid">
+
+        <!-- CARD -->
+
+        <div class="portfolio-card">
+
+          <div class="portfolio-image">
+
+            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop">
+
+            <div class="portfolio-tag">
+              Web Design
+            </div>
+
+          </div>
+
+          <div class="portfolio-content">
+
+            <h3>
+              Modern Business Website
+            </h3>
+
+            <p>
+              A modern responsive business website designed
+              for a technology startup company with advanced
+              UI/UX and SEO optimization.
+            </p>
+
+            <div class="portfolio-info">
+
+              <div class="info-item">
+                <span class="info-title">Client</span>
+                <span class="info-value">TechNova</span>
+              </div>
+
+              <div class="info-item">
+                <span class="info-title">Duration</span>
+                <span class="info-value">3 Months</span>
+              </div>
+
+              <div class="info-item">
+                <span class="info-title">Technology</span>
+                <span class="info-value">HTML/CSS/JS</span>
+              </div>
+
+            </div>
+
+            <div class="portfolio-buttons">
+
+              <a href="#" class="view-btn">
+                View Project
+              </a>
+
+              <a href="#" class="demo-btn">
+                Live Demo
+              </a>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- CARD -->
+
+        <div class="portfolio-card">
+
+          <div class="portfolio-image">
+
+            <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=1200&auto=format&fit=crop">
+
+            <div class="portfolio-tag">
+              Mobile App
+            </div>
+
+          </div>
+
+          <div class="portfolio-content">
+
+            <h3>
+              Fitness Mobile Application
+            </h3>
+
+            <p>
+              A custom mobile fitness application with workout
+              tracking, diet planning and online coaching
+              integration for fitness businesses.
+            </p>
+
+            <div class="portfolio-info">
+
+              <div class="info-item">
+                <span class="info-title">Client</span>
+                <span class="info-value">FitLife</span>
+              </div>
+
+              <div class="info-item">
+                <span class="info-title">Duration</span>
+                <span class="info-value">5 Months</span>
+              </div>
+
+              <div class="info-item">
+                <span class="info-title">Technology</span>
+                <span class="info-value">Flutter</span>
+              </div>
+
+            </div>
+
+            <div class="portfolio-buttons">
+
+              <a href="#" class="view-btn">
+                View Project
+              </a>
+
+              <a href="#" class="demo-btn">
+                Live Demo
+              </a>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- CARD -->
+
+        <div class="portfolio-card">
+
+          <div class="portfolio-image">
+
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop">
+
+            <div class="portfolio-tag">
+              SEO & Marketing
+            </div>
+
+          </div>
+
+          <div class="portfolio-content">
+
+            <h3>
+              Digital Marketing Campaign
+            </h3>
+
+            <p>
+              A complete SEO and digital marketing campaign
+              that increased traffic, leads and conversions
+              for an ecommerce business.
+            </p>
+
+            <div class="portfolio-info">
+
+              <div class="info-item">
+                <span class="info-title">Client</span>
+                <span class="info-value">ShopMart</span>
+              </div>
+
+              <div class="info-item">
+                <span class="info-title">Duration</span>
+                <span class="info-value">4 Months</span>
+              </div>
+
+              <div class="info-item">
+                <span class="info-title">Technology</span>
+                <span class="info-value">SEO/Ads</span>
+              </div>
+
+            </div>
+
+            <div class="portfolio-buttons">
+
+              <a href="#" class="view-btn">
+                View Project
+              </a>
+
+              <a href="#" class="demo-btn">
+                Live Demo
+              </a>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- STATS -->
+
+  <section class="stats">
+
+    <div class="container">
+
+      <div class="stats-box">
+
+        <div class="stat">
+
+          <div class="stat-icon blue">
+            👥
+          </div>
+
+          <div>
+            <h2>150+</h2>
+            <p>Happy Clients</p>
+          </div>
+
+        </div>
+
+        <div class="stat">
+
+          <div class="stat-icon purple">
+            🚀
+          </div>
+
+          <div>
+            <h2>250+</h2>
+            <p>Projects Completed</p>
+          </div>
+
+        </div>
+
+        <div class="stat">
+
+          <div class="stat-icon green">
+            ⭐
+          </div>
+
+          <div>
+            <h2>5+</h2>
+            <p>Years Experience</p>
+          </div>
+
+        </div>
+
+        <div class="stat">
+
+          <div class="stat-icon orange">
+            💬
+          </div>
+
+          <div>
+            <h2>24/7</h2>
+            <p>Customer Support</p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- TESTIMONIALS -->
+
+  <section class="testimonials">
+
+    <div class="container">
+
+      <div class="section-title">
+
+        <h2>
+          What Our Clients Say
+        </h2>
+
+        <p>
+          Trusted by startups, businesses and enterprises
+          for high-quality digital solutions and support.
+        </p>
+
+      </div>
+
+      <div class="testimonial-grid">
+
+        <!-- TESTIMONIAL -->
+
+        <div class="testimonial-card">
+
+          <div class="stars">
+            ★★★★★
+          </div>
+
+          <p>
+            CodeFurnance transformed our business website
+            into a modern professional platform that increased
+            our online sales significantly.
+          </p>
+
+          <div class="client">
+
+            <img src="https://randomuser.me/api/portraits/men/32.jpg">
+
+            <div>
+              <h4>James Carter</h4>
+              <span>CEO - TechNova</span>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- TESTIMONIAL -->
+
+        <div class="testimonial-card">
+
+          <div class="stars">
+            ★★★★★
+          </div>
+
+          <p>
+            Their mobile app development team delivered
+            exactly what we needed with excellent support
+            and professional communication.
+          </p>
+
+          <div class="client">
+
+            <img src="https://randomuser.me/api/portraits/women/44.jpg">
+
+            <div>
+              <h4>Sarah Williams</h4>
+              <span>Founder - FitLife</span>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- TESTIMONIAL -->
+
+        <div class="testimonial-card">
+
+          <div class="stars">
+            ★★★★★
+          </div>
+
+          <p>
+            Their SEO strategies helped our ecommerce store
+            rank higher on Google and brought thousands
+            of new customers.
+          </p>
+
+          <div class="client">
+
+            <img src="https://randomuser.me/api/portraits/men/51.jpg">
+
+            <div>
+              <h4>Michael Brown</h4>
+              <span>Marketing Director</span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CTA -->
+
+  <section class="cta">
+
+    <div class="container">
+
+      <div class="cta-box">
+
+        <h2>
+          Ready To Start Your Next Project?
+        </h2>
+
+        <p>
+          Let’s create something amazing together and help
+          your business grow with modern digital solutions.
+        </p>
+
+        <div class="cta-buttons">
+
+          <a href="#" class="primary-btn">
+            Start Your Project
+          </a>
+
+          <a href="#" class="secondary-btn">
+            Contact Us
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <div>
+
+          <div class="footer-logo">
+
+            <div class="logo-circle"></div>
+
+            CodeFurnance
+
+          </div>
+
+          <p class="footer-text">
+            Professional web development, mobile apps,
+            SEO and digital transformation services
+            for modern businesses.
+          </p>
+
+        </div>
+
+        <div>
+
+          <h3 class="footer-title">
+            Quick Links
+          </h3>
+
+          <div class="footer-links">
+
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Portfolio</a>
+            <a href="#">Contact</a>
+
+          </div>
+
+        </div>
+
+        <div>
+
+          <h3 class="footer-title">
+            Services
+          </h3>
+
+          <div class="footer-links">
+
+            <a href="#">Web Design</a>
+            <a href="#">Web Development</a>
+            <a href="#">SEO Marketing</a>
+            <a href="#">Mobile Apps</a>
+            <a href="#">Cloud Solutions</a>
+
+          </div>
+
+        </div>
+
+        <div>
+
+          <h3 class="footer-title">
+            Contact Info
+          </h3>
+
+          <div class="footer-links">
+
+            <a href="#">
+              info@codefurnance.com
+            </a>
+
+            <a href="#">
+              +254 700 000 000
+            </a>
+
+            <a href="#">
+              Nairobi, Kenya
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="copyright">
+
+        © 2026 CodeFurnance. All Rights Reserved.
+
+      </div>
+
+    </div>
+
+  </footer>
+
+  <!-- JAVASCRIPT -->
+
+  <script>
+
+    // SIDEBAR
+
+    const menuBtn = document.getElementById("menuBtn");
+    const sidebar = document.getElementById("sidebar");
+    const closeBtn = document.getElementById("closeBtn");
+
+    menuBtn.addEventListener("click", () => {
+      sidebar.classList.add("active");
+    });
+
+    closeBtn.addEventListener("click", () => {
+      sidebar.classList.remove("active");
+    });
+
+    // FILTER BUTTONS
+
+    const filterButtons = document.querySelectorAll(".filter-btn");
+
+    filterButtons.forEach(button => {
+
+      button.addEventListener("click", () => {
+
+        filterButtons.forEach(btn => {
+          btn.classList.remove("active");
+        });
+
+        button.classList.add("active");
+
+      });
+
+    });
+
+  </script>
+
+</body>
+</html>

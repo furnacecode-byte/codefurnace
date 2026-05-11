@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>CodeFurnance | Pricing</title>
+
+  <!-- GOOGLE FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+
+    /* =========================================
+       GLOBAL STYLES
+    ========================================== */
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+    }
+
+    body{
+      background:#f5f7fc;
+      color:#111827;
+      overflow-x:hidden;
+    }
+
+    a{
+      text-decoration:none;
+    }
+
+    .container{
+      width:100%;
+      max-width:1400px;
+      margin:auto;
+      padding:0 40px;
+    }
+
+    /* =========================================
+       NAVBAR
+    ========================================== */
+
+    .navbar{
+      width:100%;
+      height:90px;
+      background:#020817;
+      position:fixed;
+      top:0;
+      left:0;
+      z-index:1000;
+      display:flex;
+      align-items:center;
+    }
+
+    .nav-wrapper{
+      width:100%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      color:white;
+      font-size:30px;
+      font-weight:700;
+    }
+
+    .logo-circle{
+      width:32px;
+      height:32px;
+      border-radius:50%;
+      background:linear-gradient(135deg,#0d6efd,#7b3ff2);
+    }
+
+    .nav-links{
+      display:flex;
+      gap:40px;
+      list-style:none;
+    }
+
+    .nav-links a{
+      color:white;
+      font-size:17px;
+      font-weight:500;
+      transition:.3s;
+      position:relative;
+    }
+
+    .nav-links a:hover{
+      color:#0d6efd;
+    }
+
+    .nav-links a.active::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:-12px;
+      width:100%;
+      height:3px;
+      border-radius:10px;
+      background:#0d6efd;
+    }
+
+    .nav-right{
+      display:flex;
+      align-items:center;
+      gap:30px;
+    }
+
+    .start-btn{
+      background:#0d6efd;
+      color:white;
+      padding:15px 32px;
+      border-radius:12px;
+      font-weight:600;
+      transition:.3s;
+    }
+
+    .start-btn:hover{
+      background:#0056d6;
+    }
+
+    .menu-btn{
+      color:white;
+      font-size:34px;
+      cursor:pointer;
+      display:none;
+    }
+
+    /* =========================================
+       SIDEBAR
+    ========================================== */
+
+    .sidebar{
+      position:fixed;
+      top:0;
+      right:-100%;
+      width:300px;
+      height:100vh;
+      background:#081120;
+      z-index:2000;
+      transition:.4s;
+      padding:40px;
+    }
+
+    .sidebar.active{
+      right:0;
+    }
+
+    .close-btn{
+      color:white;
+      font-size:34px;
+      text-align:right;
+      margin-bottom:50px;
+      cursor:pointer;
+    }
+
+    .sidebar-links{
+      display:flex;
+      flex-direction:column;
+      gap:30px;
+    }
+
+    .sidebar-links a{
+      color:white;
+      font-size:20px;
+    }
+
+    /* =========================================
+       HERO
+    ========================================== */
+
+    .hero{
+      width:100%;
+      padding:180px 0 120px;
+
+      background:
+      linear-gradient(rgba(2,8,28,.95),rgba(2,8,28,.95)),
+      url('https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=1400&auto=format&fit=crop');
+
+      background-size:cover;
+      background-position:center;
+
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      width:700px;
+      height:700px;
+      background:radial-gradient(circle,#0d6efd25 0%,transparent 70%);
+      right:-250px;
+      top:-150px;
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:2;
+    }
+
+    .hero-badge{
+      display:inline-block;
+      background:#17316d;
+      color:white;
+      padding:12px 26px;
+      border-radius:40px;
+      font-size:14px;
+      margin-bottom:30px;
+    }
+
+    .hero h1{
+      color:white;
+      font-size:44px;
+      line-height:1.2;
+      margin-bottom:25px;
+      font-weight:700;
+    }
+
+    .hero p{
+      color:#d7deed;
+      font-size:16px;
+      line-height:1.8;
+      max-width:900px;
+      margin:auto;
+    }
+
+    /* =========================================
+       PRICING SECTION
+    ========================================== */
+
+    .pricing{
+      padding:120px 0;
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:80px;
+    }
+
+    .section-title h2{
+      font-size:40px;
+      margin-bottom:20px;
+      color:#111827;
+    }
+
+    .section-title p{
+      color:#6b7280;
+      font-size:16px;
+      line-height:1.8;
+      max-width:850px;
+      margin:auto;
+    }
+
+    .pricing-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+      gap:35px;
+      align-items:center;
+    }
+
+    .pricing-card{
+      background:white;
+      border-radius:30px;
+      padding:50px 40px;
+      box-shadow:0 10px 40px rgba(0,0,0,.05);
+      position:relative;
+      transition:.4s;
+    }
+
+    .pricing-card:hover{
+      transform:translateY(-10px);
+      box-shadow:0 20px 60px rgba(0,0,0,.08);
+    }
+
+    .pricing-card.popular{
+      background:#020817;
+      color:white;
+      transform:scale(1.05);
+    }
+
+    .pricing-card.popular:hover{
+      transform:scale(1.05) translateY(-10px);
+    }
+
+    .popular-tag{
+      position:absolute;
+      top:-18px;
+      left:50%;
+      transform:translateX(-50%);
+      background:#0d6efd;
+      color:white;
+      padding:10px 22px;
+      border-radius:30px;
+      font-size:14px;
+      font-weight:600;
+    }
+
+    .plan-name{
+      font-size:22px;
+      font-weight:700;
+      margin-bottom:15px;
+    }
+
+    .plan-desc{
+      font-size:17px;
+      line-height:1.8;
+      margin-bottom:35px;
+      color:#6b7280;
+    }
+
+    .pricing-card.popular .plan-desc{
+      color:#d7deed;
+    }
+
+    .price{
+      margin-bottom:35px;
+    }
+
+    .price h2{
+      font-size:48px;
+      line-height:1;
+      margin-bottom:10px;
+    }
+
+    .price span{
+      font-size:18px;
+      color:#6b7280;
+    }
+
+    .pricing-card.popular .price span{
+      color:#d7deed;
+    }
+
+    .features{
+      display:flex;
+      flex-direction:column;
+      gap:22px;
+      margin-bottom:40px;
+    }
+
+    .feature{
+      display:flex;
+      align-items:center;
+      gap:15px;
+      font-size:17px;
+    }
+
+    .feature-icon{
+      width:30px;
+      height:30px;
+      border-radius:50%;
+      background:#0d6efd;
+      color:white;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:14px;
+      flex-shrink:0;
+    }
+
+    .pricing-btn{
+      width:100%;
+      display:inline-flex;
+      justify-content:center;
+      align-items:center;
+      background:#0d6efd;
+      color:white;
+      padding:18px;
+      border-radius:14px;
+      font-size:18px;
+      font-weight:600;
+      transition:.3s;
+    }
+
+    .pricing-btn:hover{
+      background:#0056d6;
+    }
+
+    .pricing-card.popular .pricing-btn{
+      background:white;
+      color:#020817;
+    }
+
+    .pricing-card.popular .pricing-btn:hover{
+      background:#dbeafe;
+    }
+
+    /* =========================================
+       FEATURES COMPARISON
+    ========================================== */
+
+    .comparison{
+      padding-bottom:120px;
+    }
+
+    .comparison-box{
+      background:white;
+      border-radius:30px;
+      overflow:auto;
+      box-shadow:0 10px 40px rgba(0,0,0,.05);
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      min-width:900px;
+    }
+
+    th{
+      background:#020817;
+      color:white;
+      padding:30px;
+      font-size:20px;
+      text-align:left;
+    }
+
+    td{
+      padding:25px 30px;
+      border-bottom:1px solid #eef2f7;
+      font-size:17px;
+      color:#4b5563;
+    }
+
+    tr:hover{
+      background:#f8fbff;
+    }
+
+    .yes{
+      color:#16a34a;
+      font-weight:700;
+    }
+
+    /* =========================================
+       FAQ SECTION
+    ========================================== */
+
+    .faq{
+      padding-bottom:120px;
+    }
+
+    .faq-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:30px;
+    }
+
+    .faq-item{
+      background:white;
+      border-radius:24px;
+      padding:35px;
+      box-shadow:0 10px 40px rgba(0,0,0,.05);
+    }
+
+    .faq-item h3{
+      font-size:26px;
+      margin-bottom:18px;
+      color:#111827;
+    }
+
+    .faq-item p{
+      color:#6b7280;
+      line-height:1.9;
+      font-size:17px;
+    }
+
+    /* =========================================
+       CTA SECTION
+    ========================================== */
+
+    .cta{
+      padding-bottom:120px;
+    }
+
+    .cta-box{
+      background:
+      linear-gradient(rgba(2,8,28,.95),rgba(2,8,28,.95)),
+      url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1400&auto=format&fit=crop');
+
+      background-size:cover;
+      background-position:center;
+
+      border-radius:30px;
+      padding:80px;
+      text-align:center;
+    }
+
+    .cta-box h2{
+      color:white;
+      font-size:58px;
+      margin-bottom:20px;
+    }
+
+    .cta-box p{
+      color:#d7deed;
+      font-size:20px;
+      line-height:1.8;
+      max-width:850px;
+      margin:auto auto 40px;
+    }
+
+    .cta-buttons{
+      display:flex;
+      justify-content:center;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .primary-btn{
+      background:#0d6efd;
+      color:white;
+      padding:18px 40px;
+      border-radius:14px;
+      font-size:18px;
+      font-weight:600;
+    }
+
+    .secondary-btn{
+      border:1px solid rgba(255,255,255,.2);
+      color:white;
+      padding:18px 40px;
+      border-radius:14px;
+      font-size:18px;
+      font-weight:600;
+    }
+
+    /* =========================================
+       FOOTER
+    ========================================== */
+
+    footer{
+      background:#020817;
+      padding:80px 0 40px;
+      color:white;
+    }
+
+    .footer-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:50px;
+      margin-bottom:60px;
+    }
+
+    .footer-logo{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-size:30px;
+      font-weight:700;
+      margin-bottom:25px;
+    }
+
+    .footer-text{
+      color:#d7deed;
+      line-height:1.9;
+      font-size:17px;
+    }
+
+    .footer-title{
+      font-size:24px;
+      margin-bottom:25px;
+    }
+
+    .footer-links{
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+    }
+
+    .footer-links a{
+      color:#d7deed;
+      transition:.3s;
+    }
+
+    .footer-links a:hover{
+      color:#0d6efd;
+    }
+
+    .copyright{
+      border-top:1px solid rgba(255,255,255,.08);
+      padding-top:30px;
+      text-align:center;
+      color:#d7deed;
+    }
+
+    /* =========================================
+       RESPONSIVE
+    ========================================== */
+
+    @media(max-width:1100px){
+
+      .nav-links,
+      .start-btn{
+        display:none;
+      }
+
+      .menu-btn{
+        display:block;
+      }
+
+      .faq-grid{
+        grid-template-columns:1fr;
+      }
+
+      .hero h1{
+        font-size:54px;
+      }
+
+      .pricing-card.popular{
+        transform:none;
+      }
+
+    }
+
+    @media(max-width:700px){
+
+      .container{
+        padding:0 20px;
+      }
+
+      .hero h1{
+        font-size:42px;
+      }
+
+      .hero p{
+        font-size:18px;
+      }
+
+      .section-title h2{
+        font-size:40px;
+      }
+
+      .cta-box{
+        padding:45px 25px;
+      }
+
+      .cta-box h2{
+        font-size:38px;
+      }
+
+      .cta-box p{
+        font-size:18px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================================
+       SIDEBAR
+  ========================================== -->
+
+  <div class="sidebar" id="sidebar">
+
+    <div class="close-btn" id="closeBtn">
+      ✕
+    </div>
+
+    <div class="sidebar-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+  </div>
+
+  <!-- =========================================
+       NAVBAR
+  ========================================== -->
+
+  <nav class="navbar">
+
+    <div class="container nav-wrapper">
+
+      <div class="logo">
+        <div class="logo-circle"></div>
+        CodeFurnance
+      </div>
+
+      <ul class="nav-links">
+
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="pricing.html" class="active">Pricing</a></li>
+        <li><a href="contact.html">Contact</a></li>
+
+      </ul>
+
+      <div class="nav-right">
+
+        <a href="contact.html" class="start-btn">
+          Get Started
+        </a>
+
+        <div class="menu-btn" id="menuBtn">
+          ☰
+        </div>
+
+      </div>
+
+    </div>
+
+  </nav>
+
+  <!-- =========================================
+       HERO
+  ========================================== -->
+
+  <section class="hero">
+
+    <div class="container hero-content">
+
+      <div class="hero-badge">
+        FLEXIBLE PRICING
+      </div>
+
+      <h1>
+        Affordable Plans For Every Business
+      </h1>
+
+      <p>
+        Choose the perfect digital solution package for your business.
+        Transparent pricing with powerful features and professional support.
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================
+       PRICING SECTION
+  ========================================== -->
+
+  <section class="pricing">
+
+    <div class="container">
+
+      <div class="section-title">
+
+        <h2>
+          Choose Your Perfect Plan
+        </h2>
+
+        <p>
+          Whether you are a startup, small business or enterprise,
+          we have professional solutions designed to help you grow online.
+        </p>
+
+      </div>
+
+      <div class="pricing-grid">
+
+        <!-- BASIC PLAN -->
+
+        <div class="pricing-card">
+
+          <div class="plan-name">
+            Starter
+          </div>
+
+          <div class="plan-desc">
+            Perfect for startups and small businesses
+            looking for a professional online presence.
+          </div>
+
+          <div class="price">
+            <h2>$299</h2>
+            <span>One Time Payment</span>
+          </div>
+
+          <div class="features">
+
+            <div class="feature">
+              <div class="feature-icon">✓</div>
+              Responsive Website Design
+            </div>
+
+            <div class="feature">
+              <div class="feature-icon">✓</div>
+              5 Website Pages
+            </div>
+
+            <div class="feature">
+              <div class="feature-icon">✓</div>
+              Mobile Friendly Design
+            </div>
+
+            <div class="feature">
+              <div class="feature-icon">✓</div>
+              Contact Form Integration
+            </div>
+
+            <div class="feature">
+              <div class="feature-icon">✓</div>
+              Basic SEO Setup
+            </div>
+
+            <div class="feature">
+              <div class="feature-icon">✓</div>
+              1 Month Support
+            </div>
+
+          </div>
+
+          <a href="#" class="pricing-btn">
+            Get Started
+          </a>
+
+        </div>
+
+        <!-- POPULAR PLAN -->
+
+        <div class="pricing-card popular">
+
+          <div class="popular-tag">
+            MOST POPULAR
+          </div>
+
+          <div class="plan-name">
+            Professional
+          </div>
+
+          <div class="plan-desc">
+            Best solution for growing businesses needing
+            advanced functionality and digital marketing.
+          </div>
+
+          <div class="price">
+            <h2>$799</h2>
+            <span>One Time Payment</span>
+          </div>
+
+          <div class="features">
+
+            <div class="feature">
+              <div class="feature-icon">✓</div>
+              15+ Custom Website Pages
+            </div>
+
+            <div class="feature">
+              <div class="feature-icon">✓</div>
+              Advanced UI/UX Design
+            </div>
+
+            <div class="feature">
+              <div class="feature-icon">✓</div>
+              SEO Optimization
+            </div>
+
+            <div class="feature">
+              <div class="feature-icon">✓</div>
+              Live Chat Integration
+            </div>
+
+            <div class="feature">
+              <div class="feature-icon">✓</div>
+              Admin Dashboard
+            </div>
+
+            <div class="feature">
+              <div class="feature-icon">✓</div>
+              Speed Optimization
+            </div>
+
+            <div class="feature">
+              <div class="feature-icon">✓</div>
+              6 Months Support
+            </div>
+
+          </div>
+
+          <a href="#" class="pricing-btn">
+            Choose Plan
+          </a>
+
+        </div>
+
+        <!-- ENTERPRISE PLAN -->
+
+        <div class="pricing-card">
+
+          <div class="plan-name">
+            Enterprise
+          </div>
+
+          <div class="plan-desc">
+            Complete enterprise-level solutions for large
+            companies and advanced digital platforms.
+          </div>
+
+          <div class="price">
+            <h2>$1999</h2>
+            <span>Custom Business Solution</span>
+          </div>
+
+          <div class="features">
+
+            <div class="feature">
+              <div class="feature-icon">✓</div>
+              Unlimited Pages
+            </div>
+
+            <div class="feature">
+              <div class="feature-icon">✓</div>
+              Custom Web Application
+            </div>
+
+            <div class="feature">
+              <div class="feature-icon">✓</div>
+              Mobile App Development
+            </div>
+
+            <div class="feature">
+              <div class="feature-icon">✓</div>
+              AI Chatbot Integration
+            </div>
+
+            <div class="feature">
+              <div class="feature-icon">✓</div>
+              Payment Gateway
+            </div>
+
+            <div class="feature">
+              <div class="feature-icon">✓</div>
+              Cloud Hosting Setup
+            </div>
+
+            <div class="feature">
+              <div class="feature-icon">✓</div>
+              24/7 Premium Support
+            </div>
+
+          </div>
+
+          <a href="#" class="pricing-btn">
+            Contact Sales
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================
+       COMPARISON TABLE
+  ========================================== -->
+
+  <section class="comparison">
+
+    <div class="container">
+
+      <div class="section-title">
+
+        <h2>
+          Compare Features
+        </h2>
+
+        <p>
+          Compare our plans and choose the package
+          that best fits your business needs.
+        </p>
+
+      </div>
+
+      <div class="comparison-box">
+
+        <table>
+
+          <tr>
+            <th>Features</th>
+            <th>Starter</th>
+            <th>Professional</th>
+            <th>Enterprise</th>
+          </tr>
+
+          <tr>
+            <td>Responsive Design</td>
+            <td class="yes">✓</td>
+            <td class="yes">✓</td>
+            <td class="yes">✓</td>
+          </tr>
+
+          <tr>
+            <td>SEO Optimization</td>
+            <td>Basic</td>
+            <td>Advanced</td>
+            <td>Premium</td>
+          </tr>
+
+          <tr>
+            <td>Admin Dashboard</td>
+            <td>-</td>
+            <td class="yes">✓</td>
+            <td class="yes">✓</td>
+          </tr>
+
+          <tr>
+            <td>Live Chat System</td>
+            <td>-</td>
+            <td class="yes">✓</td>
+            <td class="yes">✓</td>
+          </tr>
+
+          <tr>
+            <td>Mobile App</td>
+            <td>-</td>
+            <td>-</td>
+            <td class="yes">✓</td>
+          </tr>
+
+          <tr>
+            <td>Support</td>
+            <td>1 Month</td>
+            <td>6 Months</td>
+            <td>24/7 Lifetime</td>
+          </tr>
+
+        </table>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================
+       FAQ SECTION
+  ========================================== -->
+
+  <section class="faq">
+
+    <div class="container">
+
+      <div class="section-title">
+
+        <h2>
+          Frequently Asked Questions
+        </h2>
+
+        <p>
+          Answers to common questions about our pricing,
+          services and development process.
+        </p>
+
+      </div>
+
+      <div class="faq-grid">
+
+        <div class="faq-item">
+
+          <h3>
+            How long does a project take?
+          </h3>
+
+          <p>
+            Most websites take between 2-8 weeks depending
+            on project complexity, features and revisions.
+          </p>
+
+        </div>
+
+        <div class="faq-item">
+
+          <h3>
+            Do you offer website maintenance?
+          </h3>
+
+          <p>
+            Yes, we provide maintenance, updates, backups,
+            security monitoring and technical support.
+          </p>
+
+        </div>
+
+        <div class="faq-item">
+
+          <h3>
+            Can I request custom features?
+          </h3>
+
+          <p>
+            Absolutely. We build custom solutions including
+            dashboards, booking systems and AI integrations.
+          </p>
+
+        </div>
+
+        <div class="faq-item">
+
+          <h3>
+            Do you provide hosting setup?
+          </h3>
+
+          <p>
+            Yes, we assist with domain registration,
+            hosting setup, deployment and optimization.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================
+       CTA SECTION
+  ========================================== -->
+
+  <section class="cta">
+
+    <div class="container">
+
+      <div class="cta-box">
+
+        <h2>
+          Ready To Build Your Dream Website?
+        </h2>
+
+        <p>
+          Start your digital transformation today with
+          professional solutions designed for growth and success.
+        </p>
+
+        <div class="cta-buttons">
+
+          <a href="#" class="primary-btn">
+            Start Your Project
+          </a>
+
+          <a href="#" class="secondary-btn">
+            Contact Us
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================
+       FOOTER
+  ========================================== -->
+
+  <footer>
+
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <div>
+
+          <div class="footer-logo">
+
+            <div class="logo-circle"></div>
+
+            CodeFurnance
+
+          </div>
+
+          <p class="footer-text">
+            We create modern websites, mobile apps,
+            digital solutions and branding systems
+            for businesses worldwide.
+          </p>
+
+        </div>
+
+        <div>
+
+          <h3 class="footer-title">
+            Quick Links
+          </h3>
+
+          <div class="footer-links">
+
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Portfolio</a>
+            <a href="#">Contact</a>
+
+          </div>
+
+        </div>
+
+        <div>
+
+          <h3 class="footer-title">
+            Services
+          </h3>
+
+          <div class="footer-links">
+
+            <a href="#">Web Design</a>
+            <a href="#">SEO Optimization</a>
+            <a href="#">Mobile Apps</a>
+            <a href="#">Cloud Solutions</a>
+            <a href="#">UI/UX Design</a>
+
+          </div>
+
+        </div>
+
+        <div>
+
+          <h3 class="footer-title">
+            Contact
+          </h3>
+
+          <div class="footer-links">
+
+            <a href="#">
+              info@codefurnance.com
+            </a>
+
+            <a href="#">
+              +254 700 000 000
+            </a>
+
+            <a href="#">
+              Nairobi, Kenya
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="copyright">
+
+        © 2026 CodeFurnance. All Rights Reserved.
+
+      </div>
+
+    </div>
+
+  </footer>
+
+  <!-- =========================================
+       JAVASCRIPT
+  ========================================== -->
+
+  <script>
+
+    // SIDEBAR
+
+    const menuBtn = document.getElementById("menuBtn");
+    const sidebar = document.getElementById("sidebar");
+    const closeBtn = document.getElementById("closeBtn");
+
+    menuBtn.addEventListener("click", () => {
+      sidebar.classList.add("active");
+    });
+
+    closeBtn.addEventListener("click", () => {
+      sidebar.classList.remove("active");
+    });
+
+  </script>
+
+</body>
+</html>

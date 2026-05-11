@@ -1,0 +1,1177 @@
+<!-- =========================================================
+     FILE: services/web-development.html
+     CODEFURNANCE WEB DEVELOPMENT PACKAGES PAGE
+========================================================== -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>CodeFurnance | Web Development Packages</title>
+
+  <!-- GOOGLE FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+
+    /* =========================================================
+       GLOBAL STYLES
+    ========================================================== */
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+    }
+
+    body{
+      background:#f4f7fc;
+      overflow-x:hidden;
+      color:#111827;
+    }
+
+    a{
+      text-decoration:none;
+    }
+
+    ul{
+      list-style:none;
+    }
+
+    .container{
+      width:100%;
+      max-width:1400px;
+      margin:auto;
+      padding:0 35px;
+    }
+
+    img{
+      width:100%;
+      display:block;
+    }
+
+    /* =========================================================
+       NAVBAR
+    ========================================================== */
+
+    .navbar{
+      width:100%;
+      height:85px;
+      background:#020817;
+      position:fixed;
+      top:0;
+      left:0;
+      z-index:1000;
+      display:flex;
+      align-items:center;
+    }
+
+    .nav-wrapper{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      color:white;
+      font-size:24px;
+      font-weight:700;
+    }
+
+    .logo-circle{
+      width:28px;
+      height:28px;
+      border-radius:50%;
+      background:linear-gradient(135deg,#0d6efd,#7b3ff2);
+    }
+
+    .nav-links{
+      display:flex;
+      gap:35px;
+    }
+
+    .nav-links a{
+      color:white;
+      font-size:14px;
+      font-weight:500;
+      transition:.3s;
+      position:relative;
+    }
+
+    .nav-links a:hover{
+      color:#0d6efd;
+    }
+
+    .nav-links a.active::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:-10px;
+      width:100%;
+      height:2px;
+      background:#0d6efd;
+      border-radius:10px;
+    }
+
+    .nav-btn{
+      background:#0d6efd;
+      color:white;
+      padding:12px 26px;
+      border-radius:10px;
+      font-size:13px;
+      font-weight:600;
+      transition:.3s;
+    }
+
+    .nav-btn:hover{
+      background:#0056d6;
+    }
+
+    .menu-btn{
+      color:white;
+      font-size:30px;
+      display:none;
+      cursor:pointer;
+    }
+
+    /* =========================================================
+       SIDEBAR
+    ========================================================== */
+
+    .sidebar{
+      position:fixed;
+      top:0;
+      right:-100%;
+      width:280px;
+      height:100vh;
+      background:#081120;
+      z-index:2000;
+      padding:40px 30px;
+      transition:.4s;
+    }
+
+    .sidebar.active{
+      right:0;
+    }
+
+    .close-btn{
+      color:white;
+      font-size:30px;
+      text-align:right;
+      margin-bottom:40px;
+      cursor:pointer;
+    }
+
+    .sidebar-links{
+      display:flex;
+      flex-direction:column;
+      gap:25px;
+    }
+
+    .sidebar-links a{
+      color:white;
+      font-size:15px;
+    }
+
+    /* =========================================================
+       HERO SECTION
+    ========================================================== */
+
+    .hero{
+      width:100%;
+      padding:150px 0 90px;
+
+      background:
+      linear-gradient(rgba(2,8,28,.95),rgba(2,8,28,.95)),
+      url('https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1400&auto=format&fit=crop');
+
+      background-size:cover;
+      background-position:center;
+
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero-wrapper{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:70px;
+      align-items:center;
+    }
+
+    .breadcrumbs{
+      color:#cbd5e1;
+      font-size:13px;
+      margin-bottom:25px;
+    }
+
+    .breadcrumbs span{
+      color:#0d6efd;
+    }
+
+    .hero h1{
+      color:white;
+      font-size:58px;
+      line-height:1.2;
+      margin-bottom:25px;
+      font-weight:700;
+    }
+
+    .hero h1 span{
+      color:#0d6efd;
+    }
+
+    .hero p{
+      color:#d7deed;
+      font-size:15px;
+      line-height:2;
+      margin-bottom:35px;
+      max-width:580px;
+    }
+
+    .hero-features{
+      display:flex;
+      gap:25px;
+      flex-wrap:wrap;
+    }
+
+    .hero-feature{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      color:white;
+      font-size:13px;
+    }
+
+    .feature-dot{
+      width:24px;
+      height:24px;
+      border-radius:50%;
+      background:#0d6efd;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:10px;
+    }
+
+    .hero-image{
+      position:relative;
+    }
+
+    .hero-image img{
+      width:100%;
+      max-width:600px;
+      margin:auto;
+    }
+
+    /* =========================================================
+       SECTION TITLE
+    ========================================================== */
+
+    .section-title{
+      text-align:center;
+      margin-bottom:60px;
+    }
+
+    .section-title span{
+      color:#0d6efd;
+      font-size:13px;
+      font-weight:600;
+      display:block;
+      margin-bottom:12px;
+    }
+
+    .section-title h2{
+      font-size:42px;
+      margin-bottom:15px;
+    }
+
+    .section-title p{
+      color:#6b7280;
+      font-size:14px;
+      line-height:1.9;
+      max-width:650px;
+      margin:auto;
+    }
+
+    /* =========================================================
+       PRICING SECTION
+    ========================================================== */
+
+    .pricing{
+      padding:100px 0;
+    }
+
+    .pricing-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:30px;
+    }
+
+    .pricing-card{
+      background:white;
+      border-radius:24px;
+      padding:35px 28px;
+      border:1px solid #edf2f7;
+      transition:.4s;
+      position:relative;
+    }
+
+    .pricing-card:hover{
+      transform:translateY(-10px);
+      box-shadow:0 20px 50px rgba(0,0,0,.08);
+    }
+
+    .popular{
+      border:2px solid #0d6efd;
+    }
+
+    .popular-badge{
+      position:absolute;
+      top:-14px;
+      left:50%;
+      transform:translateX(-50%);
+      background:#0d6efd;
+      color:white;
+      padding:8px 18px;
+      border-radius:30px;
+      font-size:11px;
+      font-weight:600;
+    }
+
+    .package-icon{
+      width:60px;
+      height:60px;
+      border-radius:18px;
+      margin-bottom:20px;
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      font-size:28px;
+      color:white;
+    }
+
+    .blue{
+      background:#0d6efd20;
+      color:#0d6efd;
+    }
+
+    .purple{
+      background:#7b3ff220;
+      color:#7b3ff2;
+    }
+
+    .green{
+      background:#16a34a20;
+      color:#16a34a;
+    }
+
+    .orange{
+      background:#f9731620;
+      color:#f97316;
+    }
+
+    .package-title{
+      font-size:28px;
+      margin-bottom:10px;
+      font-weight:700;
+    }
+
+    .price{
+      font-size:18px;
+      margin-bottom:22px;
+      font-weight:600;
+    }
+
+    .price span{
+      font-size:40px;
+      font-weight:700;
+    }
+
+    .card-desc{
+      color:#6b7280;
+      font-size:13px;
+      line-height:1.9;
+      margin-bottom:25px;
+    }
+
+    .features{
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+      margin-bottom:35px;
+    }
+
+    .features li{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-size:13px;
+      color:#374151;
+    }
+
+    .check{
+      width:18px;
+      height:18px;
+      border-radius:50%;
+      background:#0d6efd;
+      color:white;
+      font-size:10px;
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .pricing-btn{
+      width:100%;
+      height:52px;
+      border:none;
+      border-radius:12px;
+      font-size:14px;
+      font-weight:600;
+      cursor:pointer;
+      transition:.3s;
+    }
+
+    .btn-blue{
+      background:#0d6efd;
+      color:white;
+    }
+
+    .btn-purple{
+      background:#7b3ff2;
+      color:white;
+    }
+
+    .btn-green{
+      background:#16a34a;
+      color:white;
+    }
+
+    .btn-orange{
+      background:#f97316;
+      color:white;
+    }
+
+    .pricing-btn:hover{
+      opacity:.9;
+      transform:scale(1.02);
+    }
+
+    /* =========================================================
+       BOTTOM FEATURES
+    ========================================================== */
+
+    .bottom-features{
+      padding-bottom:100px;
+    }
+
+    .bottom-box{
+      background:#020817;
+      border-radius:24px;
+      padding:35px;
+
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:30px;
+    }
+
+    .bottom-item{
+      display:flex;
+      gap:15px;
+      align-items:flex-start;
+    }
+
+    .bottom-icon{
+      width:50px;
+      height:50px;
+      border-radius:50%;
+      background:#0d6efd;
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      color:white;
+      font-size:20px;
+      flex-shrink:0;
+    }
+
+    .bottom-item h4{
+      color:white;
+      font-size:17px;
+      margin-bottom:8px;
+    }
+
+    .bottom-item p{
+      color:#cbd5e1;
+      font-size:13px;
+      line-height:1.8;
+    }
+
+    /* =========================================================
+       FOOTER
+    ========================================================== */
+
+    footer{
+      background:#020817;
+      padding:70px 0 30px;
+      color:white;
+    }
+
+    .footer-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:40px;
+      margin-bottom:50px;
+    }
+
+    .footer-logo{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-size:24px;
+      font-weight:700;
+      margin-bottom:20px;
+    }
+
+    .footer-text{
+      color:#cbd5e1;
+      font-size:13px;
+      line-height:2;
+    }
+
+    .footer-title{
+      font-size:18px;
+      margin-bottom:20px;
+    }
+
+    .footer-links{
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+    }
+
+    .footer-links a{
+      color:#cbd5e1;
+      font-size:13px;
+      transition:.3s;
+    }
+
+    .footer-links a:hover{
+      color:#0d6efd;
+    }
+
+    .copyright{
+      border-top:1px solid rgba(255,255,255,.08);
+      padding-top:25px;
+      text-align:center;
+      color:#cbd5e1;
+      font-size:12px;
+    }
+
+    /* =========================================================
+       RESPONSIVE
+    ========================================================== */
+
+    @media(max-width:1100px){
+
+      .nav-links,
+      .nav-btn{
+        display:none;
+      }
+
+      .menu-btn{
+        display:block;
+      }
+
+      .hero-wrapper{
+        grid-template-columns:1fr;
+      }
+
+      .hero h1{
+        font-size:45px;
+      }
+
+    }
+
+    @media(max-width:700px){
+
+      .container{
+        padding:0 20px;
+      }
+
+      .hero{
+        padding-top:130px;
+      }
+
+      .hero h1{
+        font-size:36px;
+      }
+
+      .section-title h2{
+        font-size:32px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- =========================================================
+       SIDEBAR
+  ========================================================== -->
+
+  <div class="sidebar" id="sidebar">
+
+    <div class="close-btn" id="closeBtn">
+      ✕
+    </div>
+
+    <div class="sidebar-links">
+
+      <a href="../index.html">Home</a>
+      <a href="../about.html">About</a>
+      <a href="../services.html">Services</a>
+      <a href="../portfolio.html">Portfolio</a>
+      <a href="../pricing.html">Pricing</a>
+      <a href="../contact.html">Contact</a>
+
+    </div>
+
+  </div>
+
+  <!-- =========================================================
+       NAVBAR
+  ========================================================== -->
+
+  <nav class="navbar">
+
+    <div class="container nav-wrapper">
+
+      <div class="logo">
+
+        <div class="logo-circle"></div>
+
+        CodeFurnance
+
+      </div>
+
+      <ul class="nav-links">
+
+        <!-- MAIN PAGES -->
+
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">About</a></li>
+
+        <!-- SERVICES PAGE -->
+
+        <li><a href="../services.html" class="active">Services</a></li>
+
+        <li><a href="../portfolio.html">Portfolio</a></li>
+        <li><a href="../pricing.html">Pricing</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+
+      </ul>
+
+      <div style="display:flex; align-items:center; gap:25px;">
+
+        <a href="../contact.html" class="nav-btn">
+          Get Started
+        </a>
+
+        <div class="menu-btn" id="menuBtn">
+          ☰
+        </div>
+
+      </div>
+
+    </div>
+
+  </nav>
+
+  <!-- =========================================================
+       HERO SECTION
+  ========================================================== -->
+
+  <section class="hero">
+
+    <div class="container hero-wrapper">
+
+      <!-- LEFT -->
+
+      <div>
+
+        <div class="breadcrumbs">
+          Home > Services > <span>Web Development</span>
+        </div>
+
+        <h1>
+          Web Development
+          <span>Packages</span>
+        </h1>
+
+        <p>
+          Choose the perfect web development package for your business.
+          All packages include responsive design, professional layouts,
+          modern technologies and expert support.
+        </p>
+
+        <div class="hero-features">
+
+          <div class="hero-feature">
+            <div class="feature-dot">✓</div>
+            Responsive Design
+          </div>
+
+          <div class="hero-feature">
+            <div class="feature-dot">✓</div>
+            SEO Ready
+          </div>
+
+          <div class="hero-feature">
+            <div class="feature-dot">✓</div>
+            Fast Delivery
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- RIGHT -->
+
+      <div class="hero-image">
+
+        <img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png">
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================================
+       PRICING SECTION
+  ========================================================== -->
+
+  <section class="pricing">
+
+    <div class="container">
+
+      <div class="section-title">
+
+        <span>WEB DEVELOPMENT PACKAGES</span>
+
+        <h2>
+          Select The Best Plan
+        </h2>
+
+        <p>
+          Affordable web development solutions designed for startups,
+          growing businesses and large enterprises.
+        </p>
+
+      </div>
+
+      <div class="pricing-grid">
+
+        <!-- ===================================================
+             BASIC PACKAGE
+        ==================================================== -->
+
+        <div class="pricing-card">
+
+          <div class="package-icon blue">
+            ✈
+          </div>
+
+          <div class="package-title">
+            Basic
+          </div>
+
+          <div class="price">
+            KES <span>2,500</span> / Monthly
+          </div>
+
+          <div class="card-desc">
+            Perfect for startups and small businesses
+            needing a simple professional website.
+          </div>
+
+          <ul class="features">
+
+            <li><div class="check">✓</div> Up To 5 Pages</li>
+            <li><div class="check">✓</div> 1 Revision</li>
+            <li><div class="check">✓</div> Responsive Design</li>
+            <li><div class="check">✓</div> Contact Form</li>
+            <li><div class="check">✓</div> Basic SEO Setup</li>
+            <li><div class="check">✓</div> 1 Month Support</li>
+
+          </ul>
+
+          <button class="pricing-btn btn-blue">
+            Choose Basic Plan
+          </button>
+
+        </div>
+
+        <!-- ===================================================
+             STANDARD PACKAGE
+        ==================================================== -->
+
+        <div class="pricing-card">
+
+          <div class="package-icon purple">
+            ☆
+          </div>
+
+          <div class="package-title">
+            Standard
+          </div>
+
+          <div class="price">
+            KES <span>7,500</span> / Monthly
+          </div>
+
+          <div class="card-desc">
+            Great for businesses requiring more pages,
+            features and customer interaction.
+          </div>
+
+          <ul class="features">
+
+            <li><div class="check">✓</div> Up To 10 Pages</li>
+            <li><div class="check">✓</div> 2 Revisions</li>
+            <li><div class="check">✓</div> Live Chat Integration</li>
+            <li><div class="check">✓</div> Admin Dashboard</li>
+            <li><div class="check">✓</div> SEO Optimization</li>
+            <li><div class="check">✓</div> 3 Months Support</li>
+
+          </ul>
+
+          <button class="pricing-btn btn-purple">
+            Choose Standard Plan
+          </button>
+
+        </div>
+
+        <!-- ===================================================
+             PREMIUM PACKAGE
+        ==================================================== -->
+
+        <div class="pricing-card popular">
+
+          <div class="popular-badge">
+            MOST POPULAR
+          </div>
+
+          <div class="package-icon green">
+            👑
+          </div>
+
+          <div class="package-title">
+            Premium
+          </div>
+
+          <div class="price">
+            KES <span>15,000</span> / Monthly
+          </div>
+
+          <div class="card-desc">
+            Advanced solution for growing businesses
+            requiring performance and scalability.
+          </div>
+
+          <ul class="features">
+
+            <li><div class="check">✓</div> Up To 20 Pages</li>
+            <li><div class="check">✓</div> Unlimited Revisions</li>
+            <li><div class="check">✓</div> Advanced UI/UX</li>
+            <li><div class="check">✓</div> Payment Integration</li>
+            <li><div class="check">✓</div> SEO + Analytics</li>
+            <li><div class="check">✓</div> 6 Months Support</li>
+
+          </ul>
+
+          <button class="pricing-btn btn-green">
+            Choose Premium Plan
+          </button>
+
+        </div>
+
+        <!-- ===================================================
+             ENTERPRISE PACKAGE
+        ==================================================== -->
+
+        <div class="pricing-card">
+
+          <div class="package-icon orange">
+            🚀
+          </div>
+
+          <div class="package-title">
+            Enterprise
+          </div>
+
+          <div class="price">
+            KES <span>30,000</span> / Monthly
+          </div>
+
+          <div class="card-desc">
+            Full enterprise solution with custom
+            systems and unlimited capabilities.
+          </div>
+
+          <ul class="features">
+
+            <li><div class="check">✓</div> Unlimited Pages</li>
+            <li><div class="check">✓</div> AI Chatbot</li>
+            <li><div class="check">✓</div> CMS Dashboard</li>
+            <li><div class="check">✓</div> Cloud Hosting</li>
+            <li><div class="check">✓</div> Dedicated Manager</li>
+            <li><div class="check">✓</div> 24/7 Priority Support</li>
+
+          </ul>
+
+          <button class="pricing-btn btn-orange">
+            Choose Enterprise Plan
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================================
+       BOTTOM FEATURES
+  ========================================================== -->
+
+  <section class="bottom-features">
+
+    <div class="container">
+
+      <div class="bottom-box">
+
+        <div class="bottom-item">
+
+          <div class="bottom-icon">
+            🛡
+          </div>
+
+          <div>
+
+            <h4>
+              Secure Websites
+            </h4>
+
+            <p>
+              Top level website security protection.
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="bottom-item">
+
+          <div class="bottom-icon">
+            ⏰
+          </div>
+
+          <div>
+
+            <h4>
+              Fast Delivery
+            </h4>
+
+            <p>
+              Projects completed within agreed timelines.
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="bottom-item">
+
+          <div class="bottom-icon">
+            ✔
+          </div>
+
+          <div>
+
+            <h4>
+              Premium Quality
+            </h4>
+
+            <p>
+              High performance modern digital solutions.
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="bottom-item">
+
+          <div class="bottom-icon">
+            ☎
+          </div>
+
+          <div>
+
+            <h4>
+              24/7 Support
+            </h4>
+
+            <p>
+              Dedicated technical support anytime.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================================
+       FOOTER
+  ========================================================== -->
+
+  <footer>
+
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <div>
+
+          <div class="footer-logo">
+
+            <div class="logo-circle"></div>
+
+            CodeFurnance
+
+          </div>
+
+          <p class="footer-text">
+            Professional digital solutions including web development,
+            SEO, branding and mobile application services.
+          </p>
+
+        </div>
+
+        <div>
+
+          <h3 class="footer-title">
+            Quick Links
+          </h3>
+
+          <div class="footer-links">
+
+            <a href="../index.html">Home</a>
+            <a href="../about.html">About</a>
+            <a href="../portfolio.html">Portfolio</a>
+            <a href="../contact.html">Contact</a>
+
+          </div>
+
+        </div>
+
+        <div>
+
+          <h3 class="footer-title">
+            Services
+          </h3>
+
+          <div class="footer-links">
+
+            <a href="web-development.html">Web Development</a>
+            <a href="web-design.html">Web Design</a>
+            <a href="mobile-apps.html">Mobile Apps</a>
+            <a href="seo.html">SEO Services</a>
+
+          </div>
+
+        </div>
+
+        <div>
+
+          <h3 class="footer-title">
+            Contact
+          </h3>
+
+          <div class="footer-links">
+
+            <a href="#">
+              info@codefurnance.com
+            </a>
+
+            <a href="#">
+              +254 700 000 000
+            </a>
+
+            <a href="#">
+              Nairobi, Kenya
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="copyright">
+
+        © 2026 CodeFurnance. All Rights Reserved.
+
+      </div>
+
+    </div>
+
+  </footer>
+
+  <!-- =========================================================
+       JAVASCRIPT
+  ========================================================== -->
+
+  <script>
+
+    // SIDEBAR
+
+    const sidebar = document.getElementById("sidebar");
+    const menuBtn = document.getElementById("menuBtn");
+    const closeBtn = document.getElementById("closeBtn");
+
+    menuBtn.onclick = () => {
+      sidebar.classList.add("active");
+    }
+
+    closeBtn.onclick = () => {
+      sidebar.classList.remove("active");
+    }
+
+  </script>
+
+</body>
+</html>

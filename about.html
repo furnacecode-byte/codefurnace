@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>CodeFurnance | About Us</title>
+
+  <!-- GOOGLE FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+
+    /* =========================================
+       GLOBAL STYLES
+    ========================================== */
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+    }
+
+    body{
+      background:#f5f7fc;
+      color:#111827;
+      overflow-x:hidden;
+    }
+
+    a{
+      text-decoration:none;
+    }
+
+    img{
+      width:100%;
+      display:block;
+    }
+
+    .container{
+      width:100%;
+      max-width:1400px;
+      margin:auto;
+      padding:0 40px;
+    }
+
+    /* =========================================
+       NAVBAR
+    ========================================== */
+
+    .navbar{
+      width:100%;
+      height:90px;
+      background:#020817;
+      position:fixed;
+      top:0;
+      left:0;
+      z-index:1000;
+      display:flex;
+      align-items:center;
+    }
+
+    .nav-wrapper{
+      width:100%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      color:white;
+      font-size:30px;
+      font-weight:700;
+    }
+
+    .logo-circle{
+      width:32px;
+      height:32px;
+      border-radius:50%;
+      background:linear-gradient(135deg,#0d6efd,#7b3ff2);
+    }
+
+    .nav-links{
+      display:flex;
+      gap:40px;
+      list-style:none;
+    }
+
+    .nav-links a{
+      color:white;
+      font-size:17px;
+      font-weight:500;
+      transition:.3s;
+      position:relative;
+    }
+
+    .nav-links a:hover{
+      color:#0d6efd;
+    }
+
+    .nav-links a.active::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:-12px;
+      width:100%;
+      height:3px;
+      border-radius:10px;
+      background:#0d6efd;
+    }
+
+    .nav-right{
+      display:flex;
+      align-items:center;
+      gap:30px;
+    }
+
+    .start-btn{
+      background:#0d6efd;
+      color:white;
+      padding:15px 32px;
+      border-radius:12px;
+      font-weight:600;
+      transition:.3s;
+    }
+
+    .start-btn:hover{
+      background:#0056d6;
+    }
+
+    .menu-btn{
+      color:white;
+      font-size:34px;
+      cursor:pointer;
+      display:none;
+    }
+
+    /* =========================================
+       SIDEBAR
+    ========================================== */
+
+    .sidebar{
+      position:fixed;
+      top:0;
+      right:-100%;
+      width:300px;
+      height:100vh;
+      background:#081120;
+      z-index:2000;
+      transition:.4s;
+      padding:40px;
+    }
+
+    .sidebar.active{
+      right:0;
+    }
+
+    .close-btn{
+      color:white;
+      font-size:34px;
+      text-align:right;
+      margin-bottom:50px;
+      cursor:pointer;
+    }
+
+    .sidebar-links{
+      display:flex;
+      flex-direction:column;
+      gap:30px;
+    }
+
+    .sidebar-links a{
+      color:white;
+      font-size:20px;
+    }
+
+    /* =========================================
+       HERO SECTION
+    ========================================== */
+
+    .hero{
+      width:100%;
+      padding:180px 0 120px;
+
+      background:
+      linear-gradient(rgba(2,8,28,.94),rgba(2,8,28,.94)),
+      url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1400&auto=format&fit=crop');
+
+      background-size:cover;
+      background-position:center;
+
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      width:700px;
+      height:700px;
+      background:radial-gradient(circle,#0d6efd22 0%,transparent 70%);
+      right:-250px;
+      top:-150px;
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:2;
+    }
+
+    .hero-badge{
+      display:inline-block;
+      background:#17316d;
+      color:white;
+      padding:12px 26px;
+      border-radius:40px;
+      font-size:14px;
+      margin-bottom:30px;
+    }
+
+    .hero h1{
+      color:white;
+      font-size:44px;
+      line-height:1.2;
+      margin-bottom:25px;
+      font-weight:700;
+    }
+
+    .hero p{
+      color:#d7deed;
+      font-size:16px;
+      line-height:1.8;
+      max-width:950px;
+      margin:auto;
+    }
+
+    /* =========================================
+       ABOUT SECTION
+    ========================================== */
+
+    .about{
+      padding:120px 0;
+    }
+
+    .about-wrapper{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:70px;
+      align-items:center;
+    }
+
+    .about-image{
+      position:relative;
+    }
+
+    .about-image img{
+      border-radius:30px;
+      height:650px;
+      object-fit:cover;
+      box-shadow:0 20px 60px rgba(0,0,0,.1);
+    }
+
+    .experience-box{
+      position:absolute;
+      bottom:30px;
+      left:30px;
+
+      background:white;
+      padding:30px;
+      border-radius:24px;
+      box-shadow:0 15px 50px rgba(0,0,0,.08);
+
+      width:250px;
+    }
+
+    .experience-box h2{
+      font-size:58px;
+      color:#0d6efd;
+      margin-bottom:10px;
+    }
+
+    .experience-box p{
+      color:#6b7280;
+      line-height:1.7;
+    }
+
+    .section-subtitle{
+      color:#0d6efd;
+      font-size:18px;
+      font-weight:600;
+      margin-bottom:20px;
+    }
+
+    .section-title{
+      font-size:58px;
+      line-height:1.2;
+      margin-bottom:30px;
+      color:#111827;
+    }
+
+    .about-text{
+      color:#6b7280;
+      font-size:18px;
+      line-height:2;
+      margin-bottom:30px;
+    }
+
+    .about-features{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:25px;
+      margin-bottom:40px;
+    }
+
+    .feature-box{
+      background:white;
+      border-radius:22px;
+      padding:30px;
+      box-shadow:0 10px 40px rgba(0,0,0,.05);
+      transition:.3s;
+    }
+
+    .feature-box:hover{
+      transform:translateY(-8px);
+    }
+
+    .feature-icon{
+      width:70px;
+      height:70px;
+      border-radius:20px;
+      background:#0d6efd;
+      color:white;
+      font-size:30px;
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      margin-bottom:20px;
+    }
+
+    .feature-box h3{
+      font-size:24px;
+      margin-bottom:15px;
+    }
+
+    .feature-box p{
+      color:#6b7280;
+      line-height:1.8;
+      font-size:16px;
+    }
+
+    .about-btn{
+      display:inline-block;
+      background:#0d6efd;
+      color:white;
+      padding:18px 38px;
+      border-radius:14px;
+      font-size:18px;
+      font-weight:600;
+      transition:.3s;
+    }
+
+    .about-btn:hover{
+      background:#0056d6;
+    }
+
+    /* =========================================
+       STATS SECTION
+    ========================================== */
+
+    .stats{
+      padding-bottom:120px;
+    }
+
+    .stats-wrapper{
+      background:#020817;
+      border-radius:30px;
+      padding:70px;
+
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:40px;
+    }
+
+    .stat-box{
+      text-align:center;
+    }
+
+    .stat-box h2{
+      color:white;
+      font-size:70px;
+      margin-bottom:15px;
+    }
+
+    .stat-box p{
+      color:#d7deed;
+      font-size:20px;
+    }
+
+    /* =========================================
+       TEAM SECTION
+    ========================================== */
+
+    .team{
+      padding-bottom:120px;
+    }
+
+    .section-center{
+      text-align:center;
+      margin-bottom:80px;
+    }
+
+    .section-center h2{
+      font-size:58px;
+      margin-bottom:20px;
+    }
+
+    .section-center p{
+      color:#6b7280;
+      font-size:20px;
+      line-height:1.8;
+      max-width:850px;
+      margin:auto;
+    }
+
+    .team-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:35px;
+    }
+
+    .team-card{
+      background:white;
+      border-radius:28px;
+      overflow:hidden;
+      box-shadow:0 10px 40px rgba(0,0,0,.05);
+      transition:.4s;
+    }
+
+    .team-card:hover{
+      transform:translateY(-10px);
+    }
+
+    .team-image{
+      height:380px;
+      overflow:hidden;
+    }
+
+    .team-image img{
+      height:100%;
+      object-fit:cover;
+      transition:.5s;
+    }
+
+    .team-card:hover .team-image img{
+      transform:scale(1.08);
+    }
+
+    .team-content{
+      padding:35px;
+      text-align:center;
+    }
+
+    .team-content h3{
+      font-size:28px;
+      margin-bottom:10px;
+    }
+
+    .team-content span{
+      color:#0d6efd;
+      font-size:17px;
+      font-weight:600;
+      display:block;
+      margin-bottom:20px;
+    }
+
+    .team-content p{
+      color:#6b7280;
+      line-height:1.8;
+      font-size:16px;
+    }
+
+    /* =========================================
+       MISSION SECTION
+    ========================================== */
+
+    .mission{
+      padding-bottom:120px;
+    }
+
+    .mission-box{
+      background:
+      linear-gradient(rgba(2,8,28,.94),rgba(2,8,28,.94)),
+      url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=1400&auto=format&fit=crop');
+
+      background-size:cover;
+      background-position:center;
+
+      border-radius:30px;
+      padding:90px;
+      text-align:center;
+    }
+
+    .mission-box h2{
+      color:white;
+      font-size:60px;
+      margin-bottom:25px;
+    }
+
+    .mission-box p{
+      color:#d7deed;
+      font-size:21px;
+      line-height:2;
+      max-width:1000px;
+      margin:auto auto 40px;
+    }
+
+    .mission-btn{
+      display:inline-block;
+      background:#0d6efd;
+      color:white;
+      padding:18px 40px;
+      border-radius:14px;
+      font-size:18px;
+      font-weight:600;
+    }
+
+    /* =========================================
+       FOOTER
+    ========================================== */
+
+    footer{
+      background:#020817;
+      padding:80px 0 40px;
+      color:white;
+    }
+
+    .footer-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:50px;
+      margin-bottom:60px;
+    }
+
+    .footer-logo{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-size:30px;
+      font-weight:700;
+      margin-bottom:25px;
+    }
+
+    .footer-text{
+      color:#d7deed;
+      line-height:1.9;
+      font-size:17px;
+    }
+
+    .footer-title{
+      font-size:24px;
+      margin-bottom:25px;
+    }
+
+    .footer-links{
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+    }
+
+    .footer-links a{
+      color:#d7deed;
+      transition:.3s;
+    }
+
+    .footer-links a:hover{
+      color:#0d6efd;
+    }
+
+    .copyright{
+      border-top:1px solid rgba(255,255,255,.08);
+      padding-top:30px;
+      text-align:center;
+      color:#d7deed;
+    }
+
+    /* =========================================
+       RESPONSIVE
+    ========================================== */
+
+    @media(max-width:1100px){
+
+      .nav-links,
+      .start-btn{
+        display:none;
+      }
+
+      .menu-btn{
+        display:block;
+      }
+
+      .about-wrapper{
+        grid-template-columns:1fr;
+      }
+
+      .hero h1{
+        font-size:54px;
+      }
+
+    }
+
+    @media(max-width:700px){
+
+      .container{
+        padding:0 20px;
+      }
+
+      .hero h1{
+        font-size:40px;
+      }
+
+      .hero p{
+        font-size:18px;
+      }
+
+      .section-title,
+      .section-center h2{
+        font-size:38px;
+      }
+
+      .mission-box{
+        padding:50px 25px;
+      }
+
+      .mission-box h2{
+        font-size:38px;
+      }
+
+      .mission-box p{
+        font-size:18px;
+      }
+
+      .about-features{
+        grid-template-columns:1fr;
+      }
+
+      .stats-wrapper{
+        padding:40px 20px;
+      }
+
+      .stat-box h2{
+        font-size:48px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================================
+       SIDEBAR
+  ========================================== -->
+
+  <div class="sidebar" id="sidebar">
+
+    <div class="close-btn" id="closeBtn">
+      ✕
+    </div>
+
+    <div class="sidebar-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+  </div>
+
+  <!-- =========================================
+       NAVBAR
+  ========================================== -->
+
+  <nav class="navbar">
+
+    <div class="container nav-wrapper">
+
+      <div class="logo">
+        <div class="logo-circle"></div>
+        CodeFurnance
+      </div>
+
+      <ul class="nav-links">
+
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="contact.html">Contact</a></li>
+
+      </ul>
+
+      <div class="nav-right">
+
+        <a href="contact.html" class="start-btn">
+          Get Started
+        </a>
+
+        <div class="menu-btn" id="menuBtn">
+          ☰
+        </div>
+
+      </div>
+
+    </div>
+
+  </nav>
+
+  <!-- =========================================
+       HERO SECTION
+  ========================================== -->
+
+  <section class="hero">
+
+    <div class="container hero-content">
+
+      <div class="hero-badge">
+        ABOUT CODEFURNANCE
+      </div>
+
+      <h1>
+        Building Powerful Digital Experiences
+      </h1>
+
+      <p>
+        We are a modern digital agency focused on web design,
+        development, mobile applications, branding, SEO and
+        innovative business solutions for companies worldwide.
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================
+       ABOUT SECTION
+  ========================================== -->
+
+  <section class="about">
+
+    <div class="container">
+
+      <div class="about-wrapper">
+
+        <!-- IMAGE -->
+
+        <div class="about-image">
+
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1400&auto=format&fit=crop">
+
+          <div class="experience-box">
+
+            <h2>5+</h2>
+
+            <p>
+              Years of experience delivering
+              innovative digital solutions.
+            </p>
+
+          </div>
+
+        </div>
+
+        <!-- CONTENT -->
+
+        <div>
+
+          <div class="section-subtitle">
+            WHO WE ARE
+          </div>
+
+          <h2 class="section-title">
+            Helping Businesses Grow Through Technology
+          </h2>
+
+          <p class="about-text">
+            CodeFurnance is a professional technology and
+            digital solutions company dedicated to helping
+            businesses succeed online through modern websites,
+            applications and digital innovation.
+          </p>
+
+          <p class="about-text">
+            Our team focuses on delivering high-performance,
+            scalable and visually impressive digital products
+            that improve customer engagement and business growth.
+          </p>
+
+          <div class="about-features">
+
+            <!-- FEATURE -->
+
+            <div class="feature-box">
+
+              <div class="feature-icon">
+                💻
+              </div>
+
+              <h3>
+                Web Development
+              </h3>
+
+              <p>
+                Modern responsive websites
+                and custom web applications.
+              </p>
+
+            </div>
+
+            <!-- FEATURE -->
+
+            <div class="feature-box">
+
+              <div class="feature-icon">
+                📱
+              </div>
+
+              <h3>
+                Mobile Apps
+              </h3>
+
+              <p>
+                Powerful Android and iOS
+                mobile application solutions.
+              </p>
+
+            </div>
+
+            <!-- FEATURE -->
+
+            <div class="feature-box">
+
+              <div class="feature-icon">
+                🚀
+              </div>
+
+              <h3>
+                SEO Marketing
+              </h3>
+
+              <p>
+                Search optimization strategies
+                that increase visibility online.
+              </p>
+
+            </div>
+
+            <!-- FEATURE -->
+
+            <div class="feature-box">
+
+              <div class="feature-icon">
+                🎨
+              </div>
+
+              <h3>
+                UI/UX Design
+              </h3>
+
+              <p>
+                Beautiful user experiences
+                with modern creative interfaces.
+              </p>
+
+            </div>
+
+          </div>
+
+          <a href="services.html" class="about-btn">
+            Explore Services
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================
+       STATS SECTION
+  ========================================== -->
+
+  <section class="stats">
+
+    <div class="container">
+
+      <div class="stats-wrapper">
+
+        <div class="stat-box">
+          <h2>250+</h2>
+          <p>Projects Completed</p>
+        </div>
+
+        <div class="stat-box">
+          <h2>150+</h2>
+          <p>Happy Clients</p>
+        </div>
+
+        <div class="stat-box">
+          <h2>24/7</h2>
+          <p>Client Support</p>
+        </div>
+
+        <div class="stat-box">
+          <h2>20+</h2>
+          <p>Team Members</p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================
+       TEAM SECTION
+  ========================================== -->
+
+  <section class="team">
+
+    <div class="container">
+
+      <div class="section-center">
+
+        <h2>
+          Meet Our Expert Team
+        </h2>
+
+        <p>
+          Our talented developers, designers and strategists
+          work together to deliver exceptional digital products.
+        </p>
+
+      </div>
+
+      <div class="team-grid">
+
+        <!-- MEMBER -->
+
+        <div class="team-card">
+
+          <div class="team-image">
+
+            <img src="https://randomuser.me/api/portraits/men/32.jpg">
+
+          </div>
+
+          <div class="team-content">
+
+            <h3>
+              James Carter
+            </h3>
+
+            <span>
+              CEO & Founder
+            </span>
+
+            <p>
+              Leads company strategy and innovation
+              across digital transformation projects.
+            </p>
+
+          </div>
+
+        </div>
+
+        <!-- MEMBER -->
+
+        <div class="team-card">
+
+          <div class="team-image">
+
+            <img src="https://randomuser.me/api/portraits/women/44.jpg">
+
+          </div>
+
+          <div class="team-content">
+
+            <h3>
+              Sarah Williams
+            </h3>
+
+            <span>
+              Lead UI/UX Designer
+            </span>
+
+            <p>
+              Creates modern user experiences
+              with creative and elegant designs.
+            </p>
+
+          </div>
+
+        </div>
+
+        <!-- MEMBER -->
+
+        <div class="team-card">
+
+          <div class="team-image">
+
+            <img src="https://randomuser.me/api/portraits/men/51.jpg">
+
+          </div>
+
+          <div class="team-content">
+
+            <h3>
+              Michael Brown
+            </h3>
+
+            <span>
+              Senior Developer
+            </span>
+
+            <p>
+              Builds scalable applications and
+              advanced digital systems for clients.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================
+       MISSION SECTION
+  ========================================== -->
+
+  <section class="mission">
+
+    <div class="container">
+
+      <div class="mission-box">
+
+        <h2>
+          Our Mission
+        </h2>
+
+        <p>
+          Our mission is to empower businesses with modern
+          technology solutions that improve performance,
+          increase visibility and create lasting digital impact.
+          We focus on innovation, creativity and customer success.
+        </p>
+
+        <a href="contact.html" class="mission-btn">
+          Start Your Project
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================
+       FOOTER
+  ========================================== -->
+
+  <footer>
+
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <div>
+
+          <div class="footer-logo">
+
+            <div class="logo-circle"></div>
+
+            CodeFurnance
+
+          </div>
+
+          <p class="footer-text">
+            Professional web development,
+            mobile applications and digital
+            business solutions worldwide.
+          </p>
+
+        </div>
+
+        <div>
+
+          <h3 class="footer-title">
+            Quick Links
+          </h3>
+
+          <div class="footer-links">
+
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="services.html">Services</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="contact.html">Contact</a>
+
+          </div>
+
+        </div>
+
+        <div>
+
+          <h3 class="footer-title">
+            Services
+          </h3>
+
+          <div class="footer-links">
+
+            <a href="services.html">Web Development</a>
+            <a href="services.html">UI/UX Design</a>
+            <a href="services.html">SEO Optimization</a>
+            <a href="services.html">Mobile Apps</a>
+            <a href="services.html">Cloud Hosting</a>
+
+          </div>
+
+        </div>
+
+        <div>
+
+          <h3 class="footer-title">
+            Contact Info
+          </h3>
+
+          <div class="footer-links">
+
+            <a href="#">
+              info@codefurnance.com
+            </a>
+
+            <a href="#">
+              +254 700 000 000
+            </a>
+
+            <a href="#">
+              Nairobi, Kenya
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="copyright">
+
+        © 2026 CodeFurnance. All Rights Reserved.
+
+      </div>
+
+    </div>
+
+  </footer>
+
+  <!-- =========================================
+       JAVASCRIPT
+  ========================================== -->
+
+  <script>
+
+    // SIDEBAR
+
+    const menuBtn = document.getElementById("menuBtn");
+    const sidebar = document.getElementById("sidebar");
+    const closeBtn = document.getElementById("closeBtn");
+
+    menuBtn.addEventListener("click", () => {
+      sidebar.classList.add("active");
+    });
+
+    closeBtn.addEventListener("click", () => {
+      sidebar.classList.remove("active");
+    });
+
+  </script>
+
+</body>
+</html>
