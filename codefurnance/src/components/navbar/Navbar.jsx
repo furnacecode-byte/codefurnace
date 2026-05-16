@@ -34,17 +34,21 @@ export function Navbar() {
         <img src="/logo.png" alt="Code Furnance logo" className="brand-logo" />
         <span>CODE FURNANCE</span>
       </NavLink>
-      <button className="menu-toggle" onClick={() => setOpen((v) => !v)} aria-label="Menu"><FiMenu /></button>
+
       <nav className={open ? 'nav-links open' : 'nav-links'}>
         {links.map(([label, to]) => (
           <NavLink key={to} to={to} onClick={() => setOpen(false)}>{label}</NavLink>
         ))}
       </nav>
+
       <div className="nav-actions">
-        <button className="theme-toggle" onClick={() => setTheme((v) => (v === 'dark' ? 'light' : 'dark'))} aria-label="Toggle theme">
-          {theme === 'dark' ? <FiSun /> : <FiMoon />}
-        </button>
         <NavLink to="/quote-booking" className="btn btn-primary">Get Started</NavLink>
+        <div className="nav-controls">
+          <button className="theme-toggle" onClick={() => setTheme((v) => (v === 'dark' ? 'light' : 'dark'))} aria-label="Toggle theme">
+            {theme === 'dark' ? <FiSun /> : <FiMoon />}
+          </button>
+          <button className="menu-toggle" onClick={() => setOpen((v) => !v)} aria-label="Menu"><FiMenu /></button>
+        </div>
       </div>
     </header>
   )
