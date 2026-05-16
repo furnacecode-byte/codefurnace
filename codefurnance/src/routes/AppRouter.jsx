@@ -7,11 +7,11 @@ import { PricingPage } from '../pages/Pricing/PricingPage'
 import { ContactPage } from '../pages/Contact/ContactPage'
 import { PortfolioPage } from '../pages/Portfolio/PortfolioPage'
 import { FAQPage } from '../pages/FAQ/FAQPage'
-import { WebsiteDevelopmentPage } from '../pages/WebsiteDevelopment/WebsiteDevelopmentPage'
-import { SoftwareDevelopmentPage } from '../pages/SoftwareDevelopment/SoftwareDevelopmentPage'
-import { BookingSystemsPage } from '../pages/BookingSystems/BookingSystemsPage'
-import { MobileAppsPage } from '../pages/MobileApps/MobileAppsPage'
-import { AIAutomationPage } from '../pages/AIAutomation/AIAutomationPage'
+import { WebsiteDevelopmentPage, WebsiteDevelopmentPackagesPage } from '../pages/WebsiteDevelopment/WebsiteDevelopmentPage'
+import { SoftwareDevelopmentPage, SoftwareDevelopmentPackagesPage } from '../pages/SoftwareDevelopment/SoftwareDevelopmentPage'
+import { BookingSystemsPage, BookingSystemsPackagesPage } from '../pages/BookingSystems/BookingSystemsPage'
+import { MobileAppsPage, MobileAppsPackagesPage } from '../pages/MobileApps/MobileAppsPage'
+import { AIAutomationPage, AIAutomationPackagesPage } from '../pages/AIAutomation/AIAutomationPage'
 
 export function AppRouter() {
   return (
@@ -25,10 +25,15 @@ export function AppRouter() {
         <Route path="/portfolio" element={<PortfolioPage />} />
         <Route path="/faq" element={<FAQPage />} />
         <Route path="/services/web-development" element={<WebsiteDevelopmentPage />} />
+        <Route path="/services/web-development/packages" element={<WebsiteDevelopmentPackagesPage />} />
         <Route path="/services/software-development" element={<SoftwareDevelopmentPage />} />
+        <Route path="/services/software-development/packages" element={<SoftwareDevelopmentPackagesPage />} />
         <Route path="/services/booking-systems" element={<BookingSystemsPage />} />
+        <Route path="/services/booking-systems/packages" element={<BookingSystemsPackagesPage />} />
         <Route path="/services/mobile-apps" element={<MobileAppsPage />} />
+        <Route path="/services/mobile-apps/packages" element={<MobileAppsPackagesPage />} />
         <Route path="/services/ai-automation" element={<AIAutomationPage />} />
+        <Route path="/services/ai-automation/packages" element={<AIAutomationPackagesPage />} />
       </Route>
     </Routes>
   )

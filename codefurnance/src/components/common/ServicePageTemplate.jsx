@@ -1,13 +1,38 @@
-﻿import { SectionIntro, FeatureGrid, FaqList } from './Sections'
+﻿import { Link } from 'react-router-dom'
+import { SectionIntro, FeatureGrid, FaqList } from './Sections'
 import { PricingCards, ComparisonTable } from '../pricing/PricingBlocks'
 
-export function ServicePageTemplate({ title, subtitle, features, plans, comparison, faqs }) {
+export function ServicePageTemplate({ title, subtitle, features, pricingRoute }) {
+  return (
+    <section className="section service-overview-page">
+      <SectionIntro title={title} text={subtitle} />
+      <FeatureGrid items={features} />
+      <div className="row gap-sm service-overview-actions">
+        <Link className="btn btn-primary" to={pricingRoute}>View Prices</Link>
+        <Link className="btn btn-secondary" to="/contact">Talk to Us Now</Link>
+      </div>
+    </section>
+  )
+}
+
+export function ServicePackagesTemplate({ title, subtitle, plans, comparison, faqs, quoteForm }) {
   return (
     <>
-      <section className="section"><SectionIntro title={title} text={subtitle} /><FeatureGrid items={features} /></section>
-      <section className="section alt"><SectionIntro title="Pricing Packages" text="Flexible plans for different business stages." /><PricingCards plans={plans} /></section>
-      <section className="section"><SectionIntro title="Feature Comparison" text="A quick side-by-side view." /><ComparisonTable rows={comparison} /></section>
-      <section className="section alt"><SectionIntro title="FAQ" text="Common client questions." /><FaqList faqs={faqs} /></section>
+      <section className="section alt">
+        <SectionIntro title={title} text={subtitle} />
+        <PricingCards plans={plans} ctaLabel="Choose Package" />
+      </section>
+      <section className="section">
+        <SectionIntro title="Feature Comparison" text="A quick side-by-side view." />
+        <ComparisonTable rows={comparison} />
+      </section>
+      <section className="section alt">
+        <SectionIntro title="FAQ" text="Common client questions." />
+        <FaqList faqs={faqs} />
+      </section>
+      <section className="section" id="quote-form">
+        {quoteForm}
+      </section>
     </>
   )
 }

@@ -1,0 +1,30 @@
+﻿.hero-section {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  align-items: center;
+  gap: clamp(1rem, 2.5vw, 2rem);
+}
+
+.hero-section .row { margin-top: 1.25rem; }
+
+.code-orb {
+  justify-self: end;
+  width: min(470px, 100%);
+  aspect-ratio: 1;
+  border-radius: 2rem;
+  border: 1px solid var(--border-strong);
+  background:
+    radial-gradient(circle at center, rgba(255, 138, 31, 0.32), rgba(255, 138, 31, 0.04) 58%, transparent 70%),
+    linear-gradient(140deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.01));
+  display: grid;
+  place-items: center;
+  color: var(--accent-2);
+  font-size: clamp(3rem, 7vw, 6rem);
+  box-shadow: var(--glow-shadow);
+  animation: pulseFloat 4.5s ease-in-out infinite;
+}
+
+@keyframes pulseFloat {
+  50% { transform: translateY(-8px); box-shadow: 0 0 45px rgba(255, 138, 31, 0.4); }
+}
+

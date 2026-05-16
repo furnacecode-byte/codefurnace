@@ -1,4 +1,9 @@
-﻿export function PricingCards({ plans }) {
+﻿export function PricingCards({ plans, ctaLabel = 'Choose Plan' }) {
+  const jumpToForm = () => {
+    const node = document.getElementById('quote-form')
+    if (node) node.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+
   return <div className="grid cols-3">{plans.map((plan) => (
     <article key={plan.name} className={plan.recommended ? 'card plan recommended' : 'card plan'}>
       {plan.recommended && <span className="badge">Recommended</span>}
@@ -6,7 +11,7 @@
       <p className="price">{plan.price}</p>
       <p>{plan.setup}</p>
       <ul>{plan.features.map((feature) => <li key={feature}>{feature}</li>)}</ul>
-      <button className="btn btn-primary">Choose Plan</button>
+      <button className="btn btn-primary" onClick={jumpToForm} type="button">{ctaLabel}</button>
     </article>
   ))}</div>
 }
