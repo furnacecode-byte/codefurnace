@@ -4,10 +4,14 @@ import { QuoteRequestForm } from '../../components/common/QuoteRequestForm'
 import { commonFaqs } from '../shared'
 
 const features = [
-  { title: 'AI Chatbots', text: 'Intelligent conversational systems for web and support channels.' },
-  { title: 'WhatsApp Automation', text: 'Lead capture, qualification, and automated response workflows.' },
-  { title: 'CRM & Sales Automation', text: 'Pipeline automation, follow-ups, and conversion-focused triggers.' },
-  { title: 'Voice AI & AI Workflows', text: 'Voice automation and intelligent workflow orchestration systems.' },
+  { title: 'AI chatbots', text: 'Automated support and sales assistants for instant customer interaction.' },
+  { title: 'Lead automation', text: 'Smart capture, qualification, and routing for high-value leads.' },
+  { title: 'Workflow automation', text: 'Automate repetitive processes and approvals across departments.' },
+  { title: 'Smart responses', text: 'Context-aware responses for faster and more accurate communication.' },
+  { title: 'AI agents', text: 'Task-driven agents that assist teams in operations and service delivery.' },
+  { title: 'Data processing', text: 'AI-powered processing for structured and unstructured business data.' },
+  { title: 'Customer automation', text: 'Automated customer journeys across support, sales, and follow-up.' },
+  { title: 'Business intelligence systems', text: 'Insight dashboards for performance, trends, and decision-making.' },
 ]
 
 const plans = [
@@ -22,7 +26,7 @@ const comparison = [{ feature: 'Channels', starter: 'Web', growth: 'Web+WhatsApp
 
 export function AIAutomationPage() {
   useSeo('AI Automation', 'AI chatbots, WhatsApp automation, CRM automation and intelligent workflows.')
-  return <ServicePageTemplate title="AI Business Automation" subtitle="Futuristic automation systems for sales, support, and operations efficiency." features={features} pricingRoute="/services/ai-automation/packages" />
+  return <ServicePageTemplate title="AI Business Automation" subtitle="Automate business operations using AI agents, workflow automation, intelligent customer support, and smart lead generation systems." features={features} pricingRoute="/services/ai-automation/packages" />
 }
 
 export function AIAutomationPackagesPage() {

@@ -4,10 +4,14 @@ import { QuoteRequestForm } from '../../components/common/QuoteRequestForm'
 import { commonFaqs } from '../shared'
 
 const features = [
-  { title: 'Android Apps', text: 'High-performance business and consumer apps for Android ecosystems.' },
-  { title: 'iOS Apps', text: 'Premium iOS experiences optimized for speed, UX, and reliability.' },
-  { title: 'Cross-platform Apps', text: 'Unified architecture for faster releases and maintenance efficiency.' },
-  { title: 'Business, Delivery & Booking Apps', text: 'Purpose-built mobile products connected to core operations.' },
+  { title: 'Android apps', text: 'Native-quality Android applications for business and customer use cases.' },
+  { title: 'iOS apps', text: 'Polished iOS apps engineered for smooth performance and reliability.' },
+  { title: 'Flutter development', text: 'Cross-platform delivery with efficient code reuse and fast rollout.' },
+  { title: 'React Native apps', text: 'Scalable mobile architecture with modern UI and backend connectivity.' },
+  { title: 'API integration', text: 'Secure backend integrations for data, payments, and business systems.' },
+  { title: 'Push notifications', text: 'Engagement messaging and event-driven updates to users.' },
+  { title: 'Real-time systems', text: 'Live sync features for orders, chats, bookings, and status updates.' },
+  { title: 'App store deployment', text: 'Professional release support for Google Play and Apple App Store.' },
 ]
 
 const plans = [
@@ -22,7 +26,7 @@ const comparison = [{ feature: 'Platforms', starter: 'Android', growth: 'Android
 
 export function MobileAppsPage() {
   useSeo('Mobile App Development', 'Android, iOS, and cross-platform app development for growing businesses.')
-  return <ServicePageTemplate title="Mobile App Development" subtitle="Modern mobile experiences that connect customers, teams, and operations." features={features} pricingRoute="/services/mobile-apps/packages" />
+  return <ServicePageTemplate title="Mobile App Development" subtitle="Professional Android, iOS, and cross-platform mobile applications with secure APIs, modern interfaces, and scalable backend architecture." features={features} pricingRoute="/services/mobile-apps/packages" />
 }
 
 export function MobileAppsPackagesPage() {

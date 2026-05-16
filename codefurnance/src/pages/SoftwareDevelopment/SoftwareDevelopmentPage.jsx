@@ -4,10 +4,14 @@ import { QuoteRequestForm } from '../../components/common/QuoteRequestForm'
 import { commonFaqs } from '../shared'
 
 const features = [
-  { title: 'ERP Systems', text: 'Integrated enterprise systems for planning, operations, and reporting.' },
-  { title: 'CRM Systems', text: 'Lead, customer, and engagement systems with automation workflows.' },
-  { title: 'SaaS Platforms', text: 'Subscription-ready products with scalable cloud architecture.' },
-  { title: 'POS, School & Hospital Systems', text: 'Industry-tailored software for mission-critical operations.' },
+  { title: 'ERP systems', text: 'Centralized enterprise planning systems for operations, finance, and workflow visibility.' },
+  { title: 'POS platforms', text: 'Reliable point-of-sale systems for transactions, inventory, and reporting.' },
+  { title: 'CRM software', text: 'Customer relationship systems for lead tracking, engagement, and retention.' },
+  { title: 'School management systems', text: 'Academic, attendance, fee, and communication portals for schools.' },
+  { title: 'Hospital systems', text: 'Healthcare workflow platforms for appointments, records, and operations.' },
+  { title: 'Inventory tracking', text: 'Stock visibility and movement control with alerts and analytics.' },
+  { title: 'Enterprise dashboards', text: 'Executive-level dashboards for KPIs, operations, and decision support.' },
+  { title: 'Multi-user role management', text: 'Secure role-based access for teams, departments, and management layers.' },
 ]
 
 const plans = [
@@ -22,7 +26,7 @@ const comparison = [{ feature: 'Modules', starter: '1', growth: '3+', enterprise
 
 export function SoftwareDevelopmentPage() {
   useSeo('Software Development', 'ERP, CRM, SaaS, POS and custom software development for businesses.')
-  return <ServicePageTemplate title="Software Development" subtitle="Enterprise-grade software engineered for growth and operational excellence." features={features} pricingRoute="/services/software-development/packages" />
+  return <ServicePageTemplate title="Software Development" subtitle="Custom business software including ERP systems, POS systems, CRM platforms, hospital management systems, school portals, inventory systems, and enterprise SaaS solutions." features={features} pricingRoute="/services/software-development/packages" />
 }
 
 export function SoftwareDevelopmentPackagesPage() {

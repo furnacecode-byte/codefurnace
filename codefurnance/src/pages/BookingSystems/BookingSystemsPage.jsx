@@ -4,10 +4,14 @@ import { QuoteRequestForm } from '../../components/common/QuoteRequestForm'
 import { commonFaqs } from '../shared'
 
 const features = [
-  { title: 'Appointment Systems', text: 'Booking experiences for clinics, gyms, salons and consultation services.' },
-  { title: 'Hotel & Reservation Systems', text: 'Availability, reservations, and customer confirmation workflows.' },
-  { title: 'Payments & Reminders', text: 'M-Pesa integration, SMS reminders, and email confirmations.' },
-  { title: 'Admin & Staff Tools', text: 'Booking calendar, client portal, and staff management dashboard.' },
+  { title: 'Appointment scheduling', text: 'Automated appointment setup for service teams and customers.' },
+  { title: 'Reservation management', text: 'Reliable reservation workflows for hotels, restaurants, and events.' },
+  { title: 'SMS/email reminders', text: 'Automated reminders that reduce no-shows and missed bookings.' },
+  { title: 'Payment integration', text: 'M-Pesa and online payment support for frictionless booking checkout.' },
+  { title: 'Calendar syncing', text: 'Real-time schedule synchronization across calendars and teams.' },
+  { title: 'Admin analytics', text: 'Dashboard insights on bookings, cancellations, and peak demand hours.' },
+  { title: 'Customer management', text: 'Track customer records, preferences, and booking history.' },
+  { title: 'Multi-location support', text: 'Operate branches and location-based schedules from one system.' },
 ]
 
 const plans = [
@@ -21,7 +25,7 @@ const comparison = [{ feature: 'Payments', starter: 'Optional', growth: 'M-Pesa'
 
 export function BookingSystemsPage() {
   useSeo('Booking Systems', 'Appointment and reservation systems with M-Pesa, reminders and dashboards.')
-  return <ServicePageTemplate title="Booking Systems" subtitle="Smart booking platforms for service businesses and high-volume operations." features={features} pricingRoute="/services/booking-systems/packages" />
+  return <ServicePageTemplate title="Booking Systems" subtitle="Smart appointment and reservation systems for hotels, clinics, salons, gyms, restaurants, and service-based businesses with automated scheduling and notifications." features={features} pricingRoute="/services/booking-systems/packages" />
 }
 
 export function BookingSystemsPackagesPage() {

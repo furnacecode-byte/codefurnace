@@ -4,10 +4,14 @@ import { QuoteRequestForm } from '../../components/common/QuoteRequestForm'
 import { commonFaqs } from '../shared'
 
 const features = [
-  { title: 'Business Websites', text: 'Professional websites that build trust and drive growth.' },
-  { title: 'Corporate Websites', text: 'Enterprise-ready corporate experiences with premium UI.' },
-  { title: 'E-commerce Platforms', text: 'Conversion-focused product, cart, and checkout architecture.' },
-  { title: 'Landing Pages & SaaS Sites', text: 'High-performance pages for acquisition and product onboarding.' },
+  { title: 'Responsive web design', text: 'Optimized layouts that adapt perfectly across mobile, tablet, and desktop devices.' },
+  { title: 'E-commerce integration', text: 'Product catalogs, secure checkout flows, and payment-ready commerce architecture.' },
+  { title: 'Landing pages', text: 'Conversion-driven pages for campaigns, offers, launches, and lead acquisition.' },
+  { title: 'SEO-ready architecture', text: 'Technical SEO structure with optimized headings, metadata, and crawl readiness.' },
+  { title: 'Fast loading optimization', text: 'Performance tuning for speed, engagement, and improved ranking potential.' },
+  { title: 'Admin dashboards', text: 'Manage content, users, inquiries, and site updates from a clear control panel.' },
+  { title: 'CMS integration', text: 'Easy content publishing workflows for blogs, services, and business updates.' },
+  { title: 'Modern UI/UX systems', text: 'Premium visual systems designed to build trust and increase user action.' },
 ]
 
 const plans = [
@@ -23,7 +27,7 @@ const comparison = [{ feature: 'Pages', starter: '5', growth: '10-20', enterpris
 
 export function WebsiteDevelopmentPage() {
   useSeo('Web Design & Development', 'Professional websites that build trust and drive growth.')
-  return <ServicePageTemplate title="Professional Websites That Build Trust & Drive Growth" subtitle="Premium website solutions for businesses, enterprises, and SaaS brands." features={features} pricingRoute="/services/web-development/packages" />
+  return <ServicePageTemplate title="Professional Websites That Build Trust & Drive Growth" subtitle="Build high-converting websites, e-commerce platforms, landing pages, portfolios, and scalable SaaS applications designed for performance, user engagement, and business growth." features={features} pricingRoute="/services/web-development/packages" />
 }
 
 export function WebsiteDevelopmentPackagesPage() {
