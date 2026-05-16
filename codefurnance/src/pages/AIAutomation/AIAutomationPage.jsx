@@ -3,13 +3,26 @@ import { ServicePageTemplate, ServicePackagesTemplate } from '../../components/c
 import { QuoteRequestForm } from '../../components/common/QuoteRequestForm'
 import { commonFaqs } from '../shared'
 
-const features = [{ title: 'AI Chatbots', text: 'Website and WhatsApp bots for support and lead qualification.' }, { title: 'CRM Automation', text: 'Auto-tagging, routing, scoring, and follow-up sequences.' }, { title: 'Workflow AI', text: 'Document processing, alerts, and decision assistance.' }, { title: 'AI Dashboards', text: 'Live metrics for productivity, response time and conversion.' }]
-const plans = [{ name: 'AI Starter', price: '$1,200', setup: 'Setup: $500', features: ['1 bot', 'Basic workflow', 'Weekly reports'] }, { name: 'AI Growth', price: '$3,200', setup: 'Setup: $1,200', recommended: true, features: ['Multi-channel bot', 'CRM automation', 'Analytics dashboard'] }, { name: 'AI Enterprise', price: 'Custom', setup: 'Setup: Scoped', features: ['Custom models', 'Voice AI', 'Compliance controls'] }]
-const comparison = [{ feature: 'Channels', starter: 'Web', growth: 'Web + WhatsApp', enterprise: 'Omnichannel' }, { feature: 'Automations', starter: '3', growth: '10', enterprise: 'Unlimited' }, { feature: 'Insights', starter: 'Basic', growth: 'Advanced', enterprise: 'Executive' }]
+const features = [
+  { title: 'AI Chatbots', text: 'Intelligent conversational systems for web and support channels.' },
+  { title: 'WhatsApp Automation', text: 'Lead capture, qualification, and automated response workflows.' },
+  { title: 'CRM & Sales Automation', text: 'Pipeline automation, follow-ups, and conversion-focused triggers.' },
+  { title: 'Voice AI & AI Workflows', text: 'Voice automation and intelligent workflow orchestration systems.' },
+]
+
+const plans = [
+  { name: 'Basic AI Package', price: 'KES 90,000', setup: 'Timeline: 2-4 weeks', features: ['AI chatbot', 'Basic workflow automation', 'Lead routing'] },
+  { name: 'Standard AI Package', price: 'KES 180,000', setup: 'Timeline: 4-6 weeks', recommended: true, features: ['WhatsApp automation', 'CRM automation', 'AI insights panel'] },
+  { name: 'Advanced AI Package', price: 'KES 450,000', setup: 'Timeline: 6-10 weeks', features: ['AI agents', 'Voice AI', 'Multi-channel setup'] },
+  { name: 'Elite AI Package', price: 'KES 1,200,000', setup: 'Timeline: 10-14 weeks', features: ['Advanced integrations', 'Automation dashboards', 'Staff onboarding'] },
+  { name: 'Enterprise AI Package', price: 'From KES 2,500,000', setup: 'Timeline: Enterprise phased rollout', features: ['Enterprise AI platform', 'Governance controls', 'Dedicated AI ops support'] },
+]
+
+const comparison = [{ feature: 'Channels', starter: 'Web', growth: 'Web+WhatsApp', enterprise: 'Omnichannel' }, { feature: 'Automation depth', starter: 'Basic', growth: 'Advanced', enterprise: 'Enterprise' }, { feature: 'Insights', starter: 'Weekly', growth: 'Realtime', enterprise: 'Executive' }]
 
 export function AIAutomationPage() {
-  useSeo('AI Automation', 'AI chatbots, CRM automation, lead generation and intelligent business workflows.')
-  return <ServicePageTemplate title="AI Business Automation" subtitle="Futuristic but practical automation systems that increase operational efficiency." features={features} pricingRoute="/services/ai-automation/packages" />
+  useSeo('AI Automation', 'AI chatbots, WhatsApp automation, CRM automation and intelligent workflows.')
+  return <ServicePageTemplate title="AI Business Automation" subtitle="Futuristic automation systems for sales, support, and operations efficiency." features={features} pricingRoute="/services/ai-automation/packages" />
 }
 
 export function AIAutomationPackagesPage() {

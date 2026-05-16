@@ -1,5 +1,6 @@
-﻿import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import { FiMenu, FiSun, FiMoon } from 'react-icons/fi'
 
 const links = [
   ['Home', '/'],
@@ -29,8 +30,11 @@ export function Navbar() {
 
   return (
     <header className={scrolled ? 'navbar scrolled' : 'navbar'}>
-      <NavLink to="/" className="brand">CODE FURNACE</NavLink>
-      <button className="menu-toggle" onClick={() => setOpen((v) => !v)} aria-label="Menu">?</button>
+      <NavLink to="/" className="brand">
+        <img src="/logo.png" alt="Code Furnance logo" className="brand-logo" />
+        <span>CODE FURNANCE</span>
+      </NavLink>
+      <button className="menu-toggle" onClick={() => setOpen((v) => !v)} aria-label="Menu"><FiMenu /></button>
       <nav className={open ? 'nav-links open' : 'nav-links'}>
         {links.map(([label, to]) => (
           <NavLink key={to} to={to} onClick={() => setOpen(false)}>{label}</NavLink>
@@ -38,11 +42,10 @@ export function Navbar() {
       </nav>
       <div className="nav-actions">
         <button className="theme-toggle" onClick={() => setTheme((v) => (v === 'dark' ? 'light' : 'dark'))} aria-label="Toggle theme">
-          {theme === 'dark' ? '?' : '?'}
+          {theme === 'dark' ? <FiSun /> : <FiMoon />}
         </button>
-        <NavLink to="/contact" className="btn btn-primary">Get a Quote</NavLink>
+        <NavLink to="/quote-booking" className="btn btn-primary">Get Started</NavLink>
       </div>
     </header>
   )
 }
-

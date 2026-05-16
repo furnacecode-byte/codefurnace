@@ -1,9 +1,25 @@
-﻿export function SectionIntro({ title, text }) {
+﻿import { Link } from 'react-router-dom'
+import { FiArrowRight } from 'react-icons/fi'
+
+export function SectionIntro({ title, text }) {
   return <div className="section-intro"><h2>{title}</h2><p>{text}</p></div>
 }
 
 export function FeatureGrid({ items }) {
-  return <div className="grid cols-4">{items.map((item) => <article key={item.title} className="card"><h3>{item.title}</h3><p>{item.text}</p></article>)}</div>
+  return (
+    <div className="grid cols-4">
+      {items.map((item) => {
+        const Icon = item.icon
+        return (
+          <article key={item.title} className="card">
+            <h3>{Icon ? <Icon /> : null} {item.title}</h3>
+            <p>{item.text}</p>
+            {item.link ? <Link className="btn btn-secondary" to={item.link}>Learn More <FiArrowRight /></Link> : null}
+          </article>
+        )
+      })}
+    </div>
+  )
 }
 
 export function StatGrid({ stats }) {

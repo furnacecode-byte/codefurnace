@@ -3,13 +3,25 @@ import { ServicePageTemplate, ServicePackagesTemplate } from '../../components/c
 import { QuoteRequestForm } from '../../components/common/QuoteRequestForm'
 import { commonFaqs } from '../shared'
 
-const features = [{ title: 'Online Appointments', text: 'Self-service booking with confirmation and calendar sync.' }, { title: 'M-Pesa Payments', text: 'Deposit and full-payment workflows integrated into booking.' }, { title: 'SMS Reminders', text: 'Automated reminders and reschedule notifications.' }, { title: 'Staff Dashboards', text: 'Role-based views for schedules, reporting and capacity.' }]
-const plans = [{ name: 'Starter Booking', price: '$900', setup: 'Setup: $300', features: ['Single location', 'Calendar', 'Basic reminders'] }, { name: 'Growth Booking', price: '$2,000', setup: 'Setup: $650', recommended: true, features: ['M-Pesa', 'Staff portal', 'Client dashboard'] }, { name: 'Enterprise Booking', price: 'Custom', setup: 'Setup: Scoped', features: ['Multi-branch', 'Advanced analytics', 'API integrations'] }]
-const comparison = [{ feature: 'Branches', starter: '1', growth: '3', enterprise: 'Unlimited' }, { feature: 'Payments', starter: 'Optional', growth: 'M-Pesa', enterprise: 'Multi-gateway' }, { feature: 'Reminders', starter: 'Email', growth: 'SMS + Email', enterprise: 'Omnichannel' }]
+const features = [
+  { title: 'Appointment Systems', text: 'Booking experiences for clinics, gyms, salons and consultation services.' },
+  { title: 'Hotel & Reservation Systems', text: 'Availability, reservations, and customer confirmation workflows.' },
+  { title: 'Payments & Reminders', text: 'M-Pesa integration, SMS reminders, and email confirmations.' },
+  { title: 'Admin & Staff Tools', text: 'Booking calendar, client portal, and staff management dashboard.' },
+]
+
+const plans = [
+  { name: 'Basic Package', price: 'KES 30,000', setup: 'Timeline: 1-2 weeks', features: ['Booking calendar', 'Email confirmations', 'Basic dashboard'] },
+  { name: 'Standard Package', price: 'KES 55,000', setup: 'Timeline: 2-3 weeks', recommended: true, features: ['M-Pesa integration', 'SMS reminders', 'Client portal'] },
+  { name: 'Professional Package', price: 'KES 70,000', setup: 'Timeline: 3-4 weeks', features: ['Admin dashboard', 'Staff management', 'Automation workflows'] },
+  { name: 'Enterprise Package', price: 'KES 120,000', setup: 'Timeline: 4-6 weeks', features: ['Advanced analytics', 'Multi-branch setup', 'Priority support'] },
+]
+
+const comparison = [{ feature: 'Payments', starter: 'Optional', growth: 'M-Pesa', enterprise: 'Multi-gateway' }, { feature: 'Reminders', starter: 'Email', growth: 'SMS+Email', enterprise: 'Omnichannel' }, { feature: 'Users', starter: 'Single team', growth: 'Multi-team', enterprise: 'Enterprise' }]
 
 export function BookingSystemsPage() {
-  useSeo('Booking Systems', 'Online booking systems with M-Pesa, reminders, and staff dashboards.')
-  return <ServicePageTemplate title="Booking Systems Development" subtitle="Business-oriented booking flows that reduce manual work and increase attendance." features={features} pricingRoute="/services/booking-systems/packages" />
+  useSeo('Booking Systems', 'Appointment and reservation systems with M-Pesa, reminders and dashboards.')
+  return <ServicePageTemplate title="Booking Systems" subtitle="Smart booking platforms for service businesses and high-volume operations." features={features} pricingRoute="/services/booking-systems/packages" />
 }
 
 export function BookingSystemsPackagesPage() {

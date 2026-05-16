@@ -12,6 +12,9 @@ import { SoftwareDevelopmentPage, SoftwareDevelopmentPackagesPage } from '../pag
 import { BookingSystemsPage, BookingSystemsPackagesPage } from '../pages/BookingSystems/BookingSystemsPage'
 import { MobileAppsPage, MobileAppsPackagesPage } from '../pages/MobileApps/MobileAppsPage'
 import { AIAutomationPage, AIAutomationPackagesPage } from '../pages/AIAutomation/AIAutomationPage'
+import { QuoteBookingPage } from '../pages/Quote/QuoteBookingPage'
+import { CareersPage } from '../pages/Careers/CareersPage'
+import { PrivacyPolicyPage, TermsPage } from '../pages/Legal/LegalPages'
 
 export function AppRouter() {
   return (
@@ -24,6 +27,11 @@ export function AppRouter() {
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/portfolio" element={<PortfolioPage />} />
         <Route path="/faq" element={<FAQPage />} />
+        <Route path="/careers" element={<CareersPage />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+        <Route path="/terms" element={<TermsPage />} />
+        <Route path="/quote-booking" element={<QuoteBookingPage />} />
+
         <Route path="/services/web-development" element={<WebsiteDevelopmentPage />} />
         <Route path="/services/web-development/packages" element={<WebsiteDevelopmentPackagesPage />} />
         <Route path="/services/software-development" element={<SoftwareDevelopmentPage />} />

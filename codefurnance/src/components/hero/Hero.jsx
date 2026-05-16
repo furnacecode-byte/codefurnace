@@ -8,7 +8,7 @@ export function Hero({ eyebrow, title, text }) {
         <h1>{title}</h1>
         <p className="lead">{text}</p>
         <div className="row gap-sm">
-          <Link to="/contact" className="btn btn-primary">Start Project</Link>
+          <Link to="/quote-booking" className="btn btn-primary">Start Project</Link>
           <Link to="/services" className="btn btn-secondary">Explore Services</Link>
         </div>
       </div>

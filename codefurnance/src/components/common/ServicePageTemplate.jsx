@@ -1,15 +1,17 @@
 ﻿import { Link } from 'react-router-dom'
+import { FiArrowLeft } from 'react-icons/fi'
 import { SectionIntro, FeatureGrid, FaqList } from './Sections'
 import { PricingCards, ComparisonTable } from '../pricing/PricingBlocks'
 
 export function ServicePageTemplate({ title, subtitle, features, pricingRoute }) {
   return (
     <section className="section service-overview-page">
+      <Link className="btn btn-secondary" to="/services"><FiArrowLeft /> Back to Services</Link>
       <SectionIntro title={title} text={subtitle} />
       <FeatureGrid items={features} />
       <div className="row gap-sm service-overview-actions">
         <Link className="btn btn-primary" to={pricingRoute}>View Prices</Link>
-        <Link className="btn btn-secondary" to="/contact">Talk to Us Now</Link>
+        <Link className="btn btn-secondary" to="/quote-booking">Book Consultation</Link>
       </div>
     </section>
   )
@@ -19,6 +21,7 @@ export function ServicePackagesTemplate({ title, subtitle, plans, comparison, fa
   return (
     <>
       <section className="section alt">
+        <Link className="btn btn-secondary" to="/services"><FiArrowLeft /> Back to Services</Link>
         <SectionIntro title={title} text={subtitle} />
         <PricingCards plans={plans} ctaLabel="Choose Package" />
       </section>
