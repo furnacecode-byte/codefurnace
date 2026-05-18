@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { FiMenu, FiSun, FiMoon } from 'react-icons/fi'
+import logo from '../../assets/logo.png'
 
 const links = [
   ['Home', '/'],
@@ -31,7 +32,7 @@ export function Navbar() {
   return (
     <header className={scrolled ? 'navbar scrolled' : 'navbar'}>
       <NavLink to="/" className="brand">
-        <img src="/logo.png" alt="Code Furnance logo" className="brand-logo" />
+        <img src={logo} alt="Code Furnance logo" className="brand-logo" />
         <span>CODE FURNANCE</span>
       </NavLink>
 
