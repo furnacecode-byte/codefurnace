@@ -1,32 +1,55 @@
-﻿import { Link } from 'react-router-dom'
-import { FiArrowLeft } from 'react-icons/fi'
-import { SectionIntro, FeatureGrid, FaqList } from './Sections'
-import { PricingCards, ComparisonTable } from '../pricing/PricingBlocks'
+﻿import { Link } from "react-router-dom";
+import { FiArrowLeft } from "react-icons/fi";
+import { SectionIntro, FeatureGrid, FaqList } from "./Sections";
+import { PricingCards, ComparisonTable } from "../pricing/PricingBlocks";
 
-export function ServicePageTemplate({ title, subtitle, features, pricingRoute }) {
+export function ServicePageTemplate({
+  title,
+  subtitle,
+  features,
+  pricingRoute,
+  showPricingButton = true,
+}) {
   return (
     <section className="section service-overview-page">
-      <Link className="btn btn-secondary" to="/services"><FiArrowLeft /> Back to Services</Link>
+      <Link className="btn btn-secondary" to="/services">
+        <FiArrowLeft /> Back to Services
+      </Link>
       <SectionIntro title={title} text={subtitle} />
       <FeatureGrid items={features} />
       <div className="row gap-sm service-overview-actions">
-        <Link className="btn btn-primary" to={pricingRoute}>View Prices</Link>
-        <Link className="btn btn-secondary" to="/quote-booking">Book Consultation</Link>
+        {showPricingButton && pricingRoute && (
+          <Link className="btn btn-primary" to={pricingRoute}>
+            View Prices
+          </Link>
+        )}
+        <Link className="btn btn-secondary" to="/quote-booking">
+          Book Consultation
+        </Link>
       </div>
     </section>
-  )
+  );
 }
 
-export function ServicePackagesTemplate({ title, subtitle, plans, comparison, faqs, quoteForm }) {
+export function ServicePackagesTemplate({
+  title,
+  subtitle,
+  plans,
+  comparison,
+  faqs,
+  quoteForm,
+}) {
   return (
     <>
       <section className="section alt">
-        <Link className="btn btn-secondary" to="/services"><FiArrowLeft /> Back to Services</Link>
         <SectionIntro title={title} text={subtitle} />
         <PricingCards plans={plans} ctaLabel="Choose Package" />
       </section>
       <section className="section">
-        <SectionIntro title="Feature Comparison" text="A quick side-by-side view." />
+        <SectionIntro
+          title="Feature Comparison"
+          text="A quick side-by-side view."
+        />
         <ComparisonTable rows={comparison} />
       </section>
       <section className="section alt">
@@ -37,6 +60,5 @@ export function ServicePackagesTemplate({ title, subtitle, plans, comparison, fa
         {quoteForm}
       </section>
     </>
-  )
+  );
 }
-
