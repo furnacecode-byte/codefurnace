@@ -94,7 +94,7 @@ function Counter({ target, suffix = "", start }) {
 export function HomePage() {
   useSeo(
     "Home",
-    "Code Furnance builds premium software, mobile apps, SaaS, AI and cloud solutions.",
+    "Code furnace builds premium software, mobile apps, SaaS, AI and cloud solutions.",
   );
 
   const statsRef = useRef(null);

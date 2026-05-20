@@ -12,14 +12,14 @@ import {
 export function AboutPage() {
   useSeo(
     "About",
-    "Learn Code Furnance mission, vision, values, and delivery approach.",
+    "Learn Code furnace mission, vision, values, and delivery approach.",
   );
 
   return (
     <>
       <section className="section">
         <SectionIntro
-          title="About CODE FURNANCE"
+          title="About CODE furnace"
           text="We are a digital solutions company based in Narok, Kenya, helping businesses grow through modern technology, automation, and scalable digital systems."
         />
         <div className="grid cols-3">

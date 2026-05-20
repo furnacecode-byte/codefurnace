@@ -86,7 +86,7 @@ export function ProjectsPage() {
 
   useSeo(
     "Projects",
-    "Explore Code Furnance project case studies for web, mobile, SaaS, enterprise, and UI/UX solutions.",
+    "Explore Code furnace project case studies for web, mobile, SaaS, enterprise, and UI/UX solutions.",
   );
 
   return (

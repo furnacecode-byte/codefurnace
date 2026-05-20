@@ -13,7 +13,7 @@ export function Footer() {
     <footer className="footer">
       <div className="footer-grid">
         <div>
-          <h4>CODE FURNANCE</h4>
+          <h4>CODE furnace</h4>
           <p>
             We are a software development company building premium digital
             solutions that help businesses scale.
@@ -72,7 +72,7 @@ export function Footer() {
         <div>
           <h4>Contact</h4>
           <p>
-            <FiMail /> info@codefurnance.com
+            <FiMail /> info@codefurnace.com
           </p>
           <p>
             <FiPhone /> +254 700 123 456
@@ -87,7 +87,7 @@ export function Footer() {
       </div>
 
       <div className="copyright-row">
-        <p>© 2026 Code Furnance. All rights reserved.</p>
+        <p>© 2026 Code furnace. All rights reserved.</p>
         <p>
           <Link to="/privacy-policy">Privacy Policy</Link> ·{" "}
           <Link to="/terms">Terms & Conditions</Link>

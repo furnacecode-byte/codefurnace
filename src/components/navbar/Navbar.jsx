@@ -17,12 +17,12 @@ export function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [theme, setTheme] = useState(
-    () => localStorage.getItem("codefurnance-theme") || "dark",
+    () => localStorage.getItem("codefurnace-theme") || "dark",
   );
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem("codefurnance-theme", theme);
+    localStorage.setItem("codefurnace-theme", theme);
   }, [theme]);
 
   useEffect(() => {
@@ -42,8 +42,8 @@ export function Navbar() {
   return (
     <header className={scrolled ? "navbar scrolled" : "navbar"}>
       <NavLink to="/" className="brand" onClick={() => setOpen(false)}>
-        <img src={logo} alt="Code Furnance logo" className="brand-logo" />
-        <span>CODE FURNANCE</span>
+        <img src={logo} alt="Code furnace logo" className="brand-logo" />
+        <span>CODE furnace</span>
       </NavLink>
 
       <nav className={open ? "nav-links open" : "nav-links"}>

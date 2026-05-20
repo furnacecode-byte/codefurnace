@@ -3,7 +3,7 @@
 export function CareersPage() {
   useSeo(
     "Careers",
-    "Join Code Furnance and build modern digital solutions with a high-performance team.",
+    "Join Code furnace and build modern digital solutions with a high-performance team.",
   );
   return (
     <section className="section">

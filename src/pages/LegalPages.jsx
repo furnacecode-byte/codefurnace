@@ -3,7 +3,7 @@
 export function PrivacyPolicyPage() {
   useSeo(
     "Privacy Policy",
-    "Privacy policy for Code Furnance digital solutions platform.",
+    "Privacy policy for Code furnace digital solutions platform.",
   );
   return (
     <section className="section">
@@ -29,7 +29,7 @@ export function PrivacyPolicyPage() {
 export function TermsPage() {
   useSeo(
     "Terms & Conditions",
-    "Terms and conditions for Code Furnance services.",
+    "Terms and conditions for Code furnace services.",
   );
   return (
     <section className="section">

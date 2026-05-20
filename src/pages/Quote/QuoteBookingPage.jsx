@@ -85,7 +85,7 @@ const getErrors = (step, data) => {
 export function QuoteBookingPage() {
   useSeo(
     "Quote & Booking",
-    "Multi-step project inquiry and booking platform for Code Furnance services.",
+    "Multi-step project inquiry and booking platform for Code furnace services.",
   );
   const [step, setStep] = useState(1);
   const [done, setDone] = useState(false);
@@ -151,7 +151,7 @@ export function QuoteBookingPage() {
             </button>
             <a
               className="btn btn-secondary"
-              href="mailto:info@codefurnance.com"
+              href="mailto:info@codefurnace.com"
             >
               Send By Email
             </a>
@@ -366,7 +366,7 @@ export function QuoteBookingPage() {
           >
             <FiMessageCircle /> Talk To Us Now
           </a>
-          <a className="btn btn-secondary" href="mailto:info@codefurnance.com">
+          <a className="btn btn-secondary" href="mailto:info@codefurnace.com">
             <FiMail /> Send By Email
           </a>
         </div>

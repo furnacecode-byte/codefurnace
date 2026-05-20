@@ -4,12 +4,12 @@ import { useSeo } from "../components/common/useSeo";
 export function ContactPage() {
   useSeo(
     "Contact",
-    "Contact Code Furnance in Narok, Kenya for project consultations and digital transformation.",
+    "Contact Code furnace in Narok, Kenya for project consultations and digital transformation.",
   );
 
   return (
     <section className="section">
-      <h1>Contact CODE FURNANCE</h1>
+      <h1>Contact CODE furnace</h1>
       <p>
         Let’s discuss your project goals and prepare a practical delivery
         roadmap.
@@ -26,7 +26,7 @@ export function ContactPage() {
           <h3>
             <FiMail /> Email
           </h3>
-          <p>info@codefurnance.com</p>
+          <p>info@codefurnace.com</p>
         </article>
         <article className="card">
           <h3>
