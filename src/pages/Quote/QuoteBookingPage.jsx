@@ -2,382 +2,523 @@ import { useMemo, useState } from "react";
 import {
   FiArrowLeft,
   FiArrowRight,
+  FiBox,
   FiCheckCircle,
+  FiClock,
+  FiHeart,
   FiMail,
+  FiMapPin,
   FiMessageCircle,
+  FiPhone,
+  FiSend,
+  FiStar,
+  FiUsers,
 } from "react-icons/fi";
 import { useSeo } from "../../components/common/useSeo";
 
+const steps = [
+  "Business Info",
+  "Project Details",
+  "Requirements",
+  "Review & Submit",
+  "Complete",
+];
+
+const industryOptions = [
+  "Retail & E-commerce",
+  "Hospitality",
+  "Healthcare",
+  "Education",
+  "Real Estate",
+  "Professional Services",
+  "Non-profit",
+  "Other",
+];
+
 const serviceOptions = [
-  "Website",
+  "Website Development",
   "Booking System",
+  "Custom Software",
   "Mobile App",
-  "Software",
   "AI Automation",
-  "SEO",
-  "Branding",
+  "Branding & SEO",
 ];
-const goals = [
-  "Increase sales",
-  "Improve operations",
-  "Automate workflows",
-  "Reach more customers",
-  "Build online presence",
-];
-const timelineOptions = ["Immediately", "1-2 weeks", "1 month", "Flexible"];
+
 const budgetOptions = [
   "Under KES 50,000",
   "KES 50,000 - 150,000",
   "KES 150,000 - 500,000",
   "KES 500,000+",
 ];
-const channels = ["WhatsApp", "Email", "Phone Call", "Zoom Meeting"];
-const addOns = [
-  "M-Pesa integration",
-  "Client login system",
-  "Management dashboard",
-  "Email automation",
-  "Analytics dashboard",
-  "Training session",
-  "Online payment gateway",
-  "Booking system",
-  "Employee management",
-  "Digital marketing",
-  "Branding services",
-  "SEO setup",
-  "WhatsApp automation",
+
+const timelineOptions = [
+  "Immediately",
+  "Within 2 weeks",
+  "Within 1 month",
+  "Flexible",
 ];
 
-const initial = {
+const featureOptions = [
+  "Online payments",
+  "Booking calendar",
+  "Client dashboard",
+  "Admin dashboard",
+  "WhatsApp automation",
+  "SEO setup",
+  "Analytics",
+  "Training",
+];
+
+const initialForm = {
   companyName: "",
   industry: "",
-  businessDescription: "",
-  sells: "",
-  serviceNeed: "",
-  projectGoal: "",
-  hasWebsite: "No",
-  websiteLink: "",
-  issues: "",
-  addOns: [],
-  timeline: "Immediately",
-  budget: "",
-  city: "",
-  channel: "WhatsApp",
   fullName: "",
-  whatsapp: "",
   email: "",
-  decisionMaker: "Yes",
+  phone: "",
+  budget: "",
+  businessDescription: "",
+  service: "",
+  projectGoal: "",
+  timeline: "Immediately",
+  meetingDate: "",
+  meetingTime: "",
+  features: [],
+  notes: "",
 };
 
-const getErrors = (step, data) => {
-  if (step === 1)
-    return [data.companyName, data.industry, data.businessDescription].every(
-      Boolean,
-    );
-  if (step === 2) return [data.serviceNeed, data.projectGoal].every(Boolean);
-  if (step === 4) return Boolean(data.budget);
-  if (step === 5) return Boolean(data.city);
-  if (step === 6)
-    return [data.fullName, data.whatsapp, data.email].every(Boolean);
-  return true;
+const requiredByStep = {
+  1: ["companyName", "industry", "fullName", "email", "phone"],
+  2: ["service", "projectGoal", "timeline"],
+  4: ["meetingDate", "meetingTime"],
 };
+
+function Field({ label, required, children }) {
+  return (
+    <label className="lets-field">
+      <span>
+        {label} {required && <strong>*</strong>}
+      </span>
+      {children}
+    </label>
+  );
+}
+
+function getMessage(form) {
+  const features = form.features.length ? form.features.join(", ") : "None selected";
+  return [
+    "Hello Code Furnace, I would like to book a consultation.",
+    `Name: ${form.fullName}`,
+    `Company: ${form.companyName}`,
+    `Email: ${form.email}`,
+    `Phone: ${form.phone}`,
+    `Industry: ${form.industry}`,
+    `Service: ${form.service}`,
+    `Budget: ${form.budget || "Not selected"}`,
+    `Timeline: ${form.timeline}`,
+    `Meeting: ${form.meetingDate || "Date pending"} at ${form.meetingTime || "Time pending"}`,
+    `Features: ${features}`,
+    `Project goal: ${form.projectGoal}`,
+    `Business: ${form.businessDescription || "Not provided"}`,
+    `Notes: ${form.notes || "None"}`,
+  ].join("\n");
+}
 
 export function QuoteBookingPage() {
   useSeo(
-    "Quote & Booking",
-    "Multi-step project inquiry and booking platform for Code furnace services.",
+    "Let's Talk",
+    "Book a Code Furnace consultation and share your project requirements.",
   );
+
   const [step, setStep] = useState(1);
-  const [done, setDone] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState(() => {
-    const saved = localStorage.getItem("cf-quote-progress");
-    return saved ? JSON.parse(saved) : initial;
+    const saved = localStorage.getItem("cf-lets-talk-progress");
+    return saved ? JSON.parse(saved) : initialForm;
   });
 
-  const progress = useMemo(() => Math.round((step / 6) * 100), [step]);
+  const message = useMemo(() => getMessage(form), [form]);
+  const whatsappUrl = `https://wa.me/254143369440?text=${encodeURIComponent(message)}`;
+  const emailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=furnacecode@gmail.com&su=${encodeURIComponent(
+    "Code Furnace consultation booking",
+  )}&body=${encodeURIComponent(message)}`;
 
   const update = (key, value) => {
     const next = { ...form, [key]: value };
     setForm(next);
-    localStorage.setItem("cf-quote-progress", JSON.stringify(next));
+    localStorage.setItem("cf-lets-talk-progress", JSON.stringify(next));
   };
 
-  const toggleAddon = (value) => {
-    const exists = form.addOns.includes(value);
+  const toggleFeature = (feature) => {
     update(
-      "addOns",
-      exists ? form.addOns.filter((v) => v !== value) : [...form.addOns, value],
+      "features",
+      form.features.includes(feature)
+        ? form.features.filter((item) => item !== feature)
+        : [...form.features, feature],
     );
+  };
+
+  const canContinue = () => {
+    const required = requiredByStep[step] || [];
+    return required.every((key) => String(form[key] || "").trim());
   };
 
   const nextStep = () => {
-    if (!getErrors(step, form)) return;
-    setStep((s) => Math.min(s + 1, 6));
+    if (!canContinue()) return;
+    if (step === 4) {
+      setSubmitted(true);
+      setStep(5);
+      localStorage.removeItem("cf-lets-talk-progress");
+      return;
+    }
+    setStep((current) => Math.min(current + 1, 5));
   };
-
-  const submit = () => {
-    if (!getErrors(6, form)) return;
-    setDone(true);
-    localStorage.removeItem("cf-quote-progress");
-  };
-
-  const summary = `${form.serviceNeed || "Service"} | ${form.budget || "Budget pending"} | ${form.timeline}`;
-
-  if (done) {
-    return (
-      <section className="section">
-        <article className="card confirmation-card">
-          <h1>
-            <FiCheckCircle /> Inquiry Submitted
-          </h1>
-          <p>
-            Thank you. Our team will reach out via {form.channel} to confirm
-            your consultation.
-          </p>
-          <p>
-            <strong>Summary:</strong> {summary}
-          </p>
-          <div className="row gap-sm">
-            <button
-              className="btn btn-primary"
-              type="button"
-              onClick={() => {
-                setDone(false);
-                setStep(1);
-                setForm(initial);
-              }}
-            >
-              Create Another Inquiry
-            </button>
-            <a
-              className="btn btn-secondary"
-              href="https://mail.google.com/mail/?view=cm&fs=1&to=furnacecode@gmail.com"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Send By Email
-            </a>
-          </div>
-        </article>
-      </section>
-    );
-  }
 
   return (
-    <section className="section" id="quote-booking">
-      <div className="section-intro">
-        <h1>Quote / Booking Platform</h1>
-        <p>
-          Choose services, package direction, and send your project inquiry.
-        </p>
-      </div>
+    <section className="section lets-talk-page" id="quote-booking">
+      <div className="lets-talk-shell">
+        <div className="lets-talk-grid">
+          <aside className="lets-talk-sidebar">
+            <p className="lets-pill">
+              <span /> Let's Talk
+            </p>
+            <h1>
+              Let's Build Something <span>Amazing Together.</span>
+            </h1>
+            <p className="lets-lead">
+              Have a project in mind or need expert advice? Share your ideas
+              with us and we'll get back to you within 24 hours.
+            </p>
 
-      <div className="card progress-wrap">
-        <div className="progress-track">
-          <span className={`progress-fill progress-step-${step}`} />
-        </div>
-        <p>Step {step} of 6</p>
-      </div>
-
-      <form className="card quote-form" id="quote-booking-form">
-        {step === 1 && (
-          <section className="quote-step">
-            <h3>01 Business Information</h3>
-            <input
-              placeholder="Company name"
-              value={form.companyName}
-              onChange={(e) => update("companyName", e.target.value)}
-            />
-            <input
-              placeholder="Industry/sector"
-              value={form.industry}
-              onChange={(e) => update("industry", e.target.value)}
-            />
-            <textarea
-              rows="3"
-              placeholder="Describe your business"
-              value={form.businessDescription}
-              onChange={(e) => update("businessDescription", e.target.value)}
-            />
-            <textarea
-              rows="3"
-              placeholder="What products/services do you sell"
-              value={form.sells}
-              onChange={(e) => update("sells", e.target.value)}
-            />
-          </section>
-        )}
-
-        {step === 2 && (
-          <section className="quote-step">
-            <h3>02 Your Need</h3>
-            <select
-              value={form.serviceNeed}
-              onChange={(e) => update("serviceNeed", e.target.value)}
-            >
-              <option value="">What do you need right now?</option>
-              {serviceOptions.map((o) => (
-                <option key={o}>{o}</option>
-              ))}
-            </select>
-            <select
-              value={form.projectGoal}
-              onChange={(e) => update("projectGoal", e.target.value)}
-            >
-              <option value="">Main project goal</option>
-              {goals.map((o) => (
-                <option key={o}>{o}</option>
-              ))}
-            </select>
-            <select
-              value={form.hasWebsite}
-              onChange={(e) => update("hasWebsite", e.target.value)}
-            >
-              <option>No</option>
-              <option>Yes</option>
-            </select>
-            <input
-              placeholder="Existing website link"
-              value={form.websiteLink}
-              onChange={(e) => update("websiteLink", e.target.value)}
-            />
-            <textarea
-              rows="3"
-              placeholder="What is not working currently?"
-              value={form.issues}
-              onChange={(e) => update("issues", e.target.value)}
-            />
-          </section>
-        )}
-
-        {step === 3 && (
-          <section className="quote-step">
-            <h3>03 Add-ons</h3>
-            <div className="addons-grid">
-              {addOns.map((item) => (
-                <label key={item} className="addon-item">
-                  <input
-                    type="checkbox"
-                    checked={form.addOns.includes(item)}
-                    onChange={() => toggleAddon(item)}
-                  />{" "}
-                  {item}
-                </label>
-              ))}
+            <div className="lets-contact-card">
+              <a className="lets-contact-item" href="tel:+254143369440">
+                <span className="lets-icon">
+                  <FiPhone />
+                </span>
+                <span>
+                  <strong>Call Us</strong>
+                  +254 143 369440
+                </span>
+              </a>
+              <a
+                className="lets-contact-item"
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=furnacecode@gmail.com"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span className="lets-icon">
+                  <FiMail />
+                </span>
+                <span>
+                  <strong>Email Us</strong>
+                  furnacecode@gmail.com
+                </span>
+              </a>
+              <a
+                className="lets-contact-item"
+                href="https://www.google.com/maps/search/-1.099076,+35.861809"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span className="lets-icon">
+                  <FiMapPin />
+                </span>
+                <span>
+                  <strong>Our Location</strong>
+                  Narok, Kenya
+                </span>
+              </a>
+              <div className="lets-contact-item">
+                <span className="lets-icon">
+                  <FiClock />
+                </span>
+                <span>
+                  <strong>Working Hours</strong>
+                  Mon - Fri: 8:00 AM - 6:00 PM
+                </span>
+              </div>
             </div>
-          </section>
-        )}
 
-        {step === 4 && (
-          <section className="quote-step">
-            <h3>04 Timeline & Budget</h3>
-            <select
-              value={form.timeline}
-              onChange={(e) => update("timeline", e.target.value)}
-            >
-              {timelineOptions.map((o) => (
-                <option key={o}>{o}</option>
-              ))}
-            </select>
-            <select
-              value={form.budget}
-              onChange={(e) => update("budget", e.target.value)}
-            >
-              <option value="">Estimated budget</option>
-              {budgetOptions.map((o) => (
-                <option key={o}>{o}</option>
-              ))}
-            </select>
-          </section>
-        )}
+            <div className="lets-consult-card">
+              <div className="lets-cube" aria-hidden="true">
+                <FiBox />
+              </div>
+              <div>
+                <h2>Not Sure Where to Start?</h2>
+                <p>
+                  Book a free consultation call with our experts and bring your
+                  ideas to life.
+                </p>
+                <a className="lets-outline-btn" href={whatsappUrl} target="_blank" rel="noreferrer">
+                  Schedule a Call <FiArrowRight />
+                </a>
+              </div>
+            </div>
+          </aside>
 
-        {step === 5 && (
-          <section className="quote-step">
-            <h3>05 Location & Contact</h3>
-            <input
-              placeholder="City of operation"
-              value={form.city}
-              onChange={(e) => update("city", e.target.value)}
-            />
-            <select
-              value={form.channel}
-              onChange={(e) => update("channel", e.target.value)}
-            >
-              {channels.map((o) => (
-                <option key={o}>{o}</option>
-              ))}
-            </select>
-          </section>
-        )}
+          <div className="lets-talk-main">
+            <form className="lets-form-card" id="quote-booking-form">
+              <div className="lets-steps" aria-label="Booking progress">
+                {steps.map((label, index) => {
+                  const number = index + 1;
+                  const active = number <= step;
+                  return (
+                    <div className={active ? "lets-step active" : "lets-step"} key={label}>
+                      <span>{number}</span>
+                      <p>{label}</p>
+                    </div>
+                  );
+                })}
+              </div>
 
-        {step === 6 && (
-          <section className="quote-step">
-            <h3>06 Client Details</h3>
-            <input
-              placeholder="Full name"
-              value={form.fullName}
-              onChange={(e) => update("fullName", e.target.value)}
-            />
-            <input
-              placeholder="WhatsApp number (+254...)"
-              value={form.whatsapp}
-              onChange={(e) => update("whatsapp", e.target.value)}
-            />
-            <input
-              type="email"
-              placeholder="Email"
-              value={form.email}
-              onChange={(e) => update("email", e.target.value)}
-            />
-            <select
-              value={form.decisionMaker}
-              onChange={(e) => update("decisionMaker", e.target.value)}
-            >
-              <option>Yes</option>
-              <option>No</option>
-            </select>
-          </section>
-        )}
+              {step === 1 && (
+                <section className="lets-form-section">
+                  <h2>Tell us about your business</h2>
+                  <p>This helps us understand your needs better.</p>
+                  <div className="lets-form-grid">
+                    <Field label="Company Name" required>
+                      <input
+                        value={form.companyName}
+                        onChange={(event) => update("companyName", event.target.value)}
+                        placeholder="Enter your company name"
+                      />
+                    </Field>
+                    <Field label="Industry / Sector" required>
+                      <select
+                        value={form.industry}
+                        onChange={(event) => update("industry", event.target.value)}
+                      >
+                        <option value="">Select your industry</option>
+                        {industryOptions.map((option) => (
+                          <option key={option}>{option}</option>
+                        ))}
+                      </select>
+                    </Field>
+                    <Field label="Your Name" required>
+                      <input
+                        value={form.fullName}
+                        onChange={(event) => update("fullName", event.target.value)}
+                        placeholder="Enter your full name"
+                      />
+                    </Field>
+                    <Field label="Email Address" required>
+                      <input
+                        type="email"
+                        value={form.email}
+                        onChange={(event) => update("email", event.target.value)}
+                        placeholder="Enter your email address"
+                      />
+                    </Field>
+                    <Field label="Phone Number" required>
+                      <input
+                        value={form.phone}
+                        onChange={(event) => update("phone", event.target.value)}
+                        placeholder="+254 700 000000"
+                      />
+                    </Field>
+                    <Field label="Project Budget">
+                      <select
+                        value={form.budget}
+                        onChange={(event) => update("budget", event.target.value)}
+                      >
+                        <option value="">Select budget range</option>
+                        {budgetOptions.map((option) => (
+                          <option key={option}>{option}</option>
+                        ))}
+                      </select>
+                    </Field>
+                  </div>
+                  <Field label="Describe your business">
+                    <textarea
+                      rows="4"
+                      maxLength="500"
+                      value={form.businessDescription}
+                      onChange={(event) =>
+                        update("businessDescription", event.target.value)
+                      }
+                      placeholder="Tell us about your company, goals, and what you do..."
+                    />
+                    <em>{form.businessDescription.length} / 500</em>
+                  </Field>
+                </section>
+              )}
 
-        <div className="row gap-sm wrap">
-          <button
-            className="btn btn-secondary"
-            type="button"
-            onClick={() => setStep((s) => Math.max(1, s - 1))}
-          >
-            <FiArrowLeft /> Back
-          </button>
-          {step < 6 ? (
-            <button
-              className="btn btn-primary"
-              type="button"
-              onClick={nextStep}
-            >
-              Continue <FiArrowRight />
-            </button>
-          ) : (
-            <button className="btn btn-primary" type="button" onClick={submit}>
-              Submit Project Inquiry
-            </button>
-          )}
-          <a
-            className="btn btn-secondary"
-            href="https://wa.me/254700123456"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <FiMessageCircle /> Talk To Us Now
-          </a>
-          <a
-            className="btn btn-secondary"
-            href="https://mail.google.com/mail/?view=cm&fs=1&to=furnacecode@gmail.com"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <FiMail /> Send By Email
-          </a>
+              {step === 2 && (
+                <section className="lets-form-section">
+                  <h2>Project details</h2>
+                  <p>Tell us what you want to build and when you need it.</p>
+                  <div className="lets-form-grid">
+                    <Field label="Service Needed" required>
+                      <select
+                        value={form.service}
+                        onChange={(event) => update("service", event.target.value)}
+                      >
+                        <option value="">Choose a service</option>
+                        {serviceOptions.map((option) => (
+                          <option key={option}>{option}</option>
+                        ))}
+                      </select>
+                    </Field>
+                    <Field label="Timeline" required>
+                      <select
+                        value={form.timeline}
+                        onChange={(event) => update("timeline", event.target.value)}
+                      >
+                        {timelineOptions.map((option) => (
+                          <option key={option}>{option}</option>
+                        ))}
+                      </select>
+                    </Field>
+                  </div>
+                  <Field label="Project Goal" required>
+                    <textarea
+                      rows="5"
+                      value={form.projectGoal}
+                      onChange={(event) => update("projectGoal", event.target.value)}
+                      placeholder="Describe the result you want from this project..."
+                    />
+                  </Field>
+                </section>
+              )}
+
+              {step === 3 && (
+                <section className="lets-form-section">
+                  <h2>Requirements</h2>
+                  <p>Select features you may need. We will confirm details on the call.</p>
+                  <div className="lets-feature-grid">
+                    {featureOptions.map((feature) => (
+                      <label className="lets-feature" key={feature}>
+                        <input
+                          type="checkbox"
+                          checked={form.features.includes(feature)}
+                          onChange={() => toggleFeature(feature)}
+                        />
+                        <span>{feature}</span>
+                      </label>
+                    ))}
+                  </div>
+                  <Field label="Extra Notes">
+                    <textarea
+                      rows="4"
+                      value={form.notes}
+                      onChange={(event) => update("notes", event.target.value)}
+                      placeholder="Any integrations, references, competitors, or special requirements?"
+                    />
+                  </Field>
+                </section>
+              )}
+
+              {step === 4 && (
+                <section className="lets-form-section">
+                  <h2>Review & submit</h2>
+                  <p>Choose a preferred consultation slot and confirm your request.</p>
+                  <div className="lets-form-grid">
+                    <Field label="Preferred Date" required>
+                      <input
+                        type="date"
+                        value={form.meetingDate}
+                        onChange={(event) => update("meetingDate", event.target.value)}
+                      />
+                    </Field>
+                    <Field label="Preferred Time" required>
+                      <input
+                        type="time"
+                        value={form.meetingTime}
+                        onChange={(event) => update("meetingTime", event.target.value)}
+                      />
+                    </Field>
+                  </div>
+                  <div className="lets-review">
+                    <p><strong>Client:</strong> {form.fullName || "Not added"}</p>
+                    <p><strong>Company:</strong> {form.companyName || "Not added"}</p>
+                    <p><strong>Service:</strong> {form.service || "Not selected"}</p>
+                    <p><strong>Budget:</strong> {form.budget || "Not selected"}</p>
+                    <p><strong>Timeline:</strong> {form.timeline}</p>
+                  </div>
+                </section>
+              )}
+
+              {step === 5 && (
+                <section className="lets-form-section lets-complete">
+                  <FiCheckCircle />
+                  <h2>{submitted ? "Booking request ready" : "Complete your booking"}</h2>
+                  <p>
+                    Send your booking details to Code Furnace on WhatsApp or
+                    email so our team can confirm your consultation time.
+                  </p>
+                  <div className="lets-complete-actions">
+                    <a className="lets-primary-btn" href={whatsappUrl} target="_blank" rel="noreferrer">
+                      <FiMessageCircle /> Send on WhatsApp
+                    </a>
+                    <a className="lets-outline-btn" href={emailUrl} target="_blank" rel="noreferrer">
+                      <FiMail /> Send by Email
+                    </a>
+                  </div>
+                </section>
+              )}
+
+              <div className="lets-form-footer">
+                <button
+                  className="lets-outline-btn"
+                  type="button"
+                  onClick={() => setStep((current) => Math.max(current - 1, 1))}
+                  disabled={step === 1}
+                >
+                  <FiArrowLeft /> Back
+                </button>
+                <span>Step {step} of 5</span>
+                {step < 5 ? (
+                  <button
+                    className="lets-primary-btn"
+                    type="button"
+                    onClick={nextStep}
+                  >
+                    {step === 4 ? "Submit Booking" : "Continue"} <FiArrowRight />
+                  </button>
+                ) : (
+                  <button
+                    className="lets-outline-btn"
+                    type="button"
+                    onClick={() => {
+                      setSubmitted(false);
+                      setStep(1);
+                      setForm(initialForm);
+                      localStorage.removeItem("cf-lets-talk-progress");
+                    }}
+                  >
+                    Start New Booking <FiSend />
+                  </button>
+                )}
+              </div>
+            </form>
+
+            <div className="lets-stats">
+              <div>
+                <FiBox />
+                <strong>120+</strong>
+                <span>Projects Delivered</span>
+              </div>
+              <div>
+                <FiHeart />
+                <strong>98%</strong>
+                <span>Client Satisfaction</span>
+              </div>
+              <div>
+                <FiUsers />
+                <strong>50+</strong>
+                <span>Tech Experts</span>
+              </div>
+              <div>
+                <FiStar />
+                <strong>5+</strong>
+                <span>Years of Excellence</span>
+              </div>
+            </div>
+          </div>
         </div>
-      </form>
+        <a className="lets-ai" href={whatsappUrl} target="_blank" rel="noreferrer">
+          <FiMessageCircle /> Ask AI
+        </a>
+      </div>
     </section>
   );
 }

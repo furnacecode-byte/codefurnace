@@ -52,7 +52,7 @@ export function Navbar() {
           <NavLink to="/contact" className="btn btn-secondary" onClick={() => setOpen(false)}>
             Contact Us
           </NavLink>
-          <NavLink to="/quote-booking" className="btn btn-primary" onClick={() => setOpen(false)}>
+          <NavLink to="/lets-talk" className="btn btn-primary" onClick={() => setOpen(false)}>
             Let's Talk
           </NavLink>
         </div>
@@ -62,7 +62,7 @@ export function Navbar() {
         <NavLink to="/contact" className="btn btn-secondary">
           Contact Us
         </NavLink>
-        <NavLink to="/quote-booking" className="btn btn-primary desktop-nav-cta">
+        <NavLink to="/lets-talk" className="btn btn-primary desktop-nav-cta">
           Let's Talk
         </NavLink>
         <div className="nav-controls">
