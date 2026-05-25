@@ -11,12 +11,14 @@ export function ServicePageTemplate({
   showPricingButton = true,
 }) {
   return (
-    <section className="section service-overview-page">
+    <section className="section service-overview-page" id="service-overview">
       <Link className="btn btn-secondary" to="/services">
         <FiArrowLeft /> Back to Services
       </Link>
       <SectionIntro title={title} text={subtitle} />
-      <FeatureGrid items={features} />
+      <div id="service-features">
+        <FeatureGrid items={features} />
+      </div>
       <div className="row gap-sm service-overview-actions">
         {showPricingButton && pricingRoute && (
           <Link className="btn btn-primary" to={pricingRoute}>
@@ -41,7 +43,7 @@ export function ServicePackagesTemplate({
 }) {
   return (
     <>
-      <section className="section alt">
+      <section className="section alt" id="service-packages">
         <SectionIntro title={title} text={subtitle} />
         <PricingCards plans={plans} ctaLabel="Choose Package" />
       </section>

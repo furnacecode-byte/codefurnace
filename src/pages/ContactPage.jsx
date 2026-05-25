@@ -8,7 +8,7 @@ export function ContactPage() {
   );
 
   return (
-    <section className="section">
+    <section className="section" id="contact-info">
       <h1>Contact CODE furnace</h1>
       <p>
         Let’s discuss your project goals and prepare a practical delivery
@@ -16,28 +16,33 @@ export function ContactPage() {
       </p>
 
       <div className="grid cols-3">
-        <article className="card">
+        <a
+          className="card"
+          href="https://www.google.com/maps/search/-1.099076,+35.861809"
+          target="_blank"
+          rel="noreferrer"
+        >
           <h3>
             <FiMapPin /> Location
           </h3>
           <p>Narok, Kenya</p>
-        </article>
-        <article className="card">
+        </a>
+        <a className="card" href="https://mail.google.com/mail/?view=cm&fs=1&to=furnacecode@gmail.com" target="_blank" rel="noreferrer">
           <h3>
             <FiMail /> Email
           </h3>
-          <p>info@codefurnace.com</p>
-        </article>
-        <article className="card">
+          <p>furnacecode@gmail.com</p>
+        </a>
+        <a className="card" href="tel:+254143369440">
           <h3>
             <FiPhone /> Phone
           </h3>
-          <p>+254 700 123 456</p>
-        </article>
+          <p>+254 143 369440</p>
+        </a>
       </div>
 
       <div className="section section-tight">
-        <form className="contact-form card">
+        <form className="contact-form card" id="contact-form">
           <input placeholder="Full name" />
           <input placeholder="Company name" />
           <input placeholder="Email address" type="email" />
@@ -47,9 +52,14 @@ export function ContactPage() {
             <button className="btn btn-primary" type="button">
               Send Inquiry
             </button>
-            <button className="btn btn-secondary" type="button">
+            <a
+              className="btn btn-secondary"
+              href="https://wa.me/254143369440"
+              target="_blank"
+              rel="noreferrer"
+            >
               <FiMessageCircle /> WhatsApp Us
-            </button>
+            </a>
           </div>
         </form>
       </div>
@@ -57,8 +67,8 @@ export function ContactPage() {
       <div className="card map-wrap">
         <h3>Find Us</h3>
         <iframe
-          title="Narok map"
-          src="https://maps.google.com/maps?q=Narok%2C%20Kenya&t=&z=13&ie=UTF8&iwloc=&output=embed"
+          title="CODE furnace Location"
+          src="https://maps.google.com/maps?q=-1.099076,35.861809&t=&z=15&ie=UTF8&iwloc=&output=embed"
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
         />
@@ -66,3 +76,4 @@ export function ContactPage() {
     </section>
   );
 }
+

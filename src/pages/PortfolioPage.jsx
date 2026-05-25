@@ -90,7 +90,7 @@ export function ProjectsPage() {
   );
 
   return (
-    <section className="section projects-hero">
+    <section className="section projects-hero" id="projects-list">
       <div className="projects-breadcrumb">
         <Link to="/">Home</Link>
         <span>›</span>

@@ -175,7 +175,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="home-section home-light reveal-on-scroll">
+      <section className="home-section home-light reveal-on-scroll" id="ai-services">
         <div className="home-heading-row">
           <div>
             <p className="home-kicker">WHAT WE DO</p>

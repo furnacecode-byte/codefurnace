@@ -6,7 +6,7 @@ export function CareersPage() {
     "Join Code furnace and build modern digital solutions with a high-performance team.",
   );
   return (
-    <section className="section">
+    <section className="section" id="open-roles">
       <h1>Careers</h1>
       <p>
         We are building a team of ambitious designers, engineers, and digital

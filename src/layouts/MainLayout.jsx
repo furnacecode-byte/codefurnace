@@ -2,13 +2,24 @@
 import { Outlet, useLocation } from "react-router-dom";
 import { Navbar } from "../components/navbar/Navbar";
 import { Footer } from "../components/footer/Footer";
+import { AiAssistant } from "../components/ai-assistant/AiAssistant";
 
 export function MainLayout() {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
 
   useEffect(() => {
+    if (hash) {
+      window.requestAnimationFrame(() => {
+        const target = document.querySelector(hash);
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      });
+      return;
+    }
+
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-  }, [pathname]);
+  }, [pathname, hash]);
 
   return (
     <div className="site-shell">
@@ -17,6 +28,7 @@ export function MainLayout() {
         <Outlet />
       </main>
       <Footer />
+      <AiAssistant />
     </div>
   );
 }

@@ -52,16 +52,12 @@ export function Navbar() {
             {label}
           </NavLink>
         ))}
-        <NavLink
-          to="/quote-booking"
-          className="btn btn-primary mobile-nav-cta"
-          onClick={() => setOpen(false)}
-        >
-          Let's Talk
-        </NavLink>
       </nav>
 
       <div className="nav-actions">
+        <NavLink to="/contact" className="btn btn-secondary">
+          Contact Us
+        </NavLink>
         <NavLink
           to="/quote-booking"
           className="btn btn-primary desktop-nav-cta"

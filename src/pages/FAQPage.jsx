@@ -8,7 +8,7 @@ export function FAQPage() {
     "Common questions on timelines, support, hosting, payments, and revisions.",
   );
   return (
-    <section className="section">
+    <section className="section" id="faq-section">
       <SectionIntro
         title="Frequently Asked Questions"
         text="Everything you need before project kickoff."

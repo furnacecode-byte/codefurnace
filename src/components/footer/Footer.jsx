@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+﻿import { Link } from "react-router-dom";
 import {
   FiLinkedin,
   FiTwitter,
@@ -6,6 +6,7 @@ import {
   FiMail,
   FiPhone,
   FiMapPin,
+  FiMessageCircle,
 } from "react-icons/fi";
 
 export function Footer() {
@@ -72,13 +73,27 @@ export function Footer() {
         <div>
           <h4>Contact</h4>
           <p>
-            <FiMail /> info@codefurnace.com
+            <FiMail />{" "}
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=furnacecode@gmail.com" target="_blank" rel="noreferrer">furnacecode@gmail.com</a>
           </p>
           <p>
-            <FiPhone /> +254 700 123 456
+            <FiPhone /> <a href="tel:+254143369440">+254 143 369440</a>
           </p>
           <p>
-            <FiMapPin /> Narok, Kenya
+            <FiMapPin />{" "}
+            <a
+              href="https://www.google.com/maps/search/-1.099076,+35.861809"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Narok, Kenya
+            </a>
+          </p>
+          <p>
+            <FiMessageCircle />{" "}
+            <a href="https://wa.me/254143369440" target="_blank" rel="noreferrer">
+              WhatsApp
+            </a>
           </p>
           <p>
             <Link to="/quote-booking">Book Consultation</Link>
@@ -87,12 +102,13 @@ export function Footer() {
       </div>
 
       <div className="copyright-row">
-        <p>© 2026 Code furnace. All rights reserved.</p>
+        <p>Â© 2026 Code furnace. All rights reserved.</p>
         <p>
-          <Link to="/privacy-policy">Privacy Policy</Link> ·{" "}
+          <Link to="/privacy-policy">Privacy Policy</Link> Â·{" "}
           <Link to="/terms">Terms & Conditions</Link>
         </p>
       </div>
     </footer>
   );
 }
+

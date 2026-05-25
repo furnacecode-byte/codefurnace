@@ -151,7 +151,9 @@ export function QuoteBookingPage() {
             </button>
             <a
               className="btn btn-secondary"
-              href="mailto:info@codefurnace.com"
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=furnacecode@gmail.com"
+              target="_blank"
+              rel="noreferrer"
             >
               Send By Email
             </a>
@@ -162,7 +164,7 @@ export function QuoteBookingPage() {
   }
 
   return (
-    <section className="section">
+    <section className="section" id="quote-booking">
       <div className="section-intro">
         <h1>Quote / Booking Platform</h1>
         <p>
@@ -177,7 +179,7 @@ export function QuoteBookingPage() {
         <p>Step {step} of 6</p>
       </div>
 
-      <form className="card quote-form">
+      <form className="card quote-form" id="quote-booking-form">
         {step === 1 && (
           <section className="quote-step">
             <h3>01 Business Information</h3>
@@ -366,7 +368,12 @@ export function QuoteBookingPage() {
           >
             <FiMessageCircle /> Talk To Us Now
           </a>
-          <a className="btn btn-secondary" href="mailto:info@codefurnace.com">
+          <a
+            className="btn btn-secondary"
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=furnacecode@gmail.com"
+            target="_blank"
+            rel="noreferrer"
+          >
             <FiMail /> Send By Email
           </a>
         </div>

@@ -17,7 +17,7 @@ export function AboutPage() {
 
   return (
     <>
-      <section className="section">
+      <section className="section" id="about-company">
         <SectionIntro
           title="About CODE furnace"
           text="We are a digital solutions company based in Narok, Kenya, helping businesses grow through modern technology, automation, and scalable digital systems."
@@ -53,7 +53,7 @@ export function AboutPage() {
         </div>
       </section>
 
-      <section className="section alt">
+      <section className="section alt" id="technologies">
         <SectionIntro
           title="Technology Stack"
           text="React, Node.js, cloud platforms, automation systems, and enterprise integrations."

@@ -242,7 +242,7 @@ export function PricingPage() {
   const rows = useMemo(() => matrix[active], [active]);
 
   return (
-    <section className="section">
+    <section className="section" id="pricing-packages">
       <SectionIntro
         title="Pricing"
         text="Compare plans, pick your package, and launch with confidence."
