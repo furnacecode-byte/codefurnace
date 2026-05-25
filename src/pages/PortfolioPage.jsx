@@ -1,6 +1,7 @@
 ﻿import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useSeo } from "../components/common/useSeo";
+import projectsHeroImage from "../assets/projects hero.png";
 import "./PortfolioPage.css";
 
 const filters = [
@@ -91,20 +92,38 @@ export function ProjectsPage() {
 
   return (
     <section className="section projects-hero" id="projects-list">
-      <div className="projects-breadcrumb">
-        <Link to="/">Home</Link>
-        <span>›</span>
-        <span>Projects</span>
-      </div>
+      <div className="projects-hero-shell reveal">
+        <div className="projects-hero-left">
+          <div className="projects-breadcrumb">
+            <Link to="/">Home</Link>
+            <span>›</span>
+            <span>Projects</span>
+          </div>
 
-      <div className="section-intro">
-        <p className="eyebrow">Our Work</p>
-        <h1>Our Projects</h1>
-        <p className="lead">
-          Explore premium digital product development, enterprise systems,
-          mobile experiences, and UI/UX work delivered for forward-looking
-          businesses.
-        </p>
+          <div className="section-intro">
+            <p className="eyebrow">Our Work</p>
+            <h1>
+              Our Projects.
+              <br />
+              Built for <span className="gradient-word">Impact.</span>
+            </h1>
+            <p className="lead">
+              Explore a selection of impactful digital solutions, crafted with
+              expertise and built to drive real business outcomes.
+            </p>
+          </div>
+        </div>
+
+        <div className="projects-hero-right" aria-hidden="true">
+          <img
+            src={projectsHeroImage}
+            alt="Code Furnace projects showcase"
+            className="projects-hero-image"
+            loading="eager"
+            decoding="async"
+          />
+          <div className="projects-hero-glow" />
+        </div>
       </div>
 
       <div className="projects-filter-bar">
@@ -121,17 +140,18 @@ export function ProjectsPage() {
       </div>
 
       <div className="projects-grid">
-        {visibleProjects.map((project) => (
+        {visibleProjects.map((project, index) => (
           <article className="project-card" key={project.title}>
             <div className="project-card-content">
               <span className="project-card-category">{project.label}</span>
+              <div className={`project-thumb project-thumb-${(index % 6) + 1}`} />
               <h3>{project.title}</h3>
               <p>{project.text}</p>
               <p>
                 <strong>Tech stack:</strong> {project.stack}
               </p>
               <div className="project-card-footer">
-                <span>View Case Study</span>
+                <span>View Case Study →</span>
                 <Link to="/quote-booking">Start a Project</Link>
               </div>
             </div>
@@ -143,6 +163,7 @@ export function ProjectsPage() {
         <div>
           <p>Have a project in mind?</p>
           <h2>Let&apos;s build something great together.</h2>
+          <p>We turn ideas into powerful digital solutions.</p>
         </div>
         <Link to="/quote-booking" className="btn btn-primary">
           Start a Project
