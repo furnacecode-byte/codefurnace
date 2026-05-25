@@ -50,9 +50,9 @@
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: minmax(0, 0.92fr) minmax(430px, 1.08fr);
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 0.92fr);
   align-items: center;
-  gap: clamp(1.4rem, 4vw, 3.5rem);
+  gap: clamp(1.5rem, 4vw, 3rem);
 }
 
 .home-hero-copy {
@@ -125,29 +125,35 @@
 
 .home-hero-art {
   position: relative;
-  min-height: clamp(320px, 34vw, 520px);
+  width: min(100%, 620px);
+  min-height: clamp(280px, 30vw, 430px);
+  justify-self: end;
   border-radius: 16px;
   isolation: isolate;
+  overflow: hidden;
+  opacity: 0.96;
 }
 
 .home-hero-art::after {
   content: "";
   position: absolute;
-  inset: 8% 2% 4% 0;
+  inset: 12% 5% 8%;
   z-index: -1;
   border-radius: 999px;
-  background: radial-gradient(circle, rgba(255, 104, 17, 0.28), transparent 62%);
-  filter: blur(28px);
+  background: radial-gradient(circle, rgba(255, 104, 17, 0.24), transparent 64%);
+  filter: blur(24px);
 }
 
 .home-hero-art img {
-  width: 100%;
-  height: 100%;
+  width: auto;
+  height: 50%;
   min-height: inherit;
   display: block;
   object-fit: contain;
-  object-position: center;
-  filter: drop-shadow(0 28px 52px rgba(255, 104, 17, 0.22));
+  object-position: center right;
+  transform: scale(0.92);
+  filter: drop-shadow(0 22px 42px rgba(255, 104, 17, 0.2));
+  mask-image: radial-gradient(circle at 58% 48%, #000 0 56%, rgba(0, 0, 0, 0.62) 74%, transparent 100%);
 }
 
 .home-trusted {
@@ -538,7 +544,14 @@
   }
 
   .home-hero-art {
-    min-height: 360px;
+    width: min(100%, 680px);
+    min-height: 340px;
+    justify-self: center;
+    margin-top: 0.5rem;
+  }
+
+  .home-hero-art img {
+    object-position: center;
   }
 
   .home-services-grid {
@@ -578,7 +591,13 @@
   }
 
   .home-hero-art {
-    min-height: 260px;
+    min-height: 230px;
+    margin-top: 0.25rem;
+    opacity: 0.86;
+  }
+
+  .home-hero-art img {
+    transform: scale(0.86);
   }
 
   .home-trusted-row,

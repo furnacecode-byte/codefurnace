@@ -27,6 +27,7 @@ import {
   SiTypescript,
 } from "react-icons/si";
 import { FaAws } from "react-icons/fa";
+import heroImage from "../assets/hero_images.png";
 import { useSeo } from "../components/common/useSeo";
 
 const trustedBrands = [
@@ -215,7 +216,7 @@ export function HomePage() {
           </div>
 
           <div className="home-hero-art">
-            <img src="/images/hero_images.png" alt="Glowing digital solution cubes" />
+            <img src={heroImage} alt="Glowing digital solution cubes" />
           </div>
         </div>
 
