@@ -2,67 +2,121 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   FiArrowRight,
-  FiCode,
-  FiMonitor,
-  FiSmartphone,
-  FiPenTool,
-  FiCpu,
-  FiCloud,
-  FiCheckCircle,
-  FiUsers,
   FiAward,
-  FiBriefcase,
+  FiBox,
+  FiCamera,
+  FiCheckCircle,
+  FiCloud,
+  FiCode,
+  FiGitBranch,
+  FiMonitor,
+  FiPenTool,
+  FiSmartphone,
   FiTrendingUp,
+  FiUsers,
 } from "react-icons/fi";
+import {
+  SiDocker,
+  SiFigma,
+  SiMongodb,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiPostgresql,
+  SiPython,
+  SiReact,
+  SiTypescript,
+} from "react-icons/si";
+import { FaAws } from "react-icons/fa";
 import { useSeo } from "../components/common/useSeo";
 
 const trustedBrands = [
-  "techverse",
-  "ideabloom",
-  "startify",
-  "cloudmax",
-  "devstack",
-  "pixeldash",
+  { name: "techverse", icon: FiBox },
+  { name: "ideabloom", icon: FiGitBranch },
+  { name: "startify", icon: FiAward },
+  { name: "cloudmax", icon: FiCamera },
+  { name: "devstack", icon: FiCode },
+  { name: "pixeldash", icon: FiGitBranch },
 ];
 
 const services = [
   {
+    title: "Product Engineering",
+    icon: FiMonitor,
+    link: "/services/software-development",
+    text: "We build robust, scalable products using modern technologies and best practices.",
+  },
+  {
     title: "Web Development",
     icon: FiMonitor,
-    link: "/services/web-development",
+    link: "/services/website-development",
+    text: "High-performance websites and web applications crafted for growth and engagement.",
   },
   {
-    title: "Mobile App Development",
+    title: "Mobile Development",
     icon: FiSmartphone,
     link: "/services/mobile-apps",
+    text: "Native and cross-platform mobile apps that deliver seamless user experiences.",
   },
   {
-    title: "SaaS Platforms",
-    icon: FiCode,
-    link: "/services/software-development",
+    title: "Cloud & DevOps",
+    icon: FiCloud,
+    link: "/quote-booking",
+    text: "Scalable cloud solutions and DevOps practices that ensure reliability and speed.",
   },
-  { title: "UI/UX Design", icon: FiPenTool, link: "/quote-booking" },
-  { title: "AI Automation", icon: FiCpu, link: "/services/ai-automation" },
-  { title: "Cloud & DevOps", icon: FiCloud, link: "/quote-booking" },
   {
-    title: "ERP/POS Systems",
-    icon: FiBriefcase,
-    link: "/services/software-development",
+    title: "UI/UX Design",
+    icon: FiPenTool,
+    link: "/quote-booking",
+    text: "User-centered designs that combine aesthetics with usability to drive results.",
   },
 ];
 
 const statCards = [
   { value: 120, suffix: "+", label: "Projects Delivered", icon: FiTrendingUp },
-  { value: 80, suffix: "+", label: "Happy Clients", icon: FiUsers },
-  { value: 5, suffix: "+", label: "Years Experience", icon: FiAward },
-  { value: 99, suffix: "%", label: "Client Satisfaction", icon: FiCheckCircle },
+  { value: 98, suffix: "%", label: "Client Satisfaction", icon: FiUsers },
+  { value: 50, suffix: "+", label: "Tech Experts", icon: FiAward },
+  { value: 5, suffix: "+", label: "Years of Excellence", icon: FiCheckCircle },
 ];
 
-const projects = [
-  { name: "FinDash", type: "Finance Dashboard Platform" },
-  { name: "Learnify", type: "E-learning Platform" },
-  { name: "EstatePro", type: "Real Estate Marketplace" },
-  { name: "MediTrack", type: "Healthcare Management System" },
+const techStack = [
+  { label: "React", icon: SiReact },
+  { label: "Next.js", icon: SiNextdotjs },
+  { label: "Node.js", icon: SiNodedotjs },
+  { label: "TypeScript", icon: SiTypescript },
+  { label: "Python", icon: SiPython },
+  { label: "AWS", icon: FaAws },
+  { label: "Docker", icon: SiDocker },
+  { label: "PostgreSQL", icon: SiPostgresql },
+  { label: "MongoDB", icon: SiMongodb },
+  { label: "Figma", icon: SiFigma },
+];
+
+const processSteps = [
+  {
+    step: "01",
+    title: "Discover",
+    text: "We understand your goals, challenges, and requirements.",
+  },
+  {
+    step: "02",
+    title: "Plan",
+    text: "We define the roadmap, architecture, and strategy.",
+  },
+  {
+    step: "03",
+    title: "Build",
+    text: "We design, develop, and test with quality and precision.",
+  },
+  {
+    step: "04",
+    title: "Deploy",
+    text: "We deliver, deploy, and ensure everything runs smoothly.",
+  },
+  {
+    step: "05",
+    title: "Support",
+    text: "We provide ongoing support and continuous improvement.",
+  },
 ];
 
 function Counter({ target, suffix = "", start }) {
@@ -137,7 +191,7 @@ export function HomePage() {
   }, []);
 
   return (
-    <>
+    <div className="home-page">
       <section className="home-hero reveal-on-scroll">
         <div className="home-hero-grid">
           <div className="home-hero-copy">
@@ -148,8 +202,7 @@ export function HomePage() {
               Digital <span>Solutions</span>
             </h1>
             <p>
-              We help businesses build secure, scalable, and high-performance
-              software products with modern engineering and thoughtful design.
+              We help businesses build secure, scalable, and high-performance software products with modern engineering and thoughtful design.
             </p>
             <div className="home-hero-actions">
               <Link to="/quote-booking" className="btn btn-primary">
@@ -160,30 +213,36 @@ export function HomePage() {
               </Link>
             </div>
           </div>
-          <div className="home-hero-art" aria-hidden="true">
-            <div className="cube-grid" />
+
+          <div className="home-hero-art">
+            <img src="/images/hero_images.png" alt="Glowing digital solution cubes" />
+          </div>
+        </div>
+
+        <div className="home-trusted">
+          <p>TRUSTED BY INNOVATIVE COMPANIES</p>
+          <div className="home-trusted-row">
+            {trustedBrands.map((brand) => {
+              const Icon = brand.icon;
+              return (
+                <span key={brand.name}>
+                  <Icon />
+                  {brand.name}
+                </span>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      <section className="home-trusted reveal-on-scroll">
-        <p>TRUSTED BY INNOVATIVE COMPANIES</p>
-        <div className="home-trusted-row">
-          {trustedBrands.map((brand) => (
-            <span key={brand}>{brand}</span>
-          ))}
-        </div>
-      </section>
-
-      <section className="home-section home-light reveal-on-scroll" id="ai-services">
-        <div className="home-heading-row">
+      <section className="home-section home-services reveal-on-scroll">
+        <div className="home-section-head">
           <div>
             <p className="home-kicker">WHAT WE DO</p>
             <h2>End-to-end Software Solutions That Drive Results</h2>
           </div>
           <p>
-            From strategy and design to development and deployment, we build
-            products tailored to your business goals.
+            From strategy and design to development and deployment, we build products tailored to your business goals.
           </p>
         </div>
 
@@ -196,8 +255,9 @@ export function HomePage() {
                   <Icon />
                 </div>
                 <h3>{item.title}</h3>
+                <p>{item.text}</p>
                 <Link to={item.link}>
-                  Explore <FiArrowRight />
+                  Learn More <FiArrowRight />
                 </Link>
               </article>
             );
@@ -205,15 +265,16 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="home-section home-soft reveal-on-scroll">
-        <div className="home-heading-row home-why-head">
-          <div>
-            <p className="home-kicker">WHY CHOOSE US</p>
-            <h2>Premium delivery with measurable business impact.</h2>
-          </div>
+      <section className="home-section home-why reveal-on-scroll">
+        <div className="home-why-copy">
+          <p className="home-kicker">WHY CHOOSE US</p>
+          <h2>
+            Engineering Excellence.
+            <br />
+            Business <span>Impact.</span>
+          </h2>
           <p>
-            We combine product strategy, design excellence, and engineering
-            discipline to deliver long-term digital value.
+            We combine technology, creativity, and strategy to deliver solutions that make a real difference.
           </p>
         </div>
 
@@ -222,57 +283,72 @@ export function HomePage() {
             const Icon = item.icon;
             return (
               <article key={item.label} className="home-stat-card">
-                <div className="home-icon-wrap">
+                <div className="home-icon-wrap home-icon-wrap--dark">
                   <Icon />
                 </div>
-                <h3>
-                  <Counter
-                    target={item.value}
-                    suffix={item.suffix}
-                    start={startCounters}
-                  />
-                </h3>
-                <p>{item.label}</p>
+                <div>
+                  <h3>
+                    <Counter target={item.value} suffix={item.suffix} start={startCounters} />
+                  </h3>
+                  <p>{item.label}</p>
+                </div>
               </article>
             );
           })}
         </div>
       </section>
 
-      <section className="home-section home-light reveal-on-scroll">
-        <div className="home-work-head">
-          <h2>Recent Projects</h2>
-          <Link to="/projects">
-            View All <FiArrowRight />
-          </Link>
+      <section className="home-section home-tech reveal-on-scroll">
+        <div className="home-tech-head">
+          <p className="home-kicker">TECHNOLOGIES WE WORK WITH</p>
+          <h2>Modern Tech Stack for Modern Solutions</h2>
         </div>
 
-        <div className="home-project-scroll" role="list">
-          {projects.map((project) => (
-            <article
-              key={project.name}
-              className="home-project-card"
-              role="listitem"
-            >
-              <div className="home-work-image" aria-hidden="true" />
-              <h3>{project.name}</h3>
-              <p>{project.type}</p>
+        <div className="home-tech-grid">
+          {techStack.map((item) => {
+            const Icon = item.icon;
+            return (
+              <span key={item.label} className="home-tech-badge">
+                <Icon />
+                {item.label}
+              </span>
+            );
+          })}
+        </div>
+        <Link to="/services" className="home-tech-link">
+          Explore All Technologies <FiArrowRight />
+        </Link>
+      </section>
+
+      <section className="home-section home-process reveal-on-scroll">
+        <div className="home-process-head">
+          <p className="home-kicker">OUR PROCESS</p>
+          <h2>A Proven Process. Predictable Results.</h2>
+        </div>
+
+        <div className="home-process-grid">
+          {processSteps.map((item, index) => (
+            <article key={item.step} className="home-process-card">
+              <span>{item.step}</span>
+              {index < processSteps.length - 1 && <i aria-hidden="true" />}
+              <div>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </div>
             </article>
           ))}
         </div>
-
-        <div className="home-cta-strip">
-          <div>
-            <p>LET&apos;S BUILD SOMETHING GREAT</p>
-            <h2>
-              Have a project in mind? Let&apos;s bring your ideas to life.
-            </h2>
-          </div>
-          <Link to="/contact" className="btn btn-secondary">
-            Get In Touch <FiArrowRight />
-          </Link>
-        </div>
       </section>
-    </>
+
+      <section className="home-section home-cta reveal-on-scroll">
+        <div>
+          <h2>Have an idea? Let&apos;s build something amazing together.</h2>
+          <p>We&apos;re here to turn your vision into powerful digital solutions.</p>
+        </div>
+        <Link to="/contact" className="btn btn-primary">
+          Let&apos;s Talk <FiArrowRight />
+        </Link>
+      </section>
+    </div>
   );
 }
