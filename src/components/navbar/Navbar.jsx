@@ -1,28 +1,24 @@
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { FiMenu, FiSun, FiMoon, FiX } from "react-icons/fi";
+import { FiMenu, FiX } from "react-icons/fi";
 import logo from "../../assets/logo.png";
 
 const links = [
   ["Home", "/"],
   ["Services", "/services"],
   ["Solutions", "/services#solutions"],
-  ["Technologies", "/services#technologies"],
   ["Projects", "/projects"],
-  ["About Us", "/about"],
-  ["Careers", "/careers"],
+  ["About", "/about"],
 ];
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [theme, setTheme] = useState(
-    () => localStorage.getItem("codefurnace-theme") || "dark",
-  );
+  const [theme] = useState(() => localStorage.getItem("codefurnace-theme") || "dark");
 
   useEffect(() => {
+    // keep theme attribute in sync with existing preference (no toggle UI)
     document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem("codefurnace-theme", theme);
   }, [theme]);
 
   useEffect(() => {
@@ -52,26 +48,24 @@ export function Navbar() {
             {label}
           </NavLink>
         ))}
+        <div className="mobile-nav-cta">
+          <NavLink to="/contact" className="btn btn-secondary" onClick={() => setOpen(false)}>
+            Contact Us
+          </NavLink>
+          <NavLink to="/quote-booking" className="btn btn-primary" onClick={() => setOpen(false)}>
+            Let's Talk
+          </NavLink>
+        </div>
       </nav>
 
       <div className="nav-actions">
         <NavLink to="/contact" className="btn btn-secondary">
           Contact Us
         </NavLink>
-        <NavLink
-          to="/quote-booking"
-          className="btn btn-primary desktop-nav-cta"
-        >
+        <NavLink to="/quote-booking" className="btn btn-primary desktop-nav-cta">
           Let's Talk
         </NavLink>
         <div className="nav-controls">
-          <button
-            className="theme-toggle"
-            onClick={() => setTheme((v) => (v === "dark" ? "light" : "dark"))}
-            aria-label="Toggle theme"
-          >
-            {theme === "dark" ? <FiSun /> : <FiMoon />}
-          </button>
           <button
             className="menu-toggle"
             onClick={() => setOpen((v) => !v)}
