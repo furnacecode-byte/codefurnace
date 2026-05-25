@@ -1,166 +1,191 @@
-﻿import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useSeo } from "../../components/common/useSeo";
 import {
   FiArrowRight,
-  FiCode,
-  FiSmartphone,
+  FiBarChart2,
   FiCloud,
+  FiCode,
+  FiDatabase,
+  FiHeadphones,
+  FiMonitor,
   FiPenTool,
-  FiCpu,
-  FiServer,
-  FiCheckCircle,
-  FiEye,
-  FiTarget,
-  FiZap as FiBolt,
+  FiShield,
+  FiShoppingCart,
+  FiSmartphone,
 } from "react-icons/fi";
+import {
+  SiDocker,
+  SiFigma,
+  SiMongodb,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiPostgresql,
+  SiPython,
+  SiReact,
+  SiTypescript,
+} from "react-icons/si";
+import { FaAws } from "react-icons/fa";
+import serviceHero from "../../assets/services_hero.png";
 
 const services = [
   {
+    title: "Product Engineering",
+    description: "We build robust, scalable products using modern technologies and best practices.",
+    icon: FiMonitor,
+    link: "/services/software-development",
+  },
+  {
     title: "Web Development",
-    description:
-      "Fast, secure, and scalable web applications that turn visitors into customers.",
+    description: "High-performance websites and web applications crafted for growth and engagement.",
     icon: FiCode,
     link: "/services/web-development",
   },
   {
-    title: "Mobile App Development",
-    description:
-      "Native and cross-platform apps that deliver seamless user experiences.",
+    title: "Mobile Development",
+    description: "Native and cross-platform mobile apps that deliver seamless user experiences.",
     icon: FiSmartphone,
     link: "/services/mobile-apps",
   },
   {
-    title: "SaaS Development",
-    description:
-      "Scalable SaaS platforms with secure architecture and powerful workflows.",
+    title: "Cloud & DevOps",
+    description: "Scalable cloud solutions and DevOps practices that ensure reliability and speed.",
     icon: FiCloud,
-    link: "/services/software-development",
+    link: "/quote-booking",
   },
   {
     title: "UI/UX Design",
-    description:
-      "Intuitive, branded interfaces crafted for engagement and conversion.",
+    description: "User-centered designs that combine aesthetics with usability to drive results.",
     icon: FiPenTool,
     link: "/quote-booking",
   },
   {
-    title: "AI & Automation",
-    description:
-      "Intelligent automation and AI solutions that streamline operations.",
-    icon: FiCpu,
-    link: "/services/ai-automation",
-  },
-  {
-    title: "Cloud & DevOps",
-    description:
-      "Cloud infrastructure, CI/CD, and automation for reliable delivery.",
-    icon: FiCloud,
+    title: "Data Engineering",
+    description: "Unlock the power of your data with pipelines, lakes, warehouses and analytics.",
+    icon: FiDatabase,
     link: "/quote-booking",
   },
   {
-    title: "ERP & Custom Software",
-    description:
-      "Custom ERP, CRM, and business systems tailored to your unique workflows.",
-    icon: FiServer,
-    link: "/services/software-development",
+    title: "AI & ML Solutions",
+    description: "Intelligent solutions that learn, adapt and help your business stay ahead.",
+    icon: FiBarChart2,
+    link: "/services/ai-automation",
+  },
+  {
+    title: "QA & Testing",
+    description: "Ensure quality, security and performance with our comprehensive testing services.",
+    icon: FiShield,
+    link: "/quote-booking",
+  },
+  {
+    title: "E-commerce Solutions",
+    description: "End-to-end e-commerce solutions that drive sales and enhance customer experience.",
+    icon: FiShoppingCart,
+    link: "/quote-booking",
+  },
+  {
+    title: "Maintenance & Support",
+    description: "Ongoing support and maintenance to keep your systems running at their best.",
+    icon: FiHeadphones,
+    link: "/quote-booking",
   },
 ];
 
 const processSteps = [
   {
+    step: "01",
     title: "Discover",
-    description: "We understand your goals, challenges, and success metrics.",
-    icon: FiEye,
+    description: "We understand your goals, challenges, and requirements.",
   },
   {
+    step: "02",
     title: "Plan",
-    description: "We create a strategic roadmap and clear delivery plan.",
-    icon: FiTarget,
+    description: "We define the roadmap, architecture, and strategy.",
   },
   {
+    step: "03",
     title: "Build",
-    description: "We design, develop, and test with precision and speed.",
-    icon: FiBolt,
+    description: "We design, develop, and test with quality and precision.",
   },
   {
-    title: "Deliver",
-    description: "We launch, optimize, and support your solution for growth.",
-    icon: FiCheckCircle,
+    step: "04",
+    title: "Deploy",
+    description: "We deliver, deploy, and ensure everything runs smoothly.",
+  },
+  {
+    step: "05",
+    title: "Support",
+    description: "We provide ongoing support and continuous improvement.",
   },
 ];
 
-const partnerBrands = [
-  "Techverse",
-  "cloudmax",
-  "Uideck",
-  "graygrids",
-  "penta",
-  "OrbitUI",
+const techStack = [
+  { label: "React", icon: SiReact },
+  { label: "Next.js", icon: SiNextdotjs },
+  { label: "Node.js", icon: SiNodedotjs },
+  { label: "TypeScript", icon: SiTypescript },
+  { label: "Python", icon: SiPython },
+  { label: "AWS", icon: FaAws },
+  { label: "Docker", icon: SiDocker },
+  { label: "PostgreSQL", icon: SiPostgresql },
+  { label: "MongoDB", icon: SiMongodb },
+  { label: "Figma", icon: SiFigma },
+];
+
+const orbitItems = [
+  { icon: FiCode, className: "services-orbit-item services-orbit-code" },
+  { icon: FiCloud, className: "services-orbit-item services-orbit-cloud" },
+  { icon: FiShield, className: "services-orbit-item services-orbit-shield" },
+  { icon: FiSmartphone, className: "services-orbit-item services-orbit-phone" },
+  { icon: FiBarChart2, className: "services-orbit-item services-orbit-chart" },
+  { icon: FiArrowRight, className: "services-orbit-item services-orbit-arrow" },
 ];
 
 export function ServicesPage() {
   useSeo(
     "Services",
-    "We design, build, and scale digital products that solve real-world problems and drive business growth.",
+    "Code furnace delivers end-to-end digital solutions tailored to your business needs.",
   );
 
   return (
-    <>
-      <section className="section services-hero">
+    <div className="services-page">
+      <section className="services-hero">
+        <div
+          className="services-hero-bg"
+          aria-hidden="true"
+          style={{ backgroundImage: `url(${serviceHero})` }}
+        />
         <div className="services-hero-copy">
-          <p className="eyebrow">Home / Services</p>
+          <nav className="services-breadcrumb" aria-label="Breadcrumb">
+            <Link to="/">Home</Link>
+            <span>/</span>
+            <strong>Services</strong>
+          </nav>
+          <p className="services-kicker">OUR SERVICES</p>
           <h1>
-            Our <span className="gradient-word">Services</span>
+            Comprehensive Services.
+            <br />
+            Powerful <span>Results.</span>
           </h1>
-          <p className="lead">
-            We design, build, and scale digital products that solve real-world
-            problems and drive business growth.
-          </p>
-          <div className="services-hero-actions">
-            <Link to="/quote-booking" className="btn btn-primary">
-              Discuss Your Project <FiArrowRight />
-            </Link>
-          </div>
-          <div className="services-trusted-row">
-            <span>Trusted by innovative companies worldwide</span>
-            <div className="services-brand-list">
-              {partnerBrands.map((brand) => (
-                <span key={brand}>{brand}</span>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <div className="services-hero-visual" id="technologies">
-          <div className="services-hero-card">
-            <span className="visual-badge">01</span>
-            <div className="visual-block" />
-          </div>
-          <div className="services-hero-stack">
-            <div className="visual-tile" />
-            <div className="visual-tile" />
-            <div className="visual-tile" />
-          </div>
-          <div className="services-hero-grid">
-            <div className="visual-chip" />
-            <div className="visual-chip" />
-            <div className="visual-chip" />
-          </div>
-        </div>
-      </section>
-
-      <section className="section services-solutions" id="solutions">
-        <div className="section-intro">
-          <p className="eyebrow">WHAT WE DO</p>
-          <h2>End-to-end Solutions for Every Business Need</h2>
-          <p>
-            From strategy and design to development and deployment, we offer a
-            comprehensive range of services to help you build, launch, and grow
-            powerful digital products.
+          <p className="services-lead">
+            We deliver end-to-end digital solutions tailored to your business needs. From strategy to deployment, we&apos;ve got you covered.
           </p>
         </div>
 
-        <div className="services-card-grid">
+        <div className="services-hero-visual" aria-hidden="true">
+          <div className="services-visual-core">
+            <FiCode />
+          </div>
+          {orbitItems.map((item) => {
+            const Icon = item.icon;
+            return (
+              <span className={item.className} key={item.className}>
+                <Icon />
+              </span>
+            );
+          })}
+        </div>
+
+        <div className="services-card-grid" id="solutions">
           {services.map((service) => {
             const Icon = service.icon;
             return (
@@ -171,7 +196,7 @@ export function ServicesPage() {
                 <h3>{service.title}</h3>
                 <p>{service.description}</p>
                 <Link to={service.link} className="feature-link">
-                  Learn More
+                  Learn More <FiArrowRight />
                 </Link>
               </article>
             );
@@ -179,41 +204,55 @@ export function ServicesPage() {
         </div>
       </section>
 
-      <section className="section services-process">
-        <div className="section-intro">
-          <p className="eyebrow">OUR PROCESS</p>
-          <h2>A Proven Process for Delivering Success</h2>
-          <p>
-            We follow a transparent and agile process to ensure quality,
-            alignment, and on-time delivery.
-          </p>
+      <section className="services-panel services-process">
+        <div className="services-section-head">
+          <p className="services-kicker">OUR PROCESS</p>
+          <h2>A Proven Process. Predictable Results.</h2>
         </div>
 
         <div className="services-process-grid">
-          {processSteps.map((step) => {
-            const Icon = step.icon;
-            return (
-              <article className="process-step" key={step.title}>
-                <div className="process-icon">
-                  <Icon />
-                </div>
-                <h3>{step.title}</h3>
-                <p>{step.description}</p>
-              </article>
-            );
-          })}
+          {processSteps.map((step, index) => (
+            <article className="process-step" key={step.step}>
+              <span>{step.step}</span>
+              {index < processSteps.length - 1 && <i aria-hidden="true" />}
+              <h3>{step.title}</h3>
+              <p>{step.description}</p>
+            </article>
+          ))}
         </div>
       </section>
 
-      <section className="section services-cta-strip">
-        <div>
-          <p>Ready to bring your ideas to life?</p>
-          <h2>Let's build something amazing together.</h2>
+      <section className="services-panel services-tech" id="technologies">
+        <div className="services-section-head">
+          <p className="services-kicker">TECHNOLOGIES WE WORK WITH</p>
+          <h2>Modern Tech Stack for Modern Solutions</h2>
         </div>
-        <Link to="/quote-booking" className="btn btn-primary">
-          Get in Touch
+
+        <div className="services-tech-grid">
+          {techStack.map((item) => {
+            const Icon = item.icon;
+            return (
+              <span key={item.label} className="services-tech-badge">
+                <Icon />
+                {item.label}
+              </span>
+            );
+          })}
+        </div>
+        <Link to="/quote-booking" className="services-tech-link">
+          Explore All Technologies <FiArrowRight />
         </Link>
       </section>
-    </>
+
+      <section className="services-cta-strip">
+        <div>
+          <h2>Have a project in mind?</h2>
+          <p>Let&apos;s build something amazing together.</p>
+        </div>
+        <Link to="/quote-booking" className="btn btn-primary">
+          Let&apos;s Talk <FiArrowRight />
+        </Link>
+      </section>
+    </div>
   );
 }
