@@ -24,7 +24,7 @@
 }
 
 .home-hero {
-  padding: clamp(2rem, 4vw, 3.4rem) clamp(1.4rem, 4vw, 3rem) 1.05rem;
+  padding: clamp(2rem, 4vw, 3.4rem) clamp(1.4rem, 4vw, 3rem) 1.35rem;
   border: 1px solid rgba(255, 255, 255, 0.08);
   background:
     radial-gradient(circle at 72% 14%, rgba(255, 116, 25, 0.22), transparent 28%),
@@ -50,9 +50,9 @@
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(360px, 0.92fr);
+  grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.78fr);
   align-items: center;
-  gap: clamp(1.5rem, 4vw, 3rem);
+  gap: clamp(1.75rem, 5vw, 4.5rem);
 }
 
 .home-hero-copy {
@@ -125,13 +125,17 @@
 
 .home-hero-art {
   position: relative;
-  width: min(100%, 620px);
-  min-height: clamp(280px, 30vw, 430px);
+  width: min(100%, 520px);
+  height: clamp(300px, 28vw, 440px);
+  min-height: 0;
   justify-self: end;
   border-radius: 16px;
   isolation: isolate;
   overflow: hidden;
-  opacity: 0.96;
+  opacity: 0.9;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255, 122, 24, 0.16), transparent 58%),
+    rgba(4, 10, 20, 0.24);
 }
 
 .home-hero-art::after {
@@ -145,15 +149,14 @@
 }
 
 .home-hero-art img {
-  width: auto;
-  height: 50%;
-  min-height: inherit;
+  width: 100%;
+  height: 100%;
   display: block;
-  object-fit: contain;
-  object-position: center right;
-  transform: scale(0.92);
+  object-fit: cover;
+  object-position: 56% center;
+  transform: scale(0.82);
   filter: drop-shadow(0 22px 42px rgba(255, 104, 17, 0.2));
-  mask-image: radial-gradient(circle at 58% 48%, #000 0 56%, rgba(0, 0, 0, 0.62) 74%, transparent 100%);
+  mask-image: radial-gradient(circle at 55% 48%, #000 0 48%, rgba(0, 0, 0, 0.55) 68%, transparent 94%);
 }
 
 .home-trusted {
@@ -545,7 +548,7 @@
 
   .home-hero-art {
     width: min(100%, 680px);
-    min-height: 340px;
+    height: clamp(280px, 44vw, 380px);
     justify-self: center;
     margin-top: 0.5rem;
   }
@@ -591,13 +594,13 @@
   }
 
   .home-hero-art {
-    min-height: 230px;
+    height: 220px;
     margin-top: 0.25rem;
     opacity: 0.86;
   }
 
   .home-hero-art img {
-    transform: scale(0.86);
+    transform: scale(0.9);
   }
 
   .home-trusted-row,
