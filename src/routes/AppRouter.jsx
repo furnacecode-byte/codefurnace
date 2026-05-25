@@ -34,7 +34,11 @@ export function AppRouter() {
         <Route path="/careers" element={<CareersPage />} />
         <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
         <Route path="/terms" element={<TermsPage />} />
-        <Route path="/quote-booking" element={<QuoteBookingPage />} />
+        <Route path="/lets-talk" element={<QuoteBookingPage />} />
+        <Route
+          path="/quote-booking"
+          element={<Navigate replace to="/lets-talk" />}
+        />
 
         <Route
           path="/services/web-development"

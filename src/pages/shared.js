@@ -3,12 +3,9 @@
   FiCpu,
   FiCalendar,
   FiSmartphone,
-  FiZap,
   FiLayers,
   FiSearch,
   FiMessageSquare,
-  FiCloud,
-  FiDatabase,
 } from "react-icons/fi";
 
 export const serviceOverviewCards = [
