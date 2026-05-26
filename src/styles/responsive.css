@@ -56,3 +56,438 @@
     align-items: flex-start;
   }
 }
+
+@media (max-width: 1180px) {
+  h1 {
+    font-size: clamp(2.25rem, 6vw, 4rem);
+  }
+
+  h2 {
+    font-size: clamp(1.55rem, 3.6vw, 2.45rem);
+  }
+
+  .card {
+    padding: 1.1rem;
+  }
+
+  .services-hero,
+  .service-detail-hero,
+  .home-hero,
+  .lets-talk-shell {
+    padding-inline: clamp(1rem, 3vw, 1.8rem);
+  }
+
+  .services-hero-visual,
+  .service-detail-visual,
+  .home-hero-art {
+    min-height: clamp(260px, 36vw, 360px);
+  }
+
+  .services-visual-core {
+    width: clamp(136px, 19vw, 180px);
+  }
+
+  .service-chip {
+    width: min(56vw, 310px);
+  }
+
+  .service-glow-cube {
+    grid-template-columns: repeat(3, 50px);
+    grid-template-rows: repeat(3, 50px);
+  }
+}
+
+@media (max-width: 900px) {
+  main,
+  .navbar,
+  .footer {
+    width: min(100% - 1.4rem, var(--max-width));
+  }
+
+  .section,
+  .home-section {
+    padding-block: 2rem;
+  }
+
+  .home-hero-copy h1,
+  .services-hero h1,
+  .service-detail-hero h1,
+  .lets-talk-sidebar h1 {
+    font-size: clamp(2.1rem, 8vw, 3.25rem);
+    line-height: 1.08;
+    letter-spacing: 0;
+  }
+
+  .lead,
+  .services-lead,
+  .service-detail-lead,
+  .lets-lead,
+  .home-hero-copy > p:not(.home-chip) {
+    font-size: 0.96rem;
+    line-height: 1.65;
+  }
+
+  .home-section-head h2,
+  .home-tech-head h2,
+  .home-process-head h2,
+  .home-why-copy h2,
+  .home-cta h2,
+  .services-section-head h2,
+  .service-detail-section-head h2 {
+    font-size: clamp(1.45rem, 5vw, 2.2rem);
+    line-height: 1.16;
+    letter-spacing: 0;
+  }
+
+  .home-service-card,
+  .service-feature-card,
+  .service-detail-feature,
+  .service-detail-plan {
+    min-height: auto;
+    padding: 1rem;
+  }
+
+  .home-icon-wrap,
+  .feature-icon,
+  .service-detail-icon {
+    width: 44px;
+    height: 44px;
+    margin-bottom: 1rem;
+    font-size: 1.15rem;
+  }
+
+  .home-tech-grid,
+  .services-tech-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+
+  .home-tech-badge,
+  .services-tech-badge {
+    min-height: 78px;
+    padding: 0.7rem;
+  }
+
+  .home-tech-badge svg,
+  .services-tech-badge svg {
+    font-size: 1.55rem;
+  }
+}
+
+@media (max-width: 640px) {
+  main,
+  .navbar,
+  .footer {
+    width: calc(100% - 0.9rem);
+  }
+
+  .site-shell {
+    padding-bottom: 0.9rem;
+  }
+
+  .section {
+    padding: 1.45rem 0;
+  }
+
+  .home-page,
+  .services-page,
+  .lets-talk-page,
+  .service-detail-shell {
+    padding-top: 0.45rem;
+  }
+
+  .navbar {
+    top: 0.45rem;
+    min-height: 58px;
+    border-radius: 0.9rem;
+    padding: 0.55rem 0.65rem;
+  }
+
+  .brand-logo {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+
+  .brand span {
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+  }
+
+  .btn,
+  .service-detail-primary,
+  .service-detail-secondary,
+  .lets-primary-btn,
+  .lets-outline-btn {
+    min-height: 42px;
+    padding: 0.68rem 0.9rem;
+    border-radius: 0.65rem;
+    font-size: 0.86rem;
+  }
+
+  .home-hero,
+  .services-hero,
+  .service-detail-hero,
+  .lets-talk-shell,
+  .contact-hero,
+  .contact-form-panel,
+  .contact-info-panel,
+  .contact-map-wrap,
+  .contact-bottom-cta {
+    border-radius: 0.85rem;
+    padding: 1rem;
+  }
+
+  .hero-section {
+    min-height: auto;
+    padding: 1.1rem;
+    border-radius: 0.95rem;
+  }
+
+  .hero-section h1,
+  h1,
+  .home-hero-copy h1,
+  .services-hero h1,
+  .service-detail-hero h1,
+  .lets-talk-sidebar h1 {
+    font-size: clamp(1.85rem, 9vw, 2.55rem);
+    line-height: 1.08;
+    max-width: none;
+  }
+
+  h2,
+  .home-section-head h2,
+  .home-tech-head h2,
+  .home-process-head h2,
+  .home-why-copy h2,
+  .home-cta h2,
+  .services-section-head h2,
+  .service-detail-section-head h2,
+  .contact-form-panel h2,
+  .contact-info-panel h2 {
+    font-size: clamp(1.28rem, 6vw, 1.85rem);
+  }
+
+  h3 {
+    font-size: 1rem;
+  }
+
+  p,
+  li,
+  input,
+  textarea,
+  select,
+  button {
+    font-size: 0.9rem;
+  }
+
+  .eyebrow,
+  .home-kicker,
+  .services-kicker,
+  .service-detail-section-head p,
+  .service-faq-card > p {
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+  }
+
+  .lead,
+  .hero-section .lead,
+  .home-hero-copy > p:not(.home-chip),
+  .services-lead,
+  .service-detail-lead,
+  .lets-lead {
+    font-size: 0.9rem;
+    line-height: 1.55;
+    max-width: 100%;
+  }
+
+  .home-hero-art,
+  .services-hero-visual,
+  .service-detail-visual,
+  .contact-hero-art {
+    height: auto;
+    min-height: 190px;
+    max-height: 240px;
+    opacity: 0.9;
+  }
+
+  .home-hero-art img,
+  .contact-hero-image {
+    object-fit: contain;
+    transform: scale(0.92);
+  }
+
+  .services-visual-core {
+    width: 118px;
+    border-radius: 22px;
+    font-size: 3rem;
+  }
+
+  .services-orbit-item {
+    width: 46px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+  }
+
+  .services-orbit-item::after {
+    display: none;
+  }
+
+  .service-chip {
+    width: min(74vw, 230px);
+    border-radius: 24px;
+    box-shadow:
+      0 14px 0 #070a10,
+      0 22px 42px rgba(255, 122, 24, 0.16),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  }
+
+  .service-glow-cube {
+    grid-template-columns: repeat(3, 34px);
+    grid-template-rows: repeat(3, 34px);
+  }
+
+  .service-circuit-grid {
+    inset: 18% -10% 0;
+    opacity: 0.72;
+  }
+
+  .home-trusted-row,
+  .home-services-grid,
+  .home-tech-grid,
+  .home-process-grid,
+  .services-card-grid,
+  .services-tech-grid,
+  .services-process-grid,
+  .service-detail-feature-grid,
+  .service-detail-process,
+  .service-detail-plans,
+  .service-trust-row,
+  .lets-form-grid,
+  .lets-feature-grid,
+  .lets-review,
+  .contact-form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .home-trusted-row span,
+  .home-tech-badge,
+  .services-tech-badge {
+    min-height: 54px;
+  }
+
+  .home-service-card,
+  .service-feature-card,
+  .service-detail-feature,
+  .service-detail-plan,
+  .lets-contact-card,
+  .lets-consult-card,
+  .lets-form-card,
+  .contact-info-item {
+    padding: 0.9rem;
+  }
+
+  .service-detail-stats,
+  .lets-stats {
+    gap: 0.55rem;
+  }
+
+  .service-detail-stats div,
+  .lets-stats div,
+  .home-stat-card {
+    min-height: auto;
+    padding: 0.72rem 0;
+  }
+
+  .service-detail-process span,
+  .home-process-card span,
+  .process-step span {
+    width: 42px;
+    height: 42px;
+    font-size: 0.86rem;
+  }
+
+  .service-detail-bottom,
+  .service-consult-card,
+  .contact-map-wrap,
+  .lets-consult-card {
+    grid-template-columns: 1fr;
+  }
+
+  .service-consult-icon,
+  .lets-cube {
+    width: 76px;
+    height: 76px;
+    border-radius: 16px;
+    font-size: 2rem;
+  }
+
+  .lets-steps {
+    grid-template-columns: repeat(5, 34px);
+    gap: 0;
+  }
+
+  .lets-step span {
+    width: 32px;
+    height: 32px;
+    font-size: 0.8rem;
+  }
+
+  .lets-field input,
+  .lets-field textarea,
+  .lets-field select {
+    min-height: 64px;
+    padding: 1.75rem 0.8rem 0.65rem;
+  }
+
+  .lets-field textarea {
+    min-height: 104px;
+  }
+}
+
+@media (max-width: 420px) {
+  .home-hero,
+  .services-hero,
+  .service-detail-hero,
+  .lets-talk-shell,
+  .hero-section {
+    padding: 0.85rem;
+  }
+
+  h1,
+  .home-hero-copy h1,
+  .services-hero h1,
+  .service-detail-hero h1,
+  .lets-talk-sidebar h1 {
+    font-size: clamp(1.68rem, 10vw, 2.18rem);
+  }
+
+  h2,
+  .home-section-head h2,
+  .service-detail-section-head h2,
+  .services-section-head h2 {
+    font-size: clamp(1.18rem, 6.5vw, 1.55rem);
+  }
+
+  .home-hero-actions,
+  .service-detail-actions,
+  .lets-complete-actions,
+  .row.gap-sm.wrap {
+    gap: 0.55rem;
+  }
+
+  .home-hero-art,
+  .services-hero-visual,
+  .service-detail-visual {
+    min-height: 165px;
+    max-height: 210px;
+  }
+
+  .service-detail-plan > strong {
+    font-size: 1.35rem;
+  }
+
+  .home-tech-grid,
+  .services-tech-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

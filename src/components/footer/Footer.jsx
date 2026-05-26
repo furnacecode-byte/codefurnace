@@ -63,10 +63,10 @@ export function Footer() {
             <Link to="/services/software-development">SaaS/ERP Platforms</Link>
           </p>
           <p>
-            <Link to="/services/ai-automation">AI Automation</Link>
+            <Link to="/services/booking-systems">Booking Systems</Link>
           </p>
           <p>
-            <Link to="/quote-booking">Cloud & DevOps</Link>
+            <Link to="/services/ai-automation">AI Automation</Link>
           </p>
         </div>
 
@@ -96,7 +96,7 @@ export function Footer() {
             </a>
           </p>
           <p>
-            <Link to="/quote-booking">Book Consultation</Link>
+            <Link to="/lets-talk">Book Consultation</Link>
           </p>
         </div>
       </div>

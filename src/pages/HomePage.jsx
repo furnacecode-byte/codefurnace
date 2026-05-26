@@ -4,13 +4,12 @@ import {
   FiArrowRight,
   FiAward,
   FiBox,
+  FiCalendar,
   FiCamera,
   FiCheckCircle,
-  FiCloud,
   FiCode,
   FiGitBranch,
   FiMonitor,
-  FiPenTool,
   FiSmartphone,
   FiTrendingUp,
   FiUsers,
@@ -41,16 +40,22 @@ const trustedBrands = [
 
 const services = [
   {
-    title: "Product Engineering",
+    title: "Software Development",
     icon: FiMonitor,
     link: "/services/software-development",
-    text: "We build robust, scalable products using modern technologies and best practices.",
+    text: "Custom ERP, CRM, POS, dashboards, and enterprise systems built for scale.",
   },
   {
     title: "Web Development",
-    icon: FiMonitor,
-    link: "/services/website-development",
+    icon: FiCode,
+    link: "/services/web-development",
     text: "High-performance websites and web applications crafted for growth and engagement.",
+  },
+  {
+    title: "Booking Systems",
+    icon: FiCalendar,
+    link: "/services/booking-systems",
+    text: "Appointment, reservation, payment, reminder, and dashboard systems for service businesses.",
   },
   {
     title: "Mobile Development",
@@ -59,16 +64,10 @@ const services = [
     text: "Native and cross-platform mobile apps that deliver seamless user experiences.",
   },
   {
-    title: "Cloud & DevOps",
-    icon: FiCloud,
-    link: "/quote-booking",
-    text: "Scalable cloud solutions and DevOps practices that ensure reliability and speed.",
-  },
-  {
-    title: "UI/UX Design",
-    icon: FiPenTool,
-    link: "/quote-booking",
-    text: "User-centered designs that combine aesthetics with usability to drive results.",
+    title: "AI Automation",
+    icon: FiTrendingUp,
+    link: "/services/ai-automation",
+    text: "AI assistants, WhatsApp automation, CRM workflows, and smart business intelligence systems.",
   },
 ];
 
@@ -206,7 +205,7 @@ export function HomePage() {
               We help businesses build secure, scalable, and high-performance software products with modern engineering and thoughtful design.
             </p>
             <div className="home-hero-actions">
-              <Link to="/quote-booking" className="btn btn-primary">
+              <Link to="/lets-talk" className="btn btn-primary">
                 Start a Project <FiArrowRight />
               </Link>
               <Link to="/services" className="btn btn-secondary">
@@ -346,7 +345,7 @@ export function HomePage() {
           <h2>Have an idea? Let&apos;s build something amazing together.</h2>
           <p>We&apos;re here to turn your vision into powerful digital solutions.</p>
         </div>
-        <Link to="/contact" className="btn btn-primary">
+        <Link to="/lets-talk" className="btn btn-primary">
           Let&apos;s Talk <FiArrowRight />
         </Link>
       </section>

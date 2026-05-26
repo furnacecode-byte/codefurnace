@@ -3,14 +3,10 @@ import { useSeo } from "../../components/common/useSeo";
 import {
   FiArrowRight,
   FiBarChart2,
-  FiCloud,
+  FiCalendar,
   FiCode,
-  FiDatabase,
-  FiHeadphones,
   FiMonitor,
-  FiPenTool,
   FiShield,
-  FiShoppingCart,
   FiSmartphone,
 } from "react-icons/fi";
 import {
@@ -29,8 +25,8 @@ import serviceHero from "../../assets/services_hero.png";
 
 const services = [
   {
-    title: "Product Engineering",
-    description: "We build robust, scalable products using modern technologies and best practices.",
+    title: "Software Development",
+    description: "Custom ERP, CRM, POS, dashboards, and enterprise platforms built for operations at scale.",
     icon: FiMonitor,
     link: "/services/software-development",
   },
@@ -41,52 +37,22 @@ const services = [
     link: "/services/web-development",
   },
   {
+    title: "Booking Systems",
+    description: "Appointment, reservation, payment, reminder, and dashboard systems for service businesses.",
+    icon: FiCalendar,
+    link: "/services/booking-systems",
+  },
+  {
     title: "Mobile Development",
     description: "Native and cross-platform mobile apps that deliver seamless user experiences.",
     icon: FiSmartphone,
     link: "/services/mobile-apps",
   },
   {
-    title: "Cloud & DevOps",
-    description: "Scalable cloud solutions and DevOps practices that ensure reliability and speed.",
-    icon: FiCloud,
-    link: "/quote-booking",
-  },
-  {
-    title: "UI/UX Design",
-    description: "User-centered designs that combine aesthetics with usability to drive results.",
-    icon: FiPenTool,
-    link: "/quote-booking",
-  },
-  {
-    title: "Data Engineering",
-    description: "Unlock the power of your data with pipelines, lakes, warehouses and analytics.",
-    icon: FiDatabase,
-    link: "/quote-booking",
-  },
-  {
-    title: "AI & ML Solutions",
-    description: "Intelligent solutions that learn, adapt and help your business stay ahead.",
+    title: "AI Automation",
+    description: "AI assistants, WhatsApp automation, CRM workflows, and smart business intelligence systems.",
     icon: FiBarChart2,
     link: "/services/ai-automation",
-  },
-  {
-    title: "QA & Testing",
-    description: "Ensure quality, security and performance with our comprehensive testing services.",
-    icon: FiShield,
-    link: "/quote-booking",
-  },
-  {
-    title: "E-commerce Solutions",
-    description: "End-to-end e-commerce solutions that drive sales and enhance customer experience.",
-    icon: FiShoppingCart,
-    link: "/quote-booking",
-  },
-  {
-    title: "Maintenance & Support",
-    description: "Ongoing support and maintenance to keep your systems running at their best.",
-    icon: FiHeadphones,
-    link: "/quote-booking",
   },
 ];
 
@@ -133,7 +99,7 @@ const techStack = [
 
 const orbitItems = [
   { icon: FiCode, className: "services-orbit-item services-orbit-code" },
-  { icon: FiCloud, className: "services-orbit-item services-orbit-cloud" },
+  { icon: FiCalendar, className: "services-orbit-item services-orbit-cloud" },
   { icon: FiShield, className: "services-orbit-item services-orbit-shield" },
   { icon: FiSmartphone, className: "services-orbit-item services-orbit-phone" },
   { icon: FiBarChart2, className: "services-orbit-item services-orbit-chart" },
@@ -239,7 +205,7 @@ export function ServicesPage() {
             );
           })}
         </div>
-        <Link to="/quote-booking" className="services-tech-link">
+        <Link to="/lets-talk" className="services-tech-link">
           Explore All Technologies <FiArrowRight />
         </Link>
       </section>
@@ -249,7 +215,7 @@ export function ServicesPage() {
           <h2>Have a project in mind?</h2>
           <p>Let&apos;s build something amazing together.</p>
         </div>
-        <Link to="/quote-booking" className="btn btn-primary">
+        <Link to="/lets-talk" className="btn btn-primary">
           Let&apos;s Talk <FiArrowRight />
         </Link>
       </section>

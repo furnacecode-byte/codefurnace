@@ -3,8 +3,6 @@
   FiCpu,
   FiCalendar,
   FiSmartphone,
-  FiLayers,
-  FiSearch,
   FiMessageSquare,
 } from "react-icons/fi";
 
@@ -33,30 +31,15 @@ export const serviceOverviewCards = [
     link: "/services/mobile-apps",
     icon: FiSmartphone,
   },
-];
-
-export const extendedServiceCards = [
-  ...serviceOverviewCards,
   {
-    title: "Digital Branding",
-    text: "Build strong digital identities with strategic branding, logo systems, social kits, visual assets, and market-ready brand experiences.",
-    link: "/quote-booking",
-    icon: FiLayers,
-  },
-  {
-    title: "SEO & Optimization",
-    text: "Improve search rankings, speed performance, technical SEO, and conversion optimization for maximum online visibility and business growth.",
-    link: "/quote-booking",
-    icon: FiSearch,
-  },
-  {
-    title: "WhatsApp Automation",
-    text: "Automate customer communication, lead capture, support systems, and sales workflows directly on WhatsApp using intelligent automation.",
-    link: "/quote-booking",
+    title: "AI Automation",
+    text: "AI chatbots, WhatsApp automation, CRM workflows, intelligent agents, and smart business automation systems.",
+    link: "/services/ai-automation",
     icon: FiMessageSquare,
   },
-
 ];
+
+export const extendedServiceCards = serviceOverviewCards;
 
 export const companyStats = [
   { value: "120+", label: "Projects Completed" },
