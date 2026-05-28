@@ -2,6 +2,8 @@
 import { Link } from "react-router-dom";
 import { useSeo } from "../components/common/useSeo";
 import projectsHeroImage from "../assets/projects hero.png";
+import hotelDemoImage from "../assets/hotel-demo.png";
+import posDemoImage from "../assets/pos-demo.png";
 import "./PortfolioPage.css";
 
 const filters = [
@@ -64,6 +66,7 @@ const projects = [
     label: "Web Demo",
     text: "A polished POS mockup showing retail checkout workflows, product scanning, and payment flow for client review.",
     demoUrl: "https://posdemo-rho.vercel.app/",
+    image: posDemoImage,
   },
   {
     title: "Hotel Booking Demo",
@@ -72,6 +75,7 @@ const projects = [
     label: "Booking Systems",
     text: "An interactive hotel web booking demo that illustrates reservation search, room selection, and guest checkout.",
     demoUrl: "https://bookingdemo-lime.vercel.app/",
+    image: hotelDemoImage,
   },
   {
     title: "DataPulse — Analytics SaaS",
@@ -163,7 +167,16 @@ export function ProjectsPage() {
           <article className="project-card" key={project.title}>
             <div className="project-card-content">
               <span className="project-card-category">{project.label}</span>
-              <div className={`project-thumb project-thumb-${(index % 6) + 1}`} />
+              <div
+                className={`project-thumb project-thumb-${(index % 6) + 1}`}
+                style={
+                  project.image
+                    ? {
+                        backgroundImage: `url(${project.image})`,
+                      }
+                    : undefined
+                }
+              />
               <h3>{project.title}</h3>
               <p>{project.text}</p>
               <p>
