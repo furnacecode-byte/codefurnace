@@ -84,15 +84,33 @@
   border-left: 1px solid rgba(255, 122, 24, 0.25);
   padding: 5.4rem 1rem 1.2rem;
   transform: translateX(100%);
-  transition: transform 0.3s ease;
+  opacity: 0;
+  transition: transform 0.24s ease, opacity 0.24s ease;
   display: grid;
   align-content: start;
   gap: 0.4rem;
   z-index: 140;
+  will-change: transform, opacity;
 }
 
 .nav-links.open {
   transform: translateX(0);
+  opacity: 1;
+}
+
+.nav-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.24s ease;
+  z-index: 130;
+}
+
+.nav-backdrop.show {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .nav-links a {

@@ -42,7 +42,7 @@ export function Navbar() {
         <span>CODE furnace</span>
       </NavLink>
 
-      <nav className={open ? "nav-links open" : "nav-links"}>
+      <nav className={open ? "nav-links open" : "nav-links"} aria-hidden={!open}>
         {links.map(([label, to]) => (
           <NavLink key={to} to={to} onClick={() => setOpen(false)}>
             {label}
@@ -57,6 +57,8 @@ export function Navbar() {
           </NavLink>
         </div>
       </nav>
+
+      <div className={open ? "nav-backdrop show" : "nav-backdrop"} onClick={() => setOpen(false)} aria-hidden="true" />
 
       <div className="nav-actions">
         <NavLink to="/contact" className="btn btn-secondary">
