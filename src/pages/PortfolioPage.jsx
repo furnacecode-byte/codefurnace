@@ -7,6 +7,7 @@ import "./PortfolioPage.css";
 const filters = [
   "All Projects",
   "Web Development",
+  "Booking Systems",
   "Mobile Apps",
   "SaaS Platforms",
   "Enterprise Solutions",
@@ -55,6 +56,22 @@ const projects = [
     stack: "React, Commerce, UI",
     label: "Web Development",
     text: "A fast, secure storefront built to convert visitors into customers with modern UI/UX.",
+  },
+  {
+    title: "POS Mockup — Retail Checkout Demo",
+    category: "Web Development",
+    stack: "React, UI/UX, Point of Sale",
+    label: "Web Demo",
+    text: "A polished POS mockup showing retail checkout workflows, product scanning, and payment flow for client review.",
+    demoUrl: "https://posdemo-rho.vercel.app/",
+  },
+  {
+    title: "Hotel Booking Demo",
+    category: "Booking Systems",
+    stack: "React, Booking Workflow, Reservations",
+    label: "Booking Systems",
+    text: "An interactive hotel web booking demo that illustrates reservation search, room selection, and guest checkout.",
+    demoUrl: "https://bookingdemo-lime.vercel.app/",
   },
   {
     title: "DataPulse — Analytics SaaS",
@@ -109,7 +126,9 @@ export function ProjectsPage() {
             </h1>
             <p className="lead">
               Explore a selection of impactful digital solutions, crafted with
-              expertise and built to drive real business outcomes.
+              expertise and built to drive real business outcomes. Live demos for
+              POS and hotel booking flows help clients visualize the final
+              experience.
             </p>
           </div>
         </div>
@@ -151,7 +170,13 @@ export function ProjectsPage() {
                 <strong>Tech stack:</strong> {project.stack}
               </p>
               <div className="project-card-footer">
-                <span>View Case Study →</span>
+                {project.demoUrl ? (
+                  <a href={project.demoUrl} target="_blank" rel="noreferrer">
+                    View Demo →
+                  </a>
+                ) : (
+                  <span>View Case Study →</span>
+                )}
                 <Link to="/quote-booking">Start a Project</Link>
               </div>
             </div>
