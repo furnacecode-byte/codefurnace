@@ -1,4 +1,8 @@
-﻿export function PricingCards({ plans, ctaLabel = "Choose Plan" }) {
+export function PricingCards({
+  plans,
+  ctaLabel = "Choose Plan",
+  onCtaClick,
+}) {
   const jumpToForm = () => {
     const node = document.getElementById("quote-form");
     if (node) node.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -22,10 +26,16 @@
           </ul>
           <button
             className="btn btn-primary"
-            onClick={jumpToForm}
+            onClick={() => {
+              if (onCtaClick) {
+                onCtaClick(plan);
+                return;
+              }
+              jumpToForm();
+            }}
             type="button"
           >
-            {ctaLabel}
+            {plan.ctaLabel || ctaLabel}
           </button>
         </article>
       ))}
@@ -33,25 +43,30 @@
   );
 }
 
-export function ComparisonTable({ rows }) {
+export function ComparisonTable({ rows, columns = [] }) {
+  const resolvedColumns =
+    columns.length > 0 ? columns : ["Starter", "Growth", "Enterprise"];
+
   return (
     <div className="table-wrap">
       <table>
         <thead>
           <tr>
             <th>Feature</th>
-            <th>Starter</th>
-            <th>Growth</th>
-            <th>Enterprise</th>
+            {resolvedColumns.map((column) => (
+              <th key={column}>{column}</th>
+            ))}
           </tr>
         </thead>
         <tbody>
           {rows.map((row) => (
-            <tr key={row.feature}>
-              <td>{row.feature}</td>
-              <td>{row.starter}</td>
-              <td>{row.growth}</td>
-              <td>{row.enterprise}</td>
+            <tr key={row.feature || row.label}>
+              <td>{row.feature || row.label}</td>
+              {(row.values || [row.starter, row.growth, row.enterprise]).map(
+                (value, index) => (
+                  <td key={`${row.feature || row.label}-${index}`}>{value}</td>
+                ),
+              )}
             </tr>
           ))}
         </tbody>

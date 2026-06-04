@@ -41,7 +41,114 @@ const features = [
   },
 ];
 
-const plans = [
+const oneTimePlans = [
+  {
+    name: "Starter Website ",
+    price: "KES 25,000",
+    setup: "Best for personal brands, startups, and small businesses.",
+    ctaLabel: "Get Started",
+    features: [
+      "Up to 5 Pages",
+      "Modern Custom Design",
+      "Mobile Responsive Layout",
+      "Contact Form",
+      "WhatsApp Integration",
+      "Basic SEO Setup",
+      "Google Maps Integration",
+      "SSL Certificate Setup",
+      "Social Media Integration",
+      "30 Days Support",
+      "Delivery 5-7 Days",
+    ],
+  },
+  {
+    name: "Standard Website ",
+    price: "KES 55,000",
+    setup: "Best balance for growing businesses.",
+    recommended: true,
+    ctaLabel: "Choose Standard",
+    features: [
+      "Up to 10 Pages",
+      "Premium UI/UX Design",
+      "Blog / News Section",
+      "Contact Forms (Advanced)",
+      "WhatsApp + Live Chat Integration",
+      "SEO Optimization",
+      "Google Analytics Setup",
+      "Speed Optimization",
+      "Domain Setup Support",
+      "SSL Certificate",
+      "Basic CMS Integration",
+      "Email Setup (up to 5 accounts)",
+      "60 Days Support",
+      "Delivery 7-14 Days",
+    ],
+  },
+  {
+    name: "Business Website ",
+    price: "KES 85,000",
+    setup: "For businesses scaling operations and visibility.",
+    ctaLabel: "Upgrade Business",
+    features: [
+      "Up to 15 Pages",
+      "Advanced UI/UX Design",
+      "CMS (Content Management System)",
+      "Blog System",
+      "Lead Capture Forms",
+      "SEO Advanced Setup",
+      "WhatsApp + Chatbot Integration",
+      "Analytics Dashboard",
+      "Marketing Integration Tools",
+      "API Integrations (Basic)",
+      "Performance Optimization",
+      "90 Days Support",
+      "Delivery 10-18 Days",
+    ],
+  },
+  {
+    name: "Corporate Website ",
+    price: "KES 120,000",
+    setup: "For established companies and organizations.",
+    ctaLabel: "Go Corporate",
+    features: [
+      "Up to 20 Pages",
+      "Enterprise-Level UI/UX Design",
+      "Admin Dashboard",
+      "CRM Integration (Basic)",
+      "Staff / Team Management Pages",
+      "Client Portal (Basic)",
+      "Advanced SEO Strategy",
+      "Automation Tools Integration",
+      "Security Hardening",
+      "Analytics & Reporting System",
+      "Priority Support (120 Days)",
+      "Delivery 14-25 Days",
+    ],
+  },
+  {
+    name: "Enterprise Website ",
+    price: "KES 180,000+ (Custom Quote)",
+    setup: "For large platforms, SaaS systems, and enterprise solutions.",
+    ctaLabel: "Request Consultation",
+    features: [
+      "25+ Pages (Unlimited Scaling)",
+      "Fully Custom Architecture",
+      "SaaS / Platform Development",
+      "Advanced CRM / ERP Integration",
+      "Multi-role Access System",
+      "API Ecosystem Integration",
+      "Custom Dashboards",
+      "Advanced Security Layer",
+      "Cloud Deployment Setup",
+      "Performance Scaling Optimization",
+      "Dedicated Project Manager",
+      "Training & Documentation",
+      "Ongoing Priority Support",
+    ],
+  },
+];
+
+const monthlyPlans = [
   {
     name: "Basic Website Package",
     price: "$20/mo | KES 2,600/mo",
@@ -126,21 +233,20 @@ const plans = [
   },
 ];
 
-const comparison = [
-  { feature: "Pages", starter: "5", growth: "10-20", enterprise: "40-50" },
-  {
-    feature: "SEO",
-    starter: "Basic",
-    growth: "Advanced",
-    enterprise: "Enterprise",
+const pricingModes = {
+  oneTime: {
+    label: "One-Time Payment",
+    title: "One-Time Website Packages",
+    text: "Pay once and own your website, with included support for the launch period.",
+    plans: oneTimePlans,
   },
-  {
-    feature: "Support",
-    starter: "Standard",
-    growth: "Priority",
-    enterprise: "Corporate SLA",
+  subscription: {
+    label: "Monthly Subscription",
+    title: "Monthly Subscription Packages",
+    text: "Keep your website hosted, maintained, updated, and monitored every month.",
+    plans: monthlyPlans.slice(0, 4),
   },
-];
+};
 
 export function WebsiteDevelopmentPage() {
   useSeo(
@@ -158,14 +264,12 @@ export function WebsiteDevelopmentPage() {
       />
       <ServicePackagesTemplate
         title="Website Pricing Packages"
-        subtitle="Choose a package then send us your requirements."
-        plans={plans}
-        comparison={comparison}
+        subtitle="Choose a one-time website build or a monthly managed plan that fits your business."
+        pricingModes={pricingModes}
+        defaultMode="oneTime"
         faqs={commonFaqs}
-        quoteForm={<QuoteRequestForm plans={plans} />}
+        quoteForm={<QuoteRequestForm plans={[...oneTimePlans, ...monthlyPlans]} />}
       />
     </>
   );
 }
-
-

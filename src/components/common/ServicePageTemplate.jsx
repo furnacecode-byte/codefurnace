@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   FiArrowRight,
@@ -12,6 +13,7 @@ import {
   FiShield,
   FiUsers,
 } from "react-icons/fi";
+import { ComparisonTable } from "../pricing/PricingBlocks";
 
 const processSteps = [
   {
@@ -184,12 +186,71 @@ export function ServicePageTemplate({
   );
 }
 
-export function ServicePackagesTemplate({ title, plans, faqs }) {
+export function ServicePackagesTemplate({
+  title,
+  subtitle,
+  plans = [],
+  faqs = [],
+  pricingModes,
+  defaultMode,
+  comparison,
+  quoteForm,
+}) {
   const serviceName = title.replace("Packages", "").replace("Pricing", "").trim();
+  const modeEntries = pricingModes ? Object.entries(pricingModes) : [];
+  const [activeMode, setActiveMode] = useState(
+    defaultMode || modeEntries[0]?.[0] || "default",
+  );
+  const activeModeData =
+    pricingModes && pricingModes[activeMode] ? pricingModes[activeMode] : null;
+  const activePlans = activeModeData?.plans || plans;
+  const activeModeTitle = activeModeData?.title || `${serviceName} Packages`;
+  const activeModeText =
+    activeModeData?.text ||
+    subtitle ||
+    "Choose a package then send us your requirements.";
 
-  const jumpToTalk = () => {
-    window.location.href = "/lets-talk";
+  const buildLetsTalkUrl = (plan) => {
+    const params = new URLSearchParams();
+    params.set("package", plan?.name || "");
+    params.set("service", "Website Development");
+    return `/lets-talk?${params.toString()}`;
   };
+
+  const jumpToTalk = (plan) => {
+    window.location.href = buildLetsTalkUrl(plan);
+  };
+
+  const renderPackageCard = (plan) => (
+    <article
+      key={plan.name}
+      className={
+        plan.recommended
+          ? "service-detail-plan recommended"
+          : "service-detail-plan"
+      }
+    >
+      {plan.recommended && <span className="service-plan-badge">Recommended</span>}
+      <h3>{plan.name}</h3>
+      <p className="service-plan-subtitle">
+        {plan.setup || (plan.recommended ? "Ideal for growing businesses" : "Perfect for focused needs")}
+      </p>
+      <strong>{plan.price}</strong>
+      <p>{plan.subtitle || plan.description || plan.timeline || plan.setup}</p>
+      <ul>
+        {plan.features.map((feature) => (
+          <li key={feature}>{feature}</li>
+        ))}
+      </ul>
+      <button
+        className={plan.recommended ? "service-detail-primary" : "service-detail-secondary"}
+        type="button"
+        onClick={() => jumpToTalk(plan)}
+      >
+        {plan.ctaLabel || (plan.price.toLowerCase().includes("from") ? "Contact Us" : "Choose Package")}
+      </button>
+    </article>
+  );
 
   return (
     <section className="service-detail-shell service-detail-continuation">
@@ -214,40 +275,62 @@ export function ServicePackagesTemplate({ title, plans, faqs }) {
         <div className="service-detail-section-head center">
           <p>{serviceName} Packages</p>
           <h2>Flexible Plans for Every Business</h2>
+          <span>{subtitle || "Choose a package then send us your requirements."}</span>
         </div>
 
-        <div className="service-detail-plans">
-          {plans.slice(0, 4).map((plan) => (
-            <article
-              key={plan.name}
-              className={
-                plan.recommended
-                  ? "service-detail-plan recommended"
-                  : "service-detail-plan"
-              }
-            >
-              {plan.recommended && <span className="service-plan-badge">Recommended</span>}
-              <h3>{plan.name}</h3>
-              <p className="service-plan-subtitle">
-                {plan.recommended ? "Ideal for growing businesses" : "Perfect for focused needs"}
-              </p>
-              <strong>{plan.price}</strong>
-              <p>{plan.setup}</p>
-              <ul>
-                {plan.features.map((feature) => (
-                  <li key={feature}>{feature}</li>
-                ))}
-              </ul>
-              <button
-                className={plan.recommended ? "service-detail-primary" : "service-detail-secondary"}
-                type="button"
-                onClick={jumpToTalk}
-              >
-                {plan.price.toLowerCase().includes("from") ? "Contact Us" : "Choose Package"}
-              </button>
-            </article>
-          ))}
-        </div>
+        {modeEntries.length > 0 ? (
+          <>
+            <div className="pricing-toggle card service-pricing-toggle">
+              {modeEntries.map(([key, mode]) => (
+                <button
+                  key={key}
+                  type="button"
+                  className={`pricing-toggle-btn ${
+                    activeMode === key ? "active" : ""
+                  }`}
+                  aria-pressed={activeMode === key}
+                  onClick={() => setActiveMode(key)}
+                >
+                  {mode.label}
+                </button>
+              ))}
+            </div>
+
+            <div className="pricing-inline-banner card service-pricing-banner">
+              <div>
+                <p className="eyebrow">Not sure which plan fits your business?</p>
+                <h3>Schedule a free consultation before you decide.</h3>
+                <p>{activeModeText}</p>
+              </div>
+              <Link className="btn btn-primary" to="/lets-talk">
+                Schedule Free Consultation <FiArrowRight />
+              </Link>
+            </div>
+
+            <div className="service-detail-section-head center service-mode-head">
+              <p>{activeModeData?.label || serviceName}</p>
+              <h2>{activeModeTitle}</h2>
+              <span>{activeModeText}</span>
+            </div>
+
+            <div className="service-detail-plans service-detail-plans--mode">
+              {activePlans.map((plan) => renderPackageCard(plan))}
+            </div>
+
+            {comparison ? (
+              <div className="service-comparison-wrap">
+                <ComparisonTable
+                  columns={["One-Time Payment", "Monthly Subscription"]}
+                  rows={comparison}
+                />
+              </div>
+            ) : null}
+          </>
+        ) : (
+          <div className="service-detail-plans">
+            {plans.slice(0, 4).map((plan) => renderPackageCard(plan))}
+          </div>
+        )}
 
         <div className="service-trust-row">
           {trustItems.map(({ icon: Icon, title: itemTitle, text }) => (
@@ -306,6 +389,8 @@ export function ServicePackagesTemplate({ title, plans, faqs }) {
           Let's Talk <FiArrowRight />
         </Link>
       </section>
+
+      {quoteForm ? <section className="service-quote-panel">{quoteForm}</section> : null}
     </section>
   );
 }

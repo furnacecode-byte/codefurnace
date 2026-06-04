@@ -1,4 +1,5 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { useLocation } from "react-router-dom";
 import {
   FiArrowLeft,
   FiArrowRight,
@@ -69,6 +70,23 @@ const featureOptions = [
   "Training",
 ];
 
+const optionalAddOns = [
+  { name: "M-Pesa integration", price: 15000 },
+  { name: "Client login system", price: 12000 },
+  { name: "Management dashboard", price: 18000 },
+  { name: "Email automation", price: 10000 },
+  { name: "Analytics dashboard", price: 16000 },
+  { name: "Training session", price: 8000 },
+  { name: "Card / online payment gateway", price: 18000 },
+  { name: "Booking system", price: 25000 },
+  { name: "Login system", price: 10000 },
+  { name: "Employee management", price: 20000 },
+  { name: "Digital marketing", price: 22000 },
+  { name: "Branding services", price: 25000 },
+  { name: "SEO setup", price: 12000 },
+  { name: "WhatsApp automation", price: 18000 },
+];
+
 const initialForm = {
   companyName: "",
   industry: "",
@@ -76,13 +94,15 @@ const initialForm = {
   email: "",
   phone: "",
   budget: "",
+  packageName: "",
   businessDescription: "",
   service: "",
   projectGoal: "",
   timeline: "Immediately",
   meetingDate: "",
   meetingTime: "",
-  features: [],
+  requirements: [],
+  addons: [],
   notes: "",
 };
 
@@ -103,8 +123,38 @@ function Field({ label, required, children }) {
   );
 }
 
+function loadInitialForm(search = "") {
+  let saved = null;
+  try {
+    const raw = localStorage.getItem("cf-lets-talk-progress");
+    saved = raw ? JSON.parse(raw) : null;
+  } catch {
+    saved = null;
+  }
+
+  const params = new URLSearchParams(search);
+  const packageName = params.get("package") || saved?.packageName || "";
+  const service = params.get("service") || saved?.service || "";
+
+  return {
+    ...initialForm,
+    ...(saved || {}),
+    packageName,
+    service,
+    requirements: Array.isArray(saved?.requirements)
+      ? saved.requirements
+      : Array.isArray(saved?.features)
+        ? saved.features
+        : [],
+    addons: Array.isArray(saved?.addons) ? saved.addons : [],
+  };
+}
+
 function getMessage(form) {
-  const features = form.features.length ? form.features.join(", ") : "None selected";
+  const requirements = form.requirements.length
+    ? form.requirements.join(", ")
+    : "None selected";
+  const addons = form.addons.length ? form.addons.join(", ") : "None selected";
   return [
     "Hello Code Furnace, I would like to book a consultation.",
     `Name: ${form.fullName}`,
@@ -113,10 +163,12 @@ function getMessage(form) {
     `Phone: ${form.phone}`,
     `Industry: ${form.industry}`,
     `Service: ${form.service}`,
+    `Package: ${form.packageName || "Not selected"}`,
     `Budget: ${form.budget || "Not selected"}`,
     `Timeline: ${form.timeline}`,
     `Meeting: ${form.meetingDate || "Date pending"} at ${form.meetingTime || "Time pending"}`,
-    `Features: ${features}`,
+    `Requirements: ${requirements}`,
+    `Optional add-ons: ${addons}`,
     `Project goal: ${form.projectGoal}`,
     `Business: ${form.businessDescription || "Not provided"}`,
     `Notes: ${form.notes || "None"}`,
@@ -129,12 +181,16 @@ export function QuoteBookingPage() {
     "Book a Code Furnace consultation and share your project requirements.",
   );
 
+  const location = useLocation();
   const [step, setStep] = useState(1);
   const [submitted, setSubmitted] = useState(false);
-  const [form, setForm] = useState(() => {
-    const saved = localStorage.getItem("cf-lets-talk-progress");
-    return saved ? JSON.parse(saved) : initialForm;
-  });
+  const [form, setForm] = useState(() => loadInitialForm(location.search));
+
+  useEffect(() => {
+    const next = loadInitialForm(location.search);
+    setForm(next);
+    localStorage.setItem("cf-lets-talk-progress", JSON.stringify(next));
+  }, [location.search]);
 
   const message = useMemo(() => getMessage(form), [form]);
   const whatsappUrl = `https://wa.me/254143369440?text=${encodeURIComponent(message)}`;
@@ -150,10 +206,19 @@ export function QuoteBookingPage() {
 
   const toggleFeature = (feature) => {
     update(
-      "features",
-      form.features.includes(feature)
-        ? form.features.filter((item) => item !== feature)
-        : [...form.features, feature],
+      "requirements",
+      form.requirements.includes(feature)
+        ? form.requirements.filter((item) => item !== feature)
+        : [...form.requirements, feature],
+    );
+  };
+
+  const toggleAddon = (addon) => {
+    update(
+      "addons",
+      form.addons.includes(addon)
+        ? form.addons.filter((item) => item !== addon)
+        : [...form.addons, addon],
     );
   };
 
@@ -315,16 +380,23 @@ export function QuoteBookingPage() {
                         placeholder="+254 700 000000"
                       />
                     </Field>
-                    <Field label="Project Budget">
-                      <select
-                        value={form.budget}
-                        onChange={(event) => update("budget", event.target.value)}
-                      >
+                  <Field label="Project Budget">
+                    <select
+                      value={form.budget}
+                      onChange={(event) => update("budget", event.target.value)}
+                    >
                         <option value="">Select budget range</option>
                         {budgetOptions.map((option) => (
                           <option key={option}>{option}</option>
                         ))}
                       </select>
+                    </Field>
+                    <Field label="Package / Plan (Optional)">
+                      <input
+                        value={form.packageName}
+                        onChange={(event) => update("packageName", event.target.value)}
+                        placeholder="Starter Website, Standard Package, etc."
+                      />
                     </Field>
                   </div>
                   <Field label="Describe your business">
@@ -389,7 +461,7 @@ export function QuoteBookingPage() {
                       <label className="lets-feature" key={feature}>
                         <input
                           type="checkbox"
-                          checked={form.features.includes(feature)}
+                          checked={form.requirements.includes(feature)}
                           onChange={() => toggleFeature(feature)}
                         />
                         <span>{feature}</span>
@@ -411,6 +483,28 @@ export function QuoteBookingPage() {
                 <section className="lets-form-section">
                   <h2>Review & submit</h2>
                   <p>Choose a preferred consultation slot and confirm your request.</p>
+                  <div className="lets-addon-section">
+                    <h3>Optional add-ons</h3>
+                    <p>
+                      Select any extra features you want. You can leave this
+                      empty if you only want the chosen package.
+                    </p>
+                    <div className="lets-feature-grid">
+                      {optionalAddOns.map((item) => (
+                        <label className="lets-feature" key={item.name}>
+                          <input
+                            type="checkbox"
+                            checked={form.addons.includes(item.name)}
+                            onChange={() => toggleAddon(item.name)}
+                          />
+                          <span>
+                            {item.name}{" "}
+                            <strong>(KES {item.price.toLocaleString()})</strong>
+                          </span>
+                        </label>
+                      ))}
+                    </div>
+                  </div>
                   <div className="lets-form-grid">
                     <Field label="Preferred Date" required>
                       <input
@@ -431,6 +525,7 @@ export function QuoteBookingPage() {
                     <p><strong>Client:</strong> {form.fullName || "Not added"}</p>
                     <p><strong>Company:</strong> {form.companyName || "Not added"}</p>
                     <p><strong>Service:</strong> {form.service || "Not selected"}</p>
+                    <p><strong>Package:</strong> {form.packageName || "Not selected"}</p>
                     <p><strong>Budget:</strong> {form.budget || "Not selected"}</p>
                     <p><strong>Timeline:</strong> {form.timeline}</p>
                   </div>
